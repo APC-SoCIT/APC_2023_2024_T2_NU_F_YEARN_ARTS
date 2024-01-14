@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+route::get('/',[HomeController::class,'index']);
+
 
 Route::middleware([
     'auth:sanctum',
@@ -26,3 +29,32 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+/* Routes */
+
+Route::get('/Signup', function () {
+    return view('YearnArt.Signup');
+})->name('Signup');
+
+Route::get('/FAQ', function () {
+    return view('YearnArt.FAQ');
+})->name('FAQ');
+
+Route::get('/Products', function () {
+    return view('YearnArt.Products');
+})->name('Products');
+
+Route::get('/About', function () {
+    return view('YearnArt.About');
+})->name('About');
+
+Route::get('/MyOrders', function () {
+    return view('YearnArt.MyOrders');
+})->name('MyOrders');
+
+
+route::get('/home',[HomeController::class,'home']);
+
+route::get('/view_category',[AdminController::class,'view_category']);
+
