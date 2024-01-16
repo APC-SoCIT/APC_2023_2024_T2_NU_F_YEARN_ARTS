@@ -20,7 +20,7 @@
                         </div>
                       </div>
                     </div>
-                    <h6 class="text-muted font-weight-normal">Potential growth</h6>
+                    <h6 class="text-muted font-weight-normal">Jeric</h6>
                   </div>
                 </div>
               </div>
