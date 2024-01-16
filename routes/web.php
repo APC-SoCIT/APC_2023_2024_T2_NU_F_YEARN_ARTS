@@ -54,7 +54,11 @@ Route::get('/MyOrders', function () {
 })->name('MyOrders');
 
 
+
 route::get('/home',[HomeController::class,'home']);
+
+route::get('/admin_dashboard',[AdminController::class,'admin_dashboard']);
+
 
 route::get('/view_category',[AdminController::class,'view_category']);
 
@@ -76,3 +80,4 @@ route::get('/update_product/{id}',[AdminController::class,'update_product']);
 
 
 route::post('/update_product_confirm/{id}',[AdminController::class,'update_product_confirm']);
+

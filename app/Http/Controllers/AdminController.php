@@ -8,6 +8,10 @@ use App\Models\Product;
 
 class AdminController extends Controller
 {
+
+    public function admin_dashboard(){
+        return view ('admin.home');
+    }
     public function view_category()
     {
         $data=category::all();
