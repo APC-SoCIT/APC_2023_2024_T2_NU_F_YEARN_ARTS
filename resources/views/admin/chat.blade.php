@@ -5,7 +5,6 @@
    @livewireStyles
   </head>
   <body>
-    <livewire:counter /> 
     <div class="container-scroller">
       <!-- partial:partials/_sidebar.html -->
       @include('admin.sidebar')
@@ -13,7 +12,7 @@
         <!-- partial:partials/_navbar.html -->
         @include('admin.header')
         <!-- partial -->
-      @include('admin.body')  
+        <livewire:counter /> 
     <!-- container-scroller -->
     <!-- plugins:js -->
    @include('admin.script')
