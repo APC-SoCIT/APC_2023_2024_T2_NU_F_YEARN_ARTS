@@ -9,7 +9,13 @@
 .product-img{
     height:600px;
     width: 600px;
+    overflow: hidden;
 }
+.product-img img {
+    width: 100%; /* Make the image fill the container width */
+    height: 100%; /* Make the image fill the container height */
+    object-fit: contain; /* Maintain the aspect ratio and cover the container */
+  }
 
 .detail-box1{
     margin-left: 60px;
