@@ -33,7 +33,7 @@
                 <span class="menu-title">Products</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div id="ui-products" class="collapse">
+            <div id="ui-products" >
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/view_product')}}">Add Products</a>

@@ -47,8 +47,8 @@
                     <tr>
                         <th class="th-deg">Name</th>
                         <th class="th-deg">Product Name</th>
-                        <th class="th-deg">Quantity</th>
                         <th class="th-deg">Price</th>
+                        <th class="th-deg">Quantity</th>
 
                         <th class="th-deg">Action</th>
 
@@ -64,7 +64,7 @@
                     <tr>
                         <td>{{$order->name}}</td>
                         <td>{{$order->product_name}}</td>
-                        <td>{{$order->price}}</td>
+                        <td>{{$order->price}}.00</td>
                         <td>{{$order->quantity}}</td>
 
                         <td>

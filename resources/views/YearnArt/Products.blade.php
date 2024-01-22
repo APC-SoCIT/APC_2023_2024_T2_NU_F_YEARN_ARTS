@@ -21,13 +21,13 @@
 
 
 <section class="product_section layout_padding">
-         <div class="container">
-            <div class="heading_container heading_center">
+         <div class="Container">
+            <div>
                <h2>
-                  Our <span>products</span>
+                  Our products
                </h2>
             </div>
-            <div class="row">
+            <div class="container-box">
             @foreach($products as $products)
                <div class="col-sm-6 col-md-4 col-lg-3">
 

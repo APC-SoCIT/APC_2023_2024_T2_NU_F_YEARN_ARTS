@@ -68,7 +68,7 @@
                     Description: {{$products->product_description}}
                 </p>
                 <p class="price">
-                   ₱{{$products->price}}
+                   ₱{{$products->price}}.00
                 </p>
                 <p class="names">
                     Processing Time: {{$products->processing_time}}
