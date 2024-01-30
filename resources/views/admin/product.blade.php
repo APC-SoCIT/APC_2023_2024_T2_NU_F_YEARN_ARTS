@@ -2,30 +2,12 @@
 <html lang="en">
   <head>
    @include('admin.css')
+   
+   <link rel="stylesheet" href="admin/assets/css/admin_products.css">
    <title>Yearn Art | Products</title>
-  </head>
-  <style type="text/css">
-        .div_center {
-            text-align: center;
-            padding-top: 40px;
-        }
-        .font_size{
-            font-size: 40px;
-            padding-bottom: 40px;
-        }
-        .text_color{
-            color: black;
-            padding-bottom: 20px;
-        }
-        label{
-            display: inline-block;
-            width: 200px;
-        }
-        .div_design{
-            padding-bottom: 15px;
-        }
 
-    </style>
+  
+  </head>
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_sidebar.html -->
@@ -36,7 +18,6 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-
                 @if(session()->has('message'))
 
                     <div class='alert alert-success'>
@@ -45,52 +26,54 @@
                     </div>
 
                 @endif
-                <div class="div_center">
-
-                    <h1 class="font_size">Add Product</h1>
-
+                <div class="div-main">
                     <form action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
+                    <div class="child1">
                         <div class="div_design">
-                            <label>Product Name</label>
-                            <input class="text_color"type="text" name="product_name" placeholder="Enter Product Name"id="" required="">
+                                
+                                <input type="file" name="image" required="">
                         </div>
+                        <div class="div_design">
+
+                                <input type="submit" value="Add Product" class="btn btn-primary">
+                        </div>
+                    </div>
+                    <div class="child2">
+                            <div class="product-name">
+                            
+                                <input class="text_color" type="text" name="product_name" placeholder="Product Name" id="" required="" autocomplete="off">
+                            </div>
 
                         @csrf
 
-                        <div class="div_design">
-                            <label>Product Category</label>
-                           <select class="text_color"name="category" id="" required="">
-                            <option value="" selected="">Product Type</option>
-                            @foreach($category as $category)
-                            <option value="{{$category->category_name}}">{{$category->category_name}}</option>
-                            @endforeach
+                            <div class="div_design">
+                            
+                            <select class="text_color"name="category" id="" required="" >
+                                <option value="" selected="">Product Type</option>
+                                @foreach($category as $category)
+                                <option value="{{$category->category_name}}">{{$category->category_name}}</option>
+                                @endforeach
 
-                           </select>
-                        </div>
-                        <div class="div_design">
-                            <label>Product Description</label>
-                            <input class="text_color"type="text" name="product_description" placeholder="Enter Product Description"id="" required="" >
-                        </div>
-                        <div class="div_design">
-                            <label>Price</label>
-                            <input class="text_color"type="number" name="price" placeholder="Enter Price"id="" required="">
-                        </div>
-                        <div class="div_design">
-                            <label>Processing Time</label>
-                            <input class="text_color"type="text" name="processing_time" placeholder="Enter Processing Time"id="" required="">
-                        </div>
-                        <div class="div_design">
-                            <label>Add Photo</label>
-                            <input type="file" name="image" required="">
-                        </div>
-                        <div class="div_design">
+                            </select>
+                            </div>
+                            <div class="div_design">
+                                
+                                <input class="text_color"type="text" name="product_description" placeholder="Product Description"id="" required="" >
+                            </div>
+                            <div class="div_design">
+                                
+                                <input class="text_color"type="number" name="price" placeholder="Price"id="" required="">
+                            </div>
+                            <div class="div_design">
+                                
+                                <input class="text_color" type="text" name="processing_time" placeholder="Processing Time"id="" required="">
+                            </div>
 
-                            <input type="submit" value="Add Product" class="btn btn-primary">
-                        </div>
+                            
+                    </div>
 
+                    
                     </form>
-
-
                 </div>
 
             </div>
