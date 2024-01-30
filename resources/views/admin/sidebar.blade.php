@@ -53,7 +53,7 @@
                 <span class="menu-title">Orders</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div id="ui-orders" class="collapse">
+            <div id="ui-orders">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('order')}}">Order Tracking</a>
