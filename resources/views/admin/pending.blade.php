@@ -42,7 +42,7 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <h1 class="title-deg">All Orders</h1>
+                <h1 class="title-deg">Pending Orders</h1>
                 <table class="table-deg">
                     <tr>
                         <th class="th-deg">Name</th>
@@ -60,7 +60,7 @@
                     </tr>
                     @foreach ($order as $order)
 
-
+                    @if($order->order_status=='Order Placed')
                     <tr>
                         <td>{{$order->name}}</td>
                         <td>{{$order->product_name}}</td>
@@ -69,15 +69,14 @@
 
                         <td>
                             @if($order->order_status=='On Process')
-                            <p>Paid</p>
+                            <p>Confirmed</p>
                             @else
-                            <a href="{{url('delivered', $order->id)}}" class="btn btn-success" onclick="return confirm('Are you sure this ordered is already paid?')">Done</a>
+                            <a href="{{url('to_pay', $order->id)}}" class="btn btn-success" onclick="return confirm('Are you sure this order can be made?')">Confirm</a>
 
                             @endif
                         </td>
-
-
                     </tr>
+                    @endif
                     @endforeach
                 </table>
             </div>

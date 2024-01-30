@@ -29,6 +29,8 @@ route::get('/About',[HomeController::class,'About']);
 route::get('/show_cart',[HomeController::class,'show_cart']);
 route::get('/remove_cart/{id}',[HomeController::class,'remove_cart']);
 route::get('/cash_order',[HomeController::class,'cash_order']);
+route::get('/show_orders',[HomeController::class,'show_orders']);
+
 
 
 
@@ -81,5 +83,5 @@ route::get('/update_product/{id}',[AdminController::class,'update_product']);
 route::post('/update_product_confirm/{id}',[AdminController::class,'update_product_confirm']);
 route::get('/order',[AdminController::class,'order']);
 route::get('/payment',[AdminController::class,'payment']);
-route::get('/delivered/{id}',[AdminController::class,'delivered']);
+route::get('/to_pay/{id}',[AdminController::class,'to_pay']);
 
