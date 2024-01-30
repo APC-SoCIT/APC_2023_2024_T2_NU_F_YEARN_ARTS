@@ -84,7 +84,13 @@
 
 
                         <td>{{$order->payment_status}}</td>
-                        <td>{{$order->order_status}}</td>
+                        <td>
+                            @if($order->order_status=='Order Placed')
+                            <p>Pending</p>
+                            @else
+                            {{$order->order_status}}
+                            @endif
+                        </td>
 
 
 

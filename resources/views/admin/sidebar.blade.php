@@ -59,7 +59,7 @@
                         <a class="nav-link" href="{{url('order')}}">Order Tracking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/payment')}}">Payment</a> <!-- Changed URL for payment -->
+                        <a class="nav-link" href="{{url('/payment')}}">Pending Orders</a> <!-- Changed URL for payment -->
                     </li>
                 </ul>
             </div>

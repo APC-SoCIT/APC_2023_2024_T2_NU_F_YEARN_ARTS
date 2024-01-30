@@ -156,7 +156,7 @@ class HomeController extends Controller
             $order->product_id=$data->product_id;
 
             $order->payment_status='Cash';
-            $order->order_status='To Pay';
+            $order->order_status='Order Placed';
 
             $order->save();
 
@@ -168,6 +168,22 @@ class HomeController extends Controller
         }
 
         return redirect()->back()->with('message', 'Successfully Placed Order');
+
+    }
+    public function show_orders(){
+        if(Auth::id()){
+            $id=Auth::user()->id;
+
+            $order=order::where('user_id', '=', $id)->get();
+
+            return view('YearnArt.ShowOrders', compact('order'));
+
+
+            }
+            else{
+                return redirect('login');
+            }
+
 
     }
 
