@@ -22,6 +22,9 @@
         </x-slot>
 
         <x-validation-errors class="mb-4" />
+        <div class="mb-4 text-red-500 text-xs">
+            {{ __('All fields are required.') }}
+        </div>
 
         <form method="POST" action="{{ route('register') }}">
             @csrf

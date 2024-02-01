@@ -189,5 +189,134 @@ class HomeController extends Controller
 
 
 
+    public function show_pending(){
+        if(Auth::id()){
+            $id=Auth::user()->id;
+
+            $order=order::where('user_id', '=', $id)->get();
+
+            return view('YearnArt.pending', compact('order'));
+
+
+            }
+            else{
+                return redirect('login');
+            }
+
+
+    }
+
+    public function show_Dpayment(){
+        if(Auth::id()){
+            $id=Auth::user()->id;
+
+            $order=order::where('user_id', '=', $id)->get();
+
+            return view('YearnArt.Dpayment', compact('order'));
+
+
+            }
+            else{
+                return redirect('login');
+            }
+
+
+    }
+
+    public function show_on_process(){
+        if(Auth::id()){
+            $id=Auth::user()->id;
+
+            $order=order::where('user_id', '=', $id)->get();
+
+            return view('YearnArt.OnProcess', compact('order'));
+
+
+            }
+            else{
+                return redirect('login');
+            }
+
+
+    }
+
+    public function show_Fpayment(){
+        if(Auth::id()){
+            $id=Auth::user()->id;
+
+            $order=order::where('user_id', '=', $id)->get();
+
+            return view('YearnArt.Fpayment', compact('order'));
+
+
+            }
+            else{
+                return redirect('login');
+            }
+
+
+    }
+
+    public function show_shipping(){
+        if(Auth::id()){
+            $id=Auth::user()->id;
+
+            $order=order::where('user_id', '=', $id)->get();
+
+            return view('YearnArt.Shipping', compact('order'));
+
+
+            }
+            else{
+                return redirect('login');
+            }
+
+
+    }
+    public function show_order_received(){
+        if(Auth::id()){
+            $id=Auth::user()->id;
+
+            $order=order::where('user_id', '=', $id)->get();
+
+            return view('YearnArt.OrderReceived', compact('order'));
+
+
+            }
+            else{
+                return redirect('login');
+            }
+
+
+    }
+
+    public function show_order_completed(){
+        if(Auth::id()){
+            $id=Auth::user()->id;
+
+            $order=order::where('user_id', '=', $id)->get();
+
+            return view('YearnArt.OrderCompleted', compact('order'));
+
+
+            }
+            else{
+                return redirect('login');
+            }
+
+
+    }
+
+
+//
+//
+//
+//
+//
+//
+//
+
+
+
 
 }

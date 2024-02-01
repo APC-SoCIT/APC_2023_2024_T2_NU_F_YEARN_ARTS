@@ -37,7 +37,7 @@
 
     </style>
 
-<title>Yearn Art | My Orders</title>
+<title>Yearn Art | My Cart</title>
 <link rel="icon" href="assets/image/Yearn.jpg" type="image/png">
 
 </head>

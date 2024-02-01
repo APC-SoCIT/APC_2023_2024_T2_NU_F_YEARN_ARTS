@@ -4,52 +4,19 @@
 @include('YearnArt.css')
 <link rel="stylesheet" href="assets/">
 
-<title>Yearn Art | About</title>
+@include('YearnArt.styleforordertracking')
 </head>
-<style>
-    /* assets/css/style.css */
 
-.custom-section {
-    background-color: #D0A59F;
-    /* Add any other styles for your custom section */
-}
-
-.order-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    /* Add any other styles for your custom order container */
-}
-
-.order-item {
-    background-color: #FFF; /* Set background color for each order item */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* Add any other styles for your custom order item */
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    /* Add any other styles for your images */
-}
-
-.order-details {
-    margin-left: 20px;
-    /* Add any other styles for your order details */
-}
-
-.track-order {
-    /* Add any styles for your track order section */
-}
-
-</style>
+<title>Yearn Art | All Orders</title>
 <body>
 @include('home.header')
-<div>
-    <h6>My Orders</h6> <a href="{{url('/show_cart')}}">CART</a>
+<div class="header">
+    <h6>My Orders</h6>
+    <a href="{{url('/show_cart')}}" class="cart-link">CART
+        <img src="assets/image/cart1.png" alt="Cart Icon" class="cart-icon"></a>
 </div>
+
+@include('YearnArt.status_links', ['selectedStatus' => 'All'])
 
 <section class="custom-section">
     <div class="container py-5">

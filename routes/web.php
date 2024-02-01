@@ -29,8 +29,15 @@ route::get('/About',[HomeController::class,'About']);
 route::get('/show_cart',[HomeController::class,'show_cart']);
 route::get('/remove_cart/{id}',[HomeController::class,'remove_cart']);
 route::get('/cash_order',[HomeController::class,'cash_order']);
+//order tracking
 route::get('/show_orders',[HomeController::class,'show_orders']);
-
+route::get('/show_pending',[HomeController::class,'show_pending']);
+route::get('/show_Dpayment',[HomeController::class,'show_Dpayment']);
+route::get('/show_on_process',[HomeController::class,'show_on_process']);
+route::get('/show_Fpayment',[HomeController::class,'show_Fpayment']);
+route::get('/show_shipping',[HomeController::class,'show_shipping']);
+route::get('/show_order_received',[HomeController::class,'show_order_received']);
+route::get('/show_order_completed',[HomeController::class,'show_order_completed']);
 
 
 
