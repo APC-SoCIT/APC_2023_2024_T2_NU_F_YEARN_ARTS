@@ -48,7 +48,7 @@
                         {{$products->product_name}}
                         </h5>
                         <h6>
-                        ₱{{$products->price}}.00
+                        ₱{{ number_format($products->price, 2)}}
                         </h6>
                      </div>
 

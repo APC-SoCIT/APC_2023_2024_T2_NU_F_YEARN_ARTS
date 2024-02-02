@@ -8,41 +8,65 @@
 
 <title>Yearn Art | Pending Orders</title>
 <body>
-    @include('home.header')
-    <div class="header">
-        <h6>My Orders</h6>
-        <a href="{{url('/show_cart')}}" class="cart-link">CART
-            <img src="assets/image/cart1.png" alt="Cart Icon" class="cart-icon"></a>
-    </div>
+@include('home.header')
+<div class="header">
+    <h6 class="orders">My Orders</h6>
+    <a href="{{url('/show_cart')}}" class="cart-link">My Cart
+        <img src="assets/image/Cart.png" alt="Cart Icon" class="cart-icon"></a>
+</div>
 
-    @include('YearnArt.status_links', ['selectedStatus' => 'Pending'])
-
-    <section class="custom-section">
-        <div class="container py-5">
-            <div class="order-container">
-                <!-- Loop through your order data here -->
-                @foreach ($order as $order)
-                    @if ($order->order_status === 'Shipping')
-                        <div class="order-item">
-                            <img src="product/{{ $order->image }}" class="img-fluid" alt="{{ $order->product_name }}">
-                            <div class="order-details">
-                                <p class="product-name">{{ $order->product_name }}</p>
-                                <p class="order-info">Quantity: {{ $order->quantity }}</p>
-                                <p class="order-info">Price: ${{ $order->price }}</p>
-                                <p class="order-info">Order Status: {{ $order->order_status }}</p>
-                            </div>
+<section class="custom-section">
+@include('YearnArt.status_links', ['selectedStatus' => 'All'])
+        <div class="order-container">
+            <!-- Loop through your order data here -->
+            @foreach ($order as $order)
+            @if ($order->order_status === 'Shipping')
+                <div class="order-item">
+                    <div class="upper-part">
+                        <div class="img-fluid">
+                            <img src="product/{{ $order->image }}" alt="{{ $order->product_name }}">
                         </div>
-                    @endif
-                @endforeach
+                    
+                        <div class="order-details">
+                            <p class="product-names">{{ $order->product_name }}</p>
+                            <p class="order-info">Variation: x{{ $order->quantity }}</p>
+                        </div>
 
-                <!-- Your existing receipt footer -->
-                <!-- ... -->
-            </div>
+                        <div class="order-stats">
+                            <p>@if($order->order_status=='Order Placed')
+                                Pending
+                                @else
+                                {{$order->order_status}}
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="lower-part">
+                        <div class="pos-price">
+                                <p class="total">TOTAL:</p>
+                                <p class="price-num">₱{{ number_format($order->price, 2) }}</p>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="custom-button">Contact Yearn Art</button>
+                        </div>
+                    </div>
+                </div>
+
+            @endif    
+            @endforeach
+
+            <!-- Your existing receipt footer -->
+            <!-- ... -->
         </div>
-    </section>
+    
+</section>
 
-    <script src="assets/javascript/home.js"></script>
-    @include ('YearnArt.chatbot')
-    @include ('YearnArt.script')
+<script src="assets/javascript/home.js"></script>
+@include ('YearnArt.chatbot')
+@include ('YearnArt.script')
 </body>
 </html>
