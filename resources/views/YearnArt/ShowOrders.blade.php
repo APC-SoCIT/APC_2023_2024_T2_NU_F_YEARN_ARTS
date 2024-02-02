@@ -3,8 +3,9 @@
 <head>
 @include('YearnArt.css')
 <link rel="stylesheet" href="assets/">
+<link rel="stylesheet" href="assets/css/order_tracking.css">
 
-@include('YearnArt.styleforordertracking')
+
 </head>
 
 <title>Yearn Art | All Orders</title>
@@ -19,16 +20,19 @@
 @include('YearnArt.status_links', ['selectedStatus' => 'All'])
 
 <section class="custom-section">
-    <div class="container py-5">
+    
         <div class="order-container">
             <!-- Loop through your order data here -->
             @foreach ($order as $order)
                 <div class="order-item">
-                    <img src="product/{{ $order->image }}" class="img-fluid" alt="{{ $order->product_name }}">
+                    <div class="img-fluid">
+                        <img src="product/{{ $order->image }}" alt="{{ $order->product_name }}">
+                    </div>
+                    
                     <div class="order-details">
-                        <p class="product-name">{{ $order->product_name }}</p>
+                        <p class="product-names">{{ $order->product_name }}</p>
                         <p class="order-info">Quantity: {{ $order->quantity }}</p>
-                        <p class="order-info">Price: ${{ $order->price }}</p>
+                    
                         <p class="order-info">Order Status:  @if($order->order_status=='Order Placed')
                             Pending
                             @else
@@ -37,13 +41,17 @@
                         </p>
                     </div>
 
+                    <div class="pos-price">
+                        <p class="">₱{{ number_format($order->price, 2) }}</p>
+                    </div>
+
                 </div>
             @endforeach
 
             <!-- Your existing receipt footer -->
             <!-- ... -->
         </div>
-    </div>
+    
 </section>
 
 

@@ -3,7 +3,8 @@
 <head>
     @include('YearnArt.css')
     <link rel="stylesheet" href="assets/">
-    @include('YearnArt.styleforordertracking')
+    <link rel="stylesheet" href="assets/css/order_tracking.css">
+    
 </head>
 
 <title>Yearn Art | Pending Orders</title>
