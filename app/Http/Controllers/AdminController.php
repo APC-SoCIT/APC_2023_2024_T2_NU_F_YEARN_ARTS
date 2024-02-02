@@ -110,13 +110,44 @@ class AdminController extends Controller
         return view ('admin.order', compact('order'));
     }
 
-    public function payment(){
+    public function pending(){
         $order=order::all();
 
         return view ('admin.pending', compact('order'));
     }
+    public function dpayment(){
+        $order=order::all();
 
-    public function to_pay($id){
+        return view ('admin.dpayment', compact('order'));
+    }
+    public function onprocess(){
+        $order=order::all();
+
+        return view ('admin.onprocess', compact('order'));
+    }
+
+
+    public function to_dpay($id){
+
+        $order=order::find($id);
+
+        $order->order_status="Downpayment";
+
+        $order->save();
+
+        return redirect()->back();
+    }
+    public function to_onprocess($id){
+
+        $order=order::find($id);
+
+        $order->order_status="On Process";
+
+        $order->save();
+
+        return redirect()->back();
+    }
+    public function to_fpay($id){
 
         $order=order::find($id);
 
@@ -126,6 +157,17 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+    public function to_ship($id){
+
+        $order=order::find($id);
+
+        $order->order_status="Shipping";
+
+        $order->save();
+
+        return redirect()->back();
+    }
+
 
 
 

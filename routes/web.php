@@ -89,6 +89,18 @@ route::get('/delete_product/{id}',[AdminController::class,'delete_product']);
 route::get('/update_product/{id}',[AdminController::class,'update_product']);
 route::post('/update_product_confirm/{id}',[AdminController::class,'update_product_confirm']);
 route::get('/order',[AdminController::class,'order']);
-route::get('/payment',[AdminController::class,'payment']);
-route::get('/to_pay/{id}',[AdminController::class,'to_pay']);
+route::get('/pending',[AdminController::class,'pending']);
+route::get('/dpayment',[AdminController::class,'dpayment']);
+route::get('/onprocess',[AdminController::class,'onprocess']);
+
+
+
+route::get('/to_dpay/{id}',[AdminController::class,'to_dpay']);  // downpayment to
+route::get('/to_onprocess/{id}',[AdminController::class,'to_onprocess']); // papuntang on process tapos na mag bayad
+route::get('/to_fpay/{id}',[AdminController::class,'to_fpay']);
+route::get('/to_ship/{id}',[AdminController::class,'to_ship']);
+
+
+
+
 

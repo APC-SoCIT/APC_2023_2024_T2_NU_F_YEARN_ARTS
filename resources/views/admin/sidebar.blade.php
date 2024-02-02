@@ -59,7 +59,16 @@
                         <a class="nav-link" href="{{url('order')}}">Order Tracking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/payment')}}">Pending Orders</a> <!-- Changed URL for payment -->
+                        <a class="nav-link" href="{{url('/customer_list')}}">Customer List</a> <!-- Changed URL for payment -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/pending')}}">Pending Orders</a> <!-- Changed URL for payment -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/dpayment')}}">Downpayment</a> <!-- Changed URL for payment -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/onprocess')}}">On Process</a> <!-- Changed URL for payment -->
                     </li>
                 </ul>
             </div>
