@@ -27,7 +27,7 @@
                         <div class="img-fluid">
                             <img src="product/{{ $order->image }}" alt="{{ $order->product_name }}">
                         </div>
-                    
+
                         <div class="order-details">
                             <p class="product-names">{{ $order->product_name }}</p>
                             <p class="order-info">Variation: x{{ $order->quantity }}</p>
@@ -52,18 +52,23 @@
                         </div>
 
                         <div class="buttons">
+
+                            <a href="{{ url('/track_Sorder', $order->id) }}" class="custom-button track-order-button">Track Order</a>
+
+
                             <button class="custom-button">Contact Yearn Art</button>
+
                         </div>
                     </div>
                 </div>
 
-                
+
             @endforeach
 
             <!-- Your existing receipt footer -->
             <!-- ... -->
         </div>
-    
+
 </section>
 
 

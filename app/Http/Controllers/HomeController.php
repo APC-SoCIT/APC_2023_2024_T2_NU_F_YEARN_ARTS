@@ -306,6 +306,52 @@ class HomeController extends Controller
 
 
     }
+//show specific na order (track order clinick ni customer)
+
+    public function track_Sorder($id)
+    {
+        $order = order::find($id);
+
+        if (!$order) {
+            // Handle the case where the order is not found
+            return redirect()->route('track_orders')->with('error', 'Order not found');
+        }
+
+        // Get the order status
+        $orderStatus = $order->order_status;
+
+        // Check the order status and redirect accordingly
+        switch ($orderStatus) {
+            case 'Order Placed':
+                return view('YearnArt.SPending', compact('order'));
+            case 'Downpayment':
+                return view('YearnArt.SDpayment', compact('order'));
+            case 'On Process':
+                return view('YearnArt.SOnProcess', compact('order'));
+            case 'To Pay':
+                return view('YearnArt.SFpayment', compact('order'));
+            case 'Shipping':
+                return view('YearnArt.Sshipping', compact('order'));
+            case 'Order Received':
+                return view('YearnArt.SOrderReceived', compact('order'));
+            case 'Order Completed':
+                return view('YearnArt.SOrderCompleted', compact('order'));
+            // Add more cases for other order statuses
+
+            default:
+                // Handle the case where the order status is not recognized
+                return redirect()->route('track_orders')->with('error', 'Unknown order status');
+        }
+    }
+    // //pag hindi naka login yung user
+    // $order=order::find($id);
+    // return view('YearnArt.track_Sorder', compact('order'));
+
+
+
+
+
+
 
 
 //
