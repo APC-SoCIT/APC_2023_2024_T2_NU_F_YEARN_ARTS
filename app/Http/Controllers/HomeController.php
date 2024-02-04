@@ -354,6 +354,19 @@ class HomeController extends Controller
 
 
 
+    public function receive_order($id){
+
+        $order=order::find($id);
+
+        $order->order_status="Order Received";
+
+        $order->save();
+
+        return view('YearnArt.Specific-Order-Tracking.SOrderReceived', compact('order'));
+
+
+    }
+
 
 
 

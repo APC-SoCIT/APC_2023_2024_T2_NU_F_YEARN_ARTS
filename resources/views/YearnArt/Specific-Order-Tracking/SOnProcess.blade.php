@@ -35,12 +35,12 @@
 
                             <div class="order-stats">
                                 <p>
-                                    {{$order->order_status}}/Pending
+                                    {{$order->order_status}}
                                 </p>
                             </div>
                             <div >
                                 <p>Downpayment: </p>
-                                <p>₱{{ number_format($order->price/2, 2) }}</p>
+                                <p>Paid</p>
                             </div>
                         </div>
 

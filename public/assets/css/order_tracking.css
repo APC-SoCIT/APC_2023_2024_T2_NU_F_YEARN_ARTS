@@ -194,3 +194,10 @@
 .button-underlined {
     text-decoration: underline;
 }
+
+/* added by sam, para to doon sa order received na button*/
+.disabled-link {
+    pointer-events: none; /* This will make the link not clickable */
+    opacity: 0.5; /* You can adjust the opacity to visually indicate it's disabled */
+    cursor: not-allowed; /* Display the cursor as 'not allowed' */
+}

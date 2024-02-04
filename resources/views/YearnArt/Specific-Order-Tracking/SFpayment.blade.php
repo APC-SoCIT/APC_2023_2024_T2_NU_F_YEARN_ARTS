@@ -49,7 +49,7 @@
                                 </p>
                                 <div class="pos-price">
 
-                                    <p class="total">Full Payment:</p>
+                                    <p class="total">Fullpayment:</p>
                                     <p class="price-num">₱{{ number_format($order->price/2, 2) }}</p>
                                 </div>
 
