@@ -170,13 +170,16 @@ class HomeController extends Controller
         return redirect()->back()->with('message', 'Successfully Placed Order');
 
     }
+
+    // start of order tracking (not specific)
+
     public function show_orders(){
         if(Auth::id()){
             $id=Auth::user()->id;
 
             $order=order::where('user_id', '=', $id)->get();
 
-            return view('YearnArt.ShowOrders', compact('order'));
+            return view('YearnArt.Order-Tracking.ShowOrders', compact('order'));
 
 
             }
@@ -195,7 +198,7 @@ class HomeController extends Controller
 
             $order=order::where('user_id', '=', $id)->get();
 
-            return view('YearnArt.pending', compact('order'));
+            return view('YearnArt.Order-Tracking.pending', compact('order'));
 
 
             }
@@ -212,7 +215,7 @@ class HomeController extends Controller
 
             $order=order::where('user_id', '=', $id)->get();
 
-            return view('YearnArt.Dpayment', compact('order'));
+            return view('YearnArt.Order-Tracking.Dpayment', compact('order'));
 
 
             }
@@ -229,7 +232,7 @@ class HomeController extends Controller
 
             $order=order::where('user_id', '=', $id)->get();
 
-            return view('YearnArt.OnProcess', compact('order'));
+            return view('YearnArt.Order-Tracking.OnProcess', compact('order'));
 
 
             }
@@ -246,7 +249,7 @@ class HomeController extends Controller
 
             $order=order::where('user_id', '=', $id)->get();
 
-            return view('YearnArt.Fpayment', compact('order'));
+            return view('YearnArt.Order-Tracking.Fpayment', compact('order'));
 
 
             }
@@ -263,7 +266,7 @@ class HomeController extends Controller
 
             $order=order::where('user_id', '=', $id)->get();
 
-            return view('YearnArt.Shipping', compact('order'));
+            return view('YearnArt.Order-Tracking.Shipping', compact('order'));
 
 
             }
@@ -279,7 +282,7 @@ class HomeController extends Controller
 
             $order=order::where('user_id', '=', $id)->get();
 
-            return view('YearnArt.OrderReceived', compact('order'));
+            return view('YearnArt.Order-Tracking.OrderReceived', compact('order'));
 
 
             }
@@ -296,7 +299,7 @@ class HomeController extends Controller
 
             $order=order::where('user_id', '=', $id)->get();
 
-            return view('YearnArt.OrderCompleted', compact('order'));
+            return view('YearnArt.Order-Tracking.OrderCompleted', compact('order'));
 
 
             }
@@ -306,6 +309,7 @@ class HomeController extends Controller
 
 
     }
+// end of order tracking (not specific)
 //show specific na order (track order clinick ni customer)
 
     public function track_Sorder($id)
@@ -323,19 +327,19 @@ class HomeController extends Controller
         // Check the order status and redirect accordingly
         switch ($orderStatus) {
             case 'Order Placed':
-                return view('YearnArt.SPending', compact('order'));
+                return view('YearnArt.Specific-Order-Tracking.SPending', compact('order'));
             case 'Downpayment':
-                return view('YearnArt.SDpayment', compact('order'));
+                return view('YearnArt.Specific-Order-Tracking.SDpayment', compact('order'));
             case 'On Process':
-                return view('YearnArt.SOnProcess', compact('order'));
+                return view('YearnArt.Specific-Order-Tracking.SOnProcess', compact('order'));
             case 'To Pay':
-                return view('YearnArt.SFpayment', compact('order'));
+                return view('YearnArt.Specific-Order-Tracking.SFpayment', compact('order'));
             case 'Shipping':
-                return view('YearnArt.Sshipping', compact('order'));
+                return view('YearnArt.Specific-Order-Tracking.Sshipping', compact('order'));
             case 'Order Received':
-                return view('YearnArt.SOrderReceived', compact('order'));
+                return view('YearnArt.Specific-Order-Tracking.SOrderReceived', compact('order'));
             case 'Order Completed':
-                return view('YearnArt.SOrderCompleted', compact('order'));
+                return view('YearnArt.Specific-Order-Tracking.SOrderCompleted', compact('order'));
             // Add more cases for other order statuses
 
             default:

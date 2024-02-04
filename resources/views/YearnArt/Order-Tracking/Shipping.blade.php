@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="assets/css/order_tracking.css">
 </head>
 
-<title>Yearn Art | Pending Orders</title>
+<title>Yearn Art | Shipping</title>
+
 <body>
 @include('home.header')
 <div class="header">
@@ -20,20 +21,20 @@
         <div class="order-container">
             <!-- Loop through your order data here -->
             @foreach ($order as $order)
-            @if ($order->order_status === 'On Process')
+            @if ($order->order_status === 'Shipping')
                 <div class="order-item">
                     <div class="upper-part">
                         <div class="img-fluid">
                             <img src="product/{{ $order->image }}" alt="{{ $order->product_name }}">
                         </div>
-                    
+
                         <div class="order-details">
                             <p class="product-names">{{ $order->product_name }}</p>
                             <p class="order-info">Variation: x{{ $order->quantity }}</p>
                         </div>
 
                         <div class="order-stats">
-                            <p>@if($order->order_status=='On Process')
+                            <p>@if($order->order_status=='Order Placed')
                                 Pending
                                 @else
                                 {{$order->order_status}}
@@ -56,17 +57,18 @@
                     </div>
                 </div>
 
-            @endif    
+            @endif
             @endforeach
 
             <!-- Your existing receipt footer -->
             <!-- ... -->
         </div>
-    
+
 </section>
 
 <script src="assets/javascript/home.js"></script>
 @include ('YearnArt.chatbot')
 @include ('YearnArt.script')
 </body>
+
 </html>
