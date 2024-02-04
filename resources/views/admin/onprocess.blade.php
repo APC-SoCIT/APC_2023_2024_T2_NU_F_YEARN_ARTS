@@ -45,7 +45,7 @@
                                         <!-- Add buttons inside each order -->
                                         <div class="buttons-container">
                                             @if ($order->order_status === 'On Process')
-                                                <a href="{{url('to_fpay', $order->id)}}" class="btn btn-success" onclick="return confirm('Are you sure this order can be made?')">Done</a>
+                                                <a href="{{url('to_fpay', $order->id)}}" class="btn btn-success" onclick="return confirm('Are you sure this order is done?')">Done</a>
                                                 <a href="{{ url('to_ship', $order->id) }}" class="btn btn-action btn-low-opacity btn-confirm-payment disabled" onclick="confirmOrderPayment({{ $order->id }})">Confirm Payment</a>
                                             @endif
 

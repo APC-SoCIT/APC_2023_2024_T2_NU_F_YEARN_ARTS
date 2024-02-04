@@ -7,7 +7,7 @@
 
 </head>
 
-<title>Yearn Art | All Orders</title>
+<title>Yearn Art | Order Received</title>
 <body>
 @include('home.header')
 <div class="header">

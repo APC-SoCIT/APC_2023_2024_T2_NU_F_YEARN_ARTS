@@ -79,7 +79,7 @@
                     @endif
                     @endforeach
                 </table>
-            </div>
+            </div>z
         </div>
     <!-- container-scroller -->
     <!-- plugins:js -->

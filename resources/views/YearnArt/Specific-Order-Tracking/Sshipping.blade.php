@@ -7,7 +7,7 @@
 
 </head>
 
-<title>Yearn Art | All Orders</title>
+<title>Yearn Art | {{ $order->product_name }}</title>
 <body>
 @include('home.header')
 <div class="header">

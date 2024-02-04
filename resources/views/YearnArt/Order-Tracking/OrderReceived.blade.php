@@ -21,7 +21,7 @@
         <div class="order-container">
             <!-- Loop through your order data here -->
             @foreach ($order as $order)
-            @if ($order->order_status === 'Shipping')
+            @if ($order->order_status === 'Order Received')
                 <div class="order-item">
                     <div class="upper-part">
                         <div class="img-fluid">
@@ -34,11 +34,9 @@
                         </div>
 
                         <div class="order-stats">
-                            <p>@if($order->order_status=='Order Received')
-                                Pending
-                                @else
+                            <p>
                                 {{$order->order_status}}
-                                @endif
+                               
                             </p>
                         </div>
                     </div>
