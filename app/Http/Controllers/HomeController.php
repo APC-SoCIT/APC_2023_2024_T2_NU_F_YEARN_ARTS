@@ -359,6 +359,7 @@ class HomeController extends Controller
         $order=order::find($id);
 
         $order->order_status="Order Received";
+        $order->order_received_at=$order->updated_at;
 
         $order->save();
 

@@ -17,7 +17,7 @@
 </div>
 <section class="custom-section">
     <div class="order-tracking-status">
-        <img src="assets\image\OrderTrackingSpecific\Order-Received-SOrder.png" alt="">
+        <img src="assets\image\OrderTrackingSpecific\Order-Completed-SOrder.png" alt="">
     </div>
             <div class="order-container">
 
@@ -49,7 +49,9 @@
                         <div class="lower-part">
                             <div>
                                 <p class="paragraph">
-                                    We would like to inform you that your  {{ $order->product_name }} is now shipping!
+                                    Thank you for choosing our products! We take pride in the quality and craftsmanship of our crochet masterpieces, and we want to ensure your complete satisfaction with your purchase.
+
+We understand that sometimes adjustments or repairs may be necessary to meet your specific requirements. Therefore, we offer a return policy for adjustments and repairs within 10 days from the date of delivery. Please note that while we can accommodate adjustments and repairs, refunds are not available for our products.If you find that your product requires any modifications or repairs, please reach out to our customer service team within the specified timeframe. We will guide you through the return process and provide instructions on how to send the item back to us.
                                 </p>
                             </div>
 
@@ -57,16 +59,30 @@
                                     <p class="total">TOTAL:</p>
                                     <p class="price-num">₱{{ number_format($order->price/2, 2) }}</p>
                             </div>
+                            @php
+                            $receivedTimestamp = strtotime($order->order_received_at);
+                            $tenDaysAgo = strtotime('+10 days');
+                            $formattedTenDaysAgo = date('Y-m-d', $tenDaysAgo);
+                            @endphp
+                            <div class="specified-timeframe">
+                                <p>Specific timeframe of returning for return/resizing:</p>
+                                <p>{{ 'Y-m-d'($order->order_received_at) }} - {{ $formattedTenDaysAgo  }}</p>
+                            </div>
+
+
+                            <!-- Assuming $order->order_received_at contains varchar timestamp -->
 
                             <div class="buttons">
-
-                                <a href="{{ url('receive_order', $order->id) }}" class="custom-button track-order-button ">Return for Resizing/Repair</a>
-
-
-
-                                <button class="custom-button">Contact Yearn Art</button>
-
+                            @if ($receivedTimestamp >= $tenDaysAgo)
+                            <a href="{{ url('receive_order', $order->id) }}" class="custom-button track-order-button">{{ $formattedTenDaysAgo  }}</a>
+                            <button class="custom-button">Contact Yearn Art</button>
+                            @else
+                            <a href="#" class="custom-button track-order-button" disabled>Return for Resizing/Repair</a>
+                            <button class="custom-button">Contact Yearn Art</button>
+                            @endif
                             </div>
+
+
                         </div>
                     </div>
 
