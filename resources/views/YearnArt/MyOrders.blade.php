@@ -19,7 +19,7 @@
 @include('home.header')
 
 
- <div class="center">
+ <!-- <div class="center">
     @if(session()->has('message'))
 
     <div class='alert alert-success'>
@@ -68,7 +68,56 @@
     </div>
 
 
- </div>
+ </div> -->
+
+ <div class="header">
+        <h6 class="mycart">My Cart</h6>
+        <p class="process-time">Time:</p>
+    </div>
+<div class="container">
+    <div class="action-bar">
+            <div class="checkbox">
+                <label for="">
+                    <input type="checkbox" id="productCheckbox">
+                </label>
+            </div>    
+            <div class="prod">Product</div>
+            <div class="downpayment">Downpayment</div>
+            <div class="unit-price">Unit Price</div>
+            <div class="quantity">Quantity</div>
+            <div class="total-price">Total Price</div>
+            <div class="actions">Actions</div>
+    </div>
+
+    <div class="product-bar">
+        <div class="checkbox">
+            <label for="">
+                   <input type="checkbox" id="productCheckbox">
+            </label>
+        </div>
+        <div class="product-detail">
+            <div class="img-edit">
+                <img src="assets\image\baby.jpg" alt="">
+            </div>
+            <div class="products">
+                <p class="name-product">Place Holder</p> <!-- Lagay nalang dito -->
+                <p>Place Holder</p> <!-- Lagay nalang dito -->
+            </div>
+        </div>
+        
+            <div class="downpayment">$0.00</div> <!-- Lagay nalang dito -->
+            <div class="unit-price">$0.00</div> <!-- Lagay nalang dito -->
+            <div class="quantity">
+                <input type="number" name="quantity" value="1" min="1" required="" style="border:1.5px solid #b0968f;border-radius: 5px; width: 100px; height: 30px; background: transparent; margin-left: 10px;"> <!-- Lagay nalang dito -->
+            </div>
+            
+            <div class="total-price">$0.00</div> <!-- Lagay nalang dito -->
+            <div class="actions remove-btn">
+                <img src="assets\image\trash.png" alt="" class="trash">
+            </div>
+        
+    
+</div>
 
 
 {{-- SCRIPTTT --}}
