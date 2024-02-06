@@ -59,7 +59,7 @@
                         <th class="th-deg">Size</th>
 
 
-                        <th class="th-deg">Payment Status</th>
+                        <th class="th-deg">Order ID</th>
                         <th class="th-deg">Order Status</th>
 
 
@@ -83,7 +83,7 @@
                         <td>{{$order->size}}</td>
 
 
-                        <td>{{$order->payment_status}}</td>
+                        <td>{{$order->order_id}}</td>
                         <td>
                             @if($order->order_status=='Order Placed')
                             <p>Pending</p>

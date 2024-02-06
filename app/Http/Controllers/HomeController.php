@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Order;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -137,28 +138,32 @@ class HomeController extends Controller
 
         foreach($data as $data){
 
+            $orderId = strtoupper(Str::random(10));
+
             $order=new order;
 
-            $order->name=$data->name;
-            $order->email=$data->email;
-            $order->phone=$data->phone;
-            $order->address=$data->address;
-            $order->user_id=$data->user_id;
+                $order->name=$data->name;
+                $order->email=$data->email;
+                $order->phone=$data->phone;
+                $order->address=$data->address;
+                $order->user_id=$data->user_id;
 
-            $order->product_name=$data->product_name;
-            $order->quantity=$data->quantity;
-            $order->price=$data->quantity * $data->price;
-            $order->image=$data->image;
-            $order->processing_time=$data->processing_time;
-            $order->primaryclr=$data->primaryclr;
-            $order->secondaryclr=$data->secondaryclr;
-            $order->size=$data->size;
-            $order->product_id=$data->product_id;
 
-            $order->order_received_at='0000-00-00 00:00:00';
+                $order->order_id = $orderId;
+                $order->product_name=$data->product_name;
+                $order->quantity=$data->quantity;
+                $order->price=$data->quantity * $data->price;
+                $order->image=$data->image;
+                $order->processing_time=$data->processing_time;
+                $order->primaryclr=$data->primaryclr;
+                $order->secondaryclr=$data->secondaryclr;
+                $order->size=$data->size;
+                $order->product_id=$data->product_id;
 
-            $order->payment_status='Cash';
-            $order->order_status='Order Placed';
+
+
+                $order->payment_status='Cash';
+                $order->order_status='Order Placed';
 
             $order->save();
 
@@ -316,7 +321,8 @@ class HomeController extends Controller
 
     public function track_Sorder($id)
     {
-        $order = order::find($id);
+        if(Auth::id()){
+            $order = order::find($id);
 
         if (!$order) {
             // Handle the case where the order is not found
@@ -347,7 +353,13 @@ class HomeController extends Controller
             default:
                 // Handle the case where the order status is not recognized
                 return redirect()->route('track_orders')->with('error', 'Unknown order status');
+
         }
+        }
+                    else{
+        return redirect('login');
+        }
+
     }
     // //pag hindi naka login yung user
     // $order=order::find($id);

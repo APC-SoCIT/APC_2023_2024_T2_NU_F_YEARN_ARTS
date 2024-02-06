@@ -63,10 +63,11 @@ We understand that sometimes adjustments or repairs may be necessary to meet you
                             $receivedTimestamp = strtotime($order->order_received_at);
                             $tenDaysAgo = strtotime('+10 days');
                             $formattedTenDaysAgo = date('Y-m-d', $tenDaysAgo);
+
                             @endphp
                             <div class="specified-timeframe">
                                 <p>Specific timeframe of returning for return/resizing:</p>
-                                <p> {{ $formattedTenDaysAgo }}</p>
+                                <p> {{ $receivedTimestamp }} - {{ $formattedTenDaysAgo }}</p>
 
                             </div>
 

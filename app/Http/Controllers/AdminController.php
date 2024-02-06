@@ -46,7 +46,9 @@ class AdminController extends Controller
 
        $product->product_name=$request->product_name;
        $product->product_description=$request->product_description;
-       $product->price=$request->price;
+       $product->price=$request->small_price;
+       $product->price=$request->medium_price;
+       $product->price=$request->large_price;
        $product->processing_time=$request->processing_time;
        $product->category=$request->category;
 

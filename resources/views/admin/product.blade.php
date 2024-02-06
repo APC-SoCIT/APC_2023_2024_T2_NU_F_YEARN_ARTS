@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
    @include('admin.css')
-   
+
    <link rel="stylesheet" href="admin/assets/css/admin_products.css">
    <title>Yearn Art | Products</title>
 
-  
+
   </head>
   <body>
     <div class="container-scroller">
@@ -29,24 +29,24 @@
 
                 <form action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
                 <div class="div-main">
-                    
+
                     <div class="child1">
                         <div class="product-photo" >
                                 <input type="file" name="image" id="fileInput" required="" style="display: none;">
                                 <label for="fileInput" class="file-label" style="cursor: pointer;">
-                                <div class="plus-icon">+</div>    
+                                <div class="plus-icon">+</div>
                                 Add Photo
                                 </label>
                         </div>
                         <div class="imagePreview">
                             <div id="imagePreview" class="image-preview"></div>
-                            
+
                                 <button id="removeButton" class="rm-btn">×</button>
-                            
+
                         </div>
 
-                        
-                        
+
+
                     </div>
 
                     <div class="child2">
@@ -70,15 +70,34 @@
                                 <input type="text" name="product_description" placeholder="Product Description"id="" required="" autocomplete="off">
                             </div>
 
-                            <div class="price">
-                                <input type="number" name="price" placeholder="Price" id="" required="" autocomplete="off">
-                                
+                            {{-- <div class="size-inputs">
+                                <label for="size">Sizes:</label>
+                                <?php
+                                $sizeNames = ['Extra Small', 'Small', 'Medium', 'Large', 'Extra Large', '2 Extra Large', '3 Extra Large', '4 Extra Large', '5 Extra Large'];
+                                for ($i = 0; $i < 9; $i++):
+                                ?>
+                                <button type="button" id="addSize" <?php if($i >= 9) echo 'disabled'; ?>>Add Size</button>
+                                    <div class="size-input">
+                                        <input type="text" name="sizes[]" placeholder="Size" value="<?php echo $sizeNames[$i]; ?>" required="" readonly>
+                                        <input type="number" name="prices[]" placeholder="Price" required="" autocomplete="off">
+                                        <button type="button" class="remove-size">Remove</button>
+                                    </div>
+                                <?php endfor; ?>
+                            </div> --}}
+                            <div class="size-inputs">
+                                <label for="size">Sizes:</label>
+                                <div class="size-input">
+                                    <input type="text" name="sizes[]" placeholder="Size" required="" autocomplete="off">
+                                    <input type="number" name="prices[]" placeholder="Price" required="" autocomplete="off">
+                                    <button type="button" class="remove-size">Remove</button>
+                                </div>
+                                <button type="button" id="addSize">Add Size</button>
                             </div>
 
                             <div class="process-time">
                                 <input class="text_color" type="text" name="processing_time" placeholder="Processing Time"id="" required="" autocomplete="off">
                             </div>
-                    </div>                    
+                    </div>
                 </div>
 
                 <div class="btn-submit">
@@ -88,7 +107,7 @@
             </div>
         </div>
 
-        
+
 <script>
     const fileInput = document.getElementById('fileInput');
 const imagePreview = document.getElementById('imagePreview');
@@ -131,12 +150,41 @@ removeButton.addEventListener('click', function() {
 
     localStorage.removeItem('imageData');
 });
+        document.addEventListener('DOMContentLoaded', function () {
+                const addSizeButton = document.getElementById('addSize');
+                const sizeInputsContainer = document.querySelector('.size-inputs');
+
+
+                addSizeButton.addEventListener('click', function () {
+                    const sizeInput = document.createElement('div');
+                    sizeInput.classList.add('size-input');
+                    sizeInput.innerHTML = `
+                    <input type="text" name="sizes[]" placeholder="Size" value="<?php echo $sizeNames[0]; ?>" required="" readonly>
+                    <input type="number" name="prices[]" placeholder="Price" required="" autocomplete="off">
+                    <button type="button" class="remove-size">Remove</button>
+                    `;
+                    sizeInputsContainer.appendChild(sizeInput);
+
+                    if (sizeInputsContainer.children.length >= 9) {
+                        addSizeButton.disabled = true;
+                    }
+                });
+
+                sizeInputsContainer.addEventListener('click', function (event) {
+                    if (event.target.classList.contains('remove-size')) {
+                        event.target.parentElement.remove();
+                        addSizeButton.disabled = false;
+                    }
+                });
+            });
+
+
 </script>
     <!-- container-scroller -->
     <!-- plugins:js -->
    @include('admin.script')
     <!-- End custom js for this page -->
 
-    
+
   </body>
 </html>
