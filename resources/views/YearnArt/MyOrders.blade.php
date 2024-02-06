@@ -8,34 +8,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <style type="text/css">
-        .center{
-            margin: auto;
-            width: 70%;
-            text-align: center;
-            padding: 30px;
-        }
-        table, td, th{
-            border: 1px solid #D0A59F;
-        }
-        .th-deg{
-            font-size: 15px;
-            padding: 5px;
-            background: #D0A59F;
-        }
-        .img-deg{
-            width: 200px;
-            height: 150px;
-        }
-        body{
-            background-color: #E4D8CC;
-        }
-        .total-deg{
-            font-size: 20px;
-            padding-top: 20px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="assets/css/Cart.css">
+    
 
 <title>Yearn Art | My Cart</title>
 <link rel="icon" href="assets/image/Yearn.jpg" type="image/png">

@@ -1,0 +1,25 @@
+.center{
+    margin: auto;
+    width: 70%;
+    text-align: center;
+    padding: 30px;
+}
+table, td, th{
+    border: 1px solid #D0A59F;
+}
+.th-deg{
+    font-size: 15px;
+    padding: 5px;
+    background: #D0A59F;
+}
+.img-deg{
+    width: 200px;
+    height: 150px;
+}
+body{
+    background-color: #E4D8CC;
+}
+.total-deg{
+    font-size: 20px;
+    padding-top: 20px;
+}

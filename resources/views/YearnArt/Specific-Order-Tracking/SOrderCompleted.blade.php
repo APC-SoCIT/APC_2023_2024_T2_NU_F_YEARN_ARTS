@@ -66,7 +66,8 @@ We understand that sometimes adjustments or repairs may be necessary to meet you
                             @endphp
                             <div class="specified-timeframe">
                                 <p>Specific timeframe of returning for return/resizing:</p>
-                                <p>{{ 'Y-m-d'($order->order_received_at) }} - {{ $formattedTenDaysAgo  }}</p>
+                                <p> {{ $formattedTenDaysAgo }}</p>
+
                             </div>
 
 

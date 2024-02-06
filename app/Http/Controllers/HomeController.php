@@ -155,6 +155,8 @@ class HomeController extends Controller
             $order->size=$data->size;
             $order->product_id=$data->product_id;
 
+            $order->order_received_at='0000-00-00 00:00:00';
+
             $order->payment_status='Cash';
             $order->order_status='Order Placed';
 
