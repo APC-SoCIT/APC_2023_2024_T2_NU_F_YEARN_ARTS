@@ -31,6 +31,7 @@ body {
 
   .menu-links {
     display: flex;
+    align-items: center;
     gap: 40px;
   }
 
@@ -78,6 +79,11 @@ body {
   .About{
     color: #FAC6BF;
     font-weight: 700;
+  }
+
+  .title{
+    font-size: 30px;
+    font-weight: 800;
   }
 
   /* CHATBOX

@@ -16,14 +16,14 @@
     @include('home.header')
 
     <div class="header">
-        <h6 class="orders">My Order Information</h6>
+        <h6 class="orders">Order Information</h6>
         <a href="{{url('/show_orders')}}" class="cart-link">Back to My Orders
             <img src="assets/image/Cart.png" alt="Cart Icon" class="cart-icon"></a>
     </div>
 
     <section class="custom-section">
         <div class="order-tracking-status">
-            <img src="assets\image\OrderTrackingSpecific\Downpayment-SOrder.png" alt="">
+            <img src="assets\image\OrderTrackingSpecific\Downpayment-SOrder.png" alt="" style="height: 19vh; width: auto;">
         </div>
 
                 <div class="order-container">

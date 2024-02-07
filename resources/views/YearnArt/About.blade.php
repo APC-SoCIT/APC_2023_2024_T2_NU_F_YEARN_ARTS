@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="assets/css/about.css">
 @include('YearnArt.css')
 
 <title>Yearn Art | About</title>
@@ -13,7 +14,7 @@
         <img src="assets/image/Yearn.jpg" alt="Logo">
     </div>
     <div class="about-yearn">
-        <h1>ABOUT US</h1>
+        <h1 class="title">ABOUT US</h1>
         <p>Yearn Art, owned by Alfretz Marcelino, is a newly established crochet company in the Philippines. Despite the    pandemic's challenges, Mrs. Marcelino decided to pursue her passion for crochet by founding Yearn Art in 2021. With her creativity and determination, she has transformed her hobby into a promising business venture. Yearn Art specializes in creating one-of-a-kind and intricate crochet designs that are functional as well as artistic.
         </p>
             <br>
@@ -28,7 +29,7 @@
         </p>
     </div>
     <div class="contact-us">
-        <h1>CONTACT US</h1>
+        <h1 class="title">CONTACT US</h1>
 
         <p><img src="assets/image/location.png"> 48 Lot 8, Marang St, Amparo Subd., Brgy 179, Caloocan City, MM</p>
         <br>
