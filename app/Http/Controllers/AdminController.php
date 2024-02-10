@@ -41,29 +41,34 @@ class AdminController extends Controller
         return view('admin.product', compact('category'));
 
     }
-    public function add_product(Request $request){
-       $product = new product;
+        public function add_product(Request $request){
+        $product = new product;
 
-       $product->product_name=$request->product_name;
-       $product->product_description=$request->product_description;
-       $product->price=$request->small_price;
-       $product->price=$request->medium_price;
-       $product->price=$request->large_price;
-       $product->processing_time=$request->processing_time;
-       $product->category=$request->category;
+        $product->product_name=$request->product_name;
+        $product->product_description=$request->product_description;
+        $product->extra_small_price=$request->extra_small_price;
+        $product->small_price=$request->small_price;
+        $product->medium_price=$request->medium_price;
+        $product->large_price=$request->large_price;
+        $product->i_extra_large_price=$request->i_extra_large_price;
+        $product->ii_extra_large_price=$request->ii_extra_large_price;
+        $product->iii_extra_large_price=$request->iii_extra_large_price;
+        $product->iiii_extra_large_price=$request->iiii_extra_large_price;
+        $product->iiiii_extra_large_price=$request->iiiii_extra_large_price;
+        $product->processing_time=$request->processing_time;
+        $product->category=$request->category;
+        $image = $request->file('image');
+        $imagename=time().'.'.$image->getClientOriginalExtension();
 
-       $image = $request->file('image');
-       $imagename=time().'.'.$image->getClientOriginalExtension();
+        $request->image->move('product',$imagename);
+        $product->image=$imagename;
 
-       $request->image->move('product',$imagename);
-       $product->image=$imagename;
+        $product->save();
 
-       $product->save();
-
-       return redirect()->back()->with('message', 'Product Added Successfully');;
+        return redirect()->back()->with('message', 'Product Added Successfully');;
 
 
-    }
+        }
     public function show_product(){
         $product=product::all();
       return view ('admin.show_product', compact('product'));
@@ -90,7 +95,15 @@ class AdminController extends Controller
         $product->product_name=$request->product_name;
         $product->category=$request->category;
         $product->product_description=$request->product_description;
-        $product->price=$request->price;
+        $product->extra_small_price=$request->extra_small_price;
+        $product->small_price=$request->small_price;
+        $product->medium_price=$request->medium_price;
+        $product->large_price=$request->large_price;
+        $product->i_extra_large_price=$request->i_extra_large_price;
+        $product->ii_extra_large_price=$request->ii_extra_large_price;
+        $product->iii_extra_large_price=$request->iii_extra_large_price;
+        $product->iiii_extra_large_price=$request->iiii_extra_large_price;
+        $product->iiiii_extra_large_price=$request->iiiii_extra_large_price;
         $product->processing_time=$request->processing_time;
 
         $image = $request->image;

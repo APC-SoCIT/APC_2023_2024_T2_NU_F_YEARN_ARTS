@@ -74,42 +74,9 @@
                             <input class="text_color"type="text" name="product_description" placeholder="Enter Product Description" id="" required="" value="{{$product->product_description}}" >
                         </div>
                         <div class="div_design">
-                            <label>Extra Small</label>
-                            <input class="text_color"type="number" name="price" placeholder="Enter Price"id="" required="" value="{{$product->extra_small_price}}">
+                            <label>Price</label>
+                            <input class="text_color"type="number" name="price" placeholder="Enter Price"id="" required="" value="{{$product->price}}">
                         </div>
-                        <div class="div_design">
-                            <label>Small</label>
-                            <input class="text_color"type="number" name="small_price" placeholder="Enter Price"id="" required="" value="{{$product->small_price}}">
-                        </div>
-                        <div class="div_design">
-                            <label>Medium</label>
-                            <input class="text_color"type="number" name="medium_price" placeholder="Enter Price"id="" required="" value="{{$product->medium_price}}">
-                        </div>
-                        <div class="div_design">
-                            <label>Large</label>
-                            <input class="text_color"type="number" name="large_price" placeholder="Enter Price"id="" required="" value="{{$product->large_price}}">
-                        </div>
-                        <div class="div_design">
-                            <label>Extra Large</label>
-                            <input class="text_color"type="number" name="i_extra_large_price" placeholder="Enter Price"id="" required="" value="{{$product->i_extra_large_price}}">
-                        </div>
-                        <div class="div_design">
-                            <label>2 Extra Large</label>
-                            <input class="text_color"type="number" name="ii_extra_large_price" placeholder="Enter Price"id="" required="" value="{{$product->ii_extra_large_price}}">
-                        </div>
-                        <div class="div_design">
-                            <label>3 Extra Large</label>
-                            <input class="text_color"type="number" name="iii_extra_large_price" placeholder="Enter Price"id="" required="" value="{{$product->iii_extra_large_price}}">
-                        </div>
-                        <div class="div_design">
-                            <label>4 Extra Large</label>
-                            <input class="text_color"type="number" name="iiii_extra_large_price" placeholder="Enter Price"id="" required="" value="{{$product->iiii_extra_large_price}}">
-                        </div>
-                        <div class="div_design">
-                            <label>5 Extra Large</label>
-                            <input class="text_color"type="number" name="iiiii_extra_large_price" placeholder="Enter Price"id="" required="" value="{{$product->iiiii_extra_large_price}}">
-                        </div>
-
                         <div class="div_design">
                             <label>Processing Time</label>
                             <input class="text_color"type="text" name="processing_time" placeholder="Enter Processing Time"id="" required="" value="{{$product->processing_time}}">
@@ -119,7 +86,7 @@
                             <input type="file" name="image" >
                         </div>
                         <div class="div_design">
-                            <label>Current Product Image</label>
+                            <label>Current Product Image</label>z
                             <img style="margin:auto;" height="100" width="100"src="/product/{{$product->image}}" alt="">
                         </div>
                         <div class="div_design">

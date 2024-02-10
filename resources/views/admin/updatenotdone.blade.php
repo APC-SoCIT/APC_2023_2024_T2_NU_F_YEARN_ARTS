@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <base href="/public">
    @include('admin.css')
 
    <link rel="stylesheet" href="admin/assets/css/admin_products.css">
@@ -27,9 +28,9 @@
 
                 @endif
 
-                <form action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{url('/update_product_confirm', $product->id)}}" method="POST" enctype="multipart/form-data">
                 <div class="div-main">
-
+                    @csrf
                     <div class="child1">
                         <div class="product-photo" >
                                 <input type="file" name="image" id="fileInput" required="" style="display: none;">
@@ -39,23 +40,24 @@
                                 </label>
                         </div>
                         <div class="imagePreview">
+
                             <div id="imagePreview" class="image-preview"></div>
 
                                 <button id="removeButton" class="rm-btn">×</button>
 
                         </div>
                     </div>
-
+                    @csrf
                     <div class="child2">
                             <div class="product-name">
-                                <input type="text" name="product_name" placeholder="Product Name" id="" required="" autocomplete="off">
+                                <input type="text" name="product_name" value="{{$product->product_name}}" placeholder="Product Name" id="" required="" autocomplete="off">
                             </div>
 
-                        @csrf
+                    
 
                             <div class="product-type">
                                 <select name="category" id="" required="" >
-                                <option value="" selected="">Product Type</option>
+                                <option value="{{$product->category}}" selected="">{{$product->category}}</option>
                                 @foreach($category as $category)
                                 <option value="{{$category->category_name}}">{{$category->category_name}}</option>
                                 @endforeach
@@ -64,7 +66,7 @@
                             </div>
 
                             <div class="product-description">
-                                <input type="text" name="product_description" placeholder="Product Description"id="" required="" autocomplete="off">
+                                <input type="text" name="product_description" value="{{$product->product_description}}" placeholder="Product Description" id="" required="" autocomplete="off">
                             </div>
 
                             {{-- <div class="size-inputs">
@@ -79,51 +81,50 @@
 
                                 <div class="size-input">
                                     <input type="text" name="extra_small" value="Extra Small" readonly>
-                                    <input type="number" name="extra_small_price" placeholder="Extra Small Price" autocomplete="off">
+                                    <input type="number" name="extra_small_price" value="{{$product->extra_small_price}}" placeholder="Extra Small Price" autocomplete="off">
                                 </div>
                                 <div class="size-input">
                                     <input type="text" name="small" value="Small" readonly required>
-                                    <input type="number" name="small_price" placeholder="Small Price" required autocomplete="off">
+                                    <input type="number" name="small_price" value="{{$product->small_price}}" placeholder="Small Price" required autocomplete="off">
                                 </div>
                                 <div class="size-input">
                                     <input type="text" name="medium" value="Medium" readonly required>
-                                    <input type="number" name="medium_price" placeholder="Medium Price" required autocomplete="off">
+                                    <input type="number" name="medium_price" value="{{$product->medium_price}}" placeholder="Medium Price" required autocomplete="off">
                                 </div>
                                 <div class="size-input">
                                     <input type="text" name="large" value="Large" readonly required>
-                                    <input type="number" name="large_price" placeholder="Large Price" required autocomplete="off">
+                                    <input type="number" name="large_price" value="{{$product->large_price}}" placeholder="Large Price" required autocomplete="off">
                                 </div>
                                 <div class="size-input">
                                     <input type="text" name="extra_large" value="Extra Large" readonly>
-                                    <input type="number" name="i_extra_large_price" placeholder="Extra Large Price" autocomplete="off">
+                                    <input type="number" name="i_extra_large_price" value="{{$product->i_extra_large_price}}" placeholder="Extra Large Price" autocomplete="off">
                                 </div>
                                 <div class="size-input">
                                     <input type="text" name="2_extra_large" value="2 Extra Large" readonly>
-                                    <input type="number" name="ii_extra_large_price" placeholder="2 Extra Large Price" autocomplete="off">
+                                    <input type="number" name="ii_extra_large_price" value="{{$product->ii_extra_large_price}}" placeholder="2 Extra Large Price" autocomplete="off">
                                 </div>
                                 <div class="size-input">
                                     <input type="text" name="3_extra_large" value="3 Extra Large" readonly>
-                                    <input type="number" name="iii_extra_large_price" placeholder="3 Extra Large Price" autocomplete="off">
+                                    <input type="number" name="iii_extra_large_price" value="{{$product->iii_extra_large_price}}" placeholder="3 Extra Large Price" autocomplete="off">
                                 </div>
                                 <div class="size-input">
                                     <input type="text" name="4_extra_large" value="4 Extra Large" readonly>
-                                    <input type="number" name="iiii_extra_large_price" placeholder="4 Extra Large Price" autocomplete="off">
+                                    <input type="number" name="iiii_extra_large_price" value="{{$product->iiii_extra_large_price}}" placeholder="4 Extra Large Price" autocomplete="off">
                                 </div>
                                 <div class="size-input">
                                     <input type="text" name="5_extra_large" value="5 Extra Large" readonly>
-                                    <input type="number" name="iiiii_extra_large_price" placeholder="5 Extra Large Price" autocomplete="off">
+                                    <input type="number" name="iiiii_extra_large_price"  placeholder="5 Extra Large Price"  value="{{$product->iiiii_extra_large_price}}">
                                 </div>
                             </div>
 
-
                             <div class="process-time">
-                                <input class="text_color" type="number" name="processing_time" placeholder="Processing Time"id="" required="" autocomplete="off">
+                                <input class="text_color" type="number" name="processing_time" value="{{$product->processing_time}}" placeholder="Processing Time"id="" required="" autocomplete="off">
                             </div>
                     </div>
                 </div>
 
                 <div class="btn-submit">
-                    <button type="submit">+</button>
+                    <input type="submit" value="Update Product" class="btn btn-primary">
                 </div>
                 </form>
             </div>

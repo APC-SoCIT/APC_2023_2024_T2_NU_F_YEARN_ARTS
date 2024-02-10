@@ -65,7 +65,7 @@
                         <td>{{$product->product_name}}</td>
                         <td>{{$product->category}}</td>
                         <td>{{$product->product_description}}</td>
-                        <td>{{$product->price}}</td>
+                        <td>{{$product->small_price}}</td>
                         <td>{{$product->processing_time}}</td>
                         <td>
                             <img class="img_size"src="/product/{{$product->image}}" >
