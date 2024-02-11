@@ -35,7 +35,7 @@
                 <div class="action-bar">
                     <div class="checkbox">
                         <label for="">
-                            <input type="checkbox" name="selectedItems[]" id="selectAllCheckbox" onclick="toggleAllCheckboxes()">
+                            <input type="checkbox"  id="selectAllCheckbox" onclick="toggleAllCheckboxes()">
                         </label>
                     </div>
                     <div class="prod">Product</div>
@@ -53,7 +53,7 @@
                     <div class="product-bar">
                         <div class="product-bar">
                             <div class="checkbox">
-                                <input type="checkbox" class="productCheckbox" id="productCheckbox{{$cartItem->id}}">
+                                <input type="checkbox" name="selectedItems[]" class="productCheckbox" id="productCheckbox{{$cartItem->id}}">
                             </div>
                             <div class="product-detail">
                                 <div class="img-edit">

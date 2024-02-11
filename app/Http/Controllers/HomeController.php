@@ -156,6 +156,7 @@ class HomeController extends Controller
         $user=Auth::user();
 
         $userid=$user->id;
+       
 
         $data=cart::where('user_id','=', $userid)->get();
 
