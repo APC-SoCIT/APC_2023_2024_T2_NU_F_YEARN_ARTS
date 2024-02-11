@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    <title>Yearn Art | {{$products->product_name}}</title>
 <head>
     <base href="/public">
     <!-- Add these in your HTML -->
@@ -65,7 +65,7 @@
                             Description: {{$products->product_description}}
                         </p>
                         <p class="price" id="price">
-                            ₱{{ number_format($products->small_price, 2)}}
+                            ₱{{ number_format($products->small_price, 2) }}
                         </p>
                         <p class="names">
                             Processing Time: {{$products->processing_time}}
@@ -163,23 +163,33 @@
                         <div class="size-div">
                             <p class="names">Size:
                                 <div class="size-box size">
-                                    <input type="radio" name="sizeOption" id="sizeOptionSmall" value="small"
-                                        class="size-option" style="display: none;" required="">
-                                    <label for="sizeOptionSmall"
-                                        class="size-option-label button-choice names">Small</label>
+                                    <select name="sizeOption" id="sizeOption" class="size-option" required="" onchange="updatePrice(this.value)">
+                                        @if ($products->extra_small_price !== null)
+                                        <option value="extra_small">Extra Small</option>
+                                        @endif
+                                        <option value="small" selected>Small</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="large">Large</option>
+                                        <!-- Add more size options as needed -->
+                                        @if ($products->i_extra_large_price !== null)
+                                        <option value="i_extra_large">Extra Large</option>
+                                        @endif
+                                        @if ($products->ii_extra_large_price !== null)
+                                        <option value="ii_extra_large">2 Extra Large</option>
+                                        @endif
+                                        @if ($products->iii_extra_large_price !== null)
+                                        <option value="iii_extra_large">3 Extra Large</option>
+                                        @endif
+                                        @if ($products->iiii_extra_large_price !== null)
+                                        <option value="iiii_extra_large">4 Extra Large</option>
+                                        @endif
+                                        @if ($products->iiiii_extra_large_price !== null)
+                                        <option value="iiiii_extra_large">5 Extra Large</option>
+                                        @endif
 
-                                    <input type="radio" name="sizeOption" id="sizeOptionMedium" value="medium"
-                                        class="size-option" style="display: none;" onclick="updatePrice('medium')">
-                                    <label for="sizeOptionMedium"
-                                        class="size-option-label button-choice names">Medium</label>
-
-                                    <input type="radio" name="sizeOption" id="sizeOptionLarge" value="large"
-                                        class="size-option" style="display: none;" onclick="updatePrice('large')">
-                                    <label for="sizeOptionLarge"
-                                        class="size-option-label button-choice names">Large</label>
 
 
-                                    <!-- Add more size options as needed -->
+                                    </select>
                                 </div>
                             </p>
                         </div>
@@ -207,7 +217,7 @@
         const defaultSizeOption = document.getElementById('sizeOptionSmall');
         const defaultSecondaryColorOption = document.getElementById('secondaryColorOption1');
         defaultColorOption.checked = true;
-        
+
         defaultSecondaryColorOption.checked = true;
 
         // Trigger change event to update selected style
@@ -251,21 +261,39 @@
             }
         }
 
-        function updatePrice(size) {
-        const priceElement = document.getElementById('price');
-        switch (size) {
-            case 'small':
-                priceElement.textContent = '₱{{ number_format($products->small_price, 2) }}';
-                break;
-            case 'medium':
-                priceElement.textContent = '₱{{ number_format($products->medium_price, 2) }}';
-                break;
-            case 'large':
-                priceElement.textContent = '₱{{ number_format($products->large_price, 2) }}';
-                break;
-            default:
-                // Handle other cases if needed
-                break;
+    function updatePrice(size) {
+    const priceElement = document.getElementById('price');
+    switch (size) {
+        case 'extra_small':
+            priceElement.textContent = '₱{{ number_format($products->extra_small_price, 2) }}';
+            break;
+        case 'small':
+            priceElement.textContent = '₱{{ number_format($products->small_price, 2) }}';
+            break;
+        case 'medium':
+            priceElement.textContent = '₱{{ number_format($products->medium_price, 2) }}';
+            break;
+        case 'large':
+            priceElement.textContent = '₱{{ number_format($products->large_price, 2) }}';
+            break;
+        case 'i_extra_large':
+            priceElement.textContent = '₱{{ number_format($products->i_extra_large_price, 2) }}';
+            break;
+        case 'ii_extra_large':
+            priceElement.textContent = '₱{{ number_format($products->ii_extra_large_price, 2) }}';
+            break;
+        case 'iii_extra_large':
+            priceElement.textContent = '₱{{ number_format($products->iii_extra_large_price, 2) }}';
+            break;
+        case 'iiii_extra_large':
+            priceElement.textContent = '₱{{ number_format($products->iiii_extra_large_price, 2) }}';
+            break;
+        case 'iiiii_extra_large':
+            priceElement.textContent = '₱{{ number_format($products->iiiii_extra_large_price, 2) }}';
+            break;
+        default:
+            // Handle other cases if needed
+            break;
     }
 }
     </script>

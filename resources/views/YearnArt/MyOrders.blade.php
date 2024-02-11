@@ -1,4 +1,4 @@
-{{-- ito yung sa cart --}}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,117 +9,85 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="assets/css/Cart.css">
-    
 
-<title>Yearn Art | My Cart</title>
-<link rel="icon" href="assets/image/Yearn.jpg" type="image/png">
+    <title>Yearn Art | My Cart</title>
+    <link rel="icon" href="assets/image/Yearn.jpg" type="image/png">
 
 </head>
 <body>
-@include('home.header')
+    @include('home.header')
 
+    <form action="{{ url('/cash_order'  ) }}" method="post">
+        @csrf
 
- <!-- <div class="center">
-    @if(session()->has('message'))
+        <div class="center">
+            <div class="header">
+                <h6 class="mycart">My Cart</h6>
+                <p class="process-time">Time:</p>
+            </div>
+            @if(session()->has('message'))
+                <div class='alert alert-success'>
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                    {{session()->get('message')}}
+                </div>
+            @endif
+            <div class="container">
+                <div class="action-bar">
+                    <div class="checkbox">
+                        <label for="">
+                            <input type="checkbox" name="selectedItems[]" id="selectAllCheckbox" onclick="toggleAllCheckboxes()">
+                        </label>
+                    </div>
+                    <div class="prod">Product</div>
+                    <div class="downpayment">Downpayment</div>
+                    <div class="unit-price">Unit Price</div>
+                    <div class="quantity">Quantity</div>
+                    <div class="total-price">Total Price</div>
+                    <div class="actions">Actions</div>
+                </div>
 
-    <div class='alert alert-success'>
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-        {{session()->get('message')}}
-    </div>
-    @endif
+                @foreach ($cart as $cartItem)
+                    <?php $totalprice = 0; ?>
+                    <?php $totalitem = 0; ?>
 
-    <table>
-        <tr>
-            <th class="th-deg">Image</th>
-            <th class="th-deg">Product Name</th>
-            <th class="th-deg">Price</th>
-            <th class="th-deg">Processing Time</th>
-            <th class="th-deg">Primary Color</th>
-            <th class="th-deg">Secondary</th>
-            <th class="th-deg">Size</th>
-            <th class="th-deg">Quantity</th>
-            <th class="th-deg">Action</th>
-        </tr>
+                    <div class="product-bar">
+                        <div class="product-bar">
+                            <div class="checkbox">
+                                <input type="checkbox" class="productCheckbox" id="productCheckbox{{$cartItem->id}}">
+                            </div>
+                            <div class="product-detail">
+                                <div class="img-edit">
+                                    <img src="assets\image\baby.jpg" alt="">
+                                </div>
+                                <div class="products">
+                                    <p class="name-product">{{$cartItem->product_name}}</p>
+                                </div>
+                            </div>
+                            <div class="downpayment">₱{{ number_format($cartItem->price / 2, 2) }}</div>
+                            <div class="unit-price">₱{{ number_format($cartItem->price, 2) }}</div>
+                            <div class="quantity">
+                                <input type="number" name="quantity[{{ $cartItem->id }}]" value="{{ $cartItem->quantity }}" min="1" required="" style="border:1.5px solid #b0968f;border-radius: 5px; width: 100px; height: 30px; background: transparent; margin-left: 10px;">
+                            </div>
+                            <div class="total-price">₱{{ number_format($cartItem->price * $cartItem->quantity, 2) }}</div>
+                            <div class="actions remove-btn">
+                                <a href="{{url('/remove_cart', $cartItem->id)}}"  onclick="return confirm('Are you sure to delete it in your CART?')">
+                                    <img src="assets\image\trash.png" alt="" class="trash">
+                                </a>
+                            </div>
+                        </div>
+                        <?php $totalprice += ($cartItem->price * $cartItem->quantity); ?>
+                        <?php $totalitem += $cartItem->quantity; ?>
+                    </div>
+                @endforeach
 
-        <?php $totalprice=0;?>
-        <?php $totalitem=0;?>
-        @foreach ($cart as $cart)
+                <div>
+                    <button type="submit" class="" onclick="return confirm('Please be advised that the estimated delivery time for your order is anticipated to be between 2 to 3 weeks, although it may vary depending on the number of products you have ordered. Our team is working diligently to fulfill each order in a timely manner, ensuring that each item is carefully packaged and delivered to you in pristine condition.')">Place Order</button>
+                </div>
+            </div>
 
-        <tr>
-            <td><img class="img-deg" src="/product/{{$cart->image}}" alt=""></td>
-            <td>{{$cart->product_name}}</td>
-            <td>₱{{$cart->price *  $cart->quantity}}</td>
-            <td>{{$cart->processing_time}}</td>
-            <td style="background-color: {{$cart->primaryclr}}"></td>
-            <td style="background-color: {{$cart->secondaryclr}}"></td>
-            <td>{{$cart->size}}</td>
-            <td>{{$cart->quantity}}</td>
-            <td><a class="btn btn-danger" href="{{url('/remove_cart', $cart->id)}}" onclick="return confirm('Are you sure to delete it in you CART?')">Remove Product</a></td>
-        </tr>
-        <?php $totalprice=$totalprice + ($cart->price * $cart->quantity); ?>
-        <?php  $totalitem=$totalitem + $cart->quantity?>
-        @endforeach
-
-
-    </table>
-    <div>
-        <h5 class="total-deg">Total ({{$totalitem}} item) ₱{{$totalprice}}</h5>
-        <div><a href="{{url('/cash_order')}}" class="btn btn-danger" onclick="return confirm(' Please be advised that the estimated delivery time for your order is anticipated to be between 2 to 3 weeks, although it may vary depending on the number of products you have ordered. Our team is working diligently to fulfill each order in a timely manner, ensuring that each item is carefully packaged and delivered to you in pristine condition. Are you sure you want to place order? Total: ({{$totalitem}} Item) ₱{{$totalprice}}');">Place Order</a></div>
-    </div>
-
-
- </div> -->
-
- <div class="header">
-        <h6 class="mycart">My Cart</h6>
-        <p class="process-time">Time:</p>
-    </div>
-<div class="container">
-    <div class="action-bar">
-            <div class="checkbox">
-                <label for="">
-                    <input type="checkbox" id="productCheckbox">
-                </label>
-            </div>    
-            <div class="prod">Product</div>
-            <div class="downpayment">Downpayment</div>
-            <div class="unit-price">Unit Price</div>
-            <div class="quantity">Quantity</div>
-            <div class="total-price">Total Price</div>
-            <div class="actions">Actions</div>
-    </div>
-
-    <div class="product-bar">
-        <div class="checkbox">
-            <label for="">
-                   <input type="checkbox" id="productCheckbox">
-            </label>
+            {{-- Existing JavaScript and other code --}}
         </div>
-        <div class="product-detail">
-            <div class="img-edit">
-                <img src="assets\image\baby.jpg" alt="">
-            </div>
-            <div class="products">
-                <p class="name-product">Place Holder</p> <!-- Lagay nalang dito -->
-                <p>Place Holder</p> <!-- Lagay nalang dito -->
-            </div>
-        </div>
-        
-            <div class="downpayment">$0.00</div> <!-- Lagay nalang dito -->
-            <div class="unit-price">$0.00</div> <!-- Lagay nalang dito -->
-            <div class="quantity">
-                <input type="number" name="quantity" value="1" min="1" required="" style="border:1.5px solid #b0968f;border-radius: 5px; width: 100px; height: 30px; background: transparent; margin-left: 10px;"> <!-- Lagay nalang dito -->
-            </div>
-            
-            <div class="total-price">$0.00</div> <!-- Lagay nalang dito -->
-            <div class="actions remove-btn">
-                <img src="assets\image\trash.png" alt="" class="trash">
-            </div>
-        
-    
-</div>
-
-
+    </form>
 {{-- SCRIPTTT --}}
 <script src="assets/javascript/home.js"></script>
 
@@ -175,17 +143,25 @@
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="assets/javascript/script.js"></script>
 
+    <script>
+        const menuLinks = document.querySelectorAll('.menu-link');
 
-  <script>
-    const menuLinks = document.querySelectorAll('.menu-link');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuLinks.forEach(otherLink => otherLink.classList.remove('active-link'));
+                link.classList.add('active-link');
+            });
+        });
 
-    menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        menuLinks.forEach(otherLink => otherLink.classList.remove('active-link'));
-        link.classList.add('active-link');
-      });
-    });
-  </script>
+        function toggleAllCheckboxes() {
+            const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+            const productCheckboxes = document.querySelectorAll('.productCheckbox');
+
+            productCheckboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+        }
+    </script>
 </body>
 </html>
 

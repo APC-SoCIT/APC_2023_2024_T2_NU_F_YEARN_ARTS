@@ -28,7 +28,7 @@ route::get('/product_details/{id}',[HomeController::class,'product_details']);
 route::get('/About',[HomeController::class,'About']);
 route::get('/show_cart',[HomeController::class,'show_cart']);
 route::get('/remove_cart/{id}',[HomeController::class,'remove_cart']);
-route::get('/cash_order',[HomeController::class,'cash_order']);
+route::post('/cash_order',[HomeController::class,'cash_order']);
 //order tracking
 route::get('/show_orders',[HomeController::class,'show_orders']);
 route::get('/show_pending',[HomeController::class,'show_pending']);
