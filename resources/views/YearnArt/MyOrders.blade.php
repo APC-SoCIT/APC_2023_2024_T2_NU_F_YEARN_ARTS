@@ -32,7 +32,7 @@
                     {{session()->get('message')}}
                 </div>
             @endif
-            <div class="container">
+            <div class="container-cart">
                 <div class="action-bar">
                     <div class="checkbox">
                         <label for="">

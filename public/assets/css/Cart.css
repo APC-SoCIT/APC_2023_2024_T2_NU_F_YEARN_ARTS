@@ -3,7 +3,7 @@ body{
     color: #7D5452;
 }
 
-.container{
+.container-cart{
     display: flex;
     flex-direction: column;
     justify-content: center;
