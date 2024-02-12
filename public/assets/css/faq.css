@@ -9,15 +9,6 @@ body {
   a {text-decoration: none;}
 
 
-  .Products, .Orders, .About, .FAQ, .Login, .Signup{
-    color: #E4D8CC;
-  }
-
-  .FAQ{
-    color: #FAC6BF;
-    font-weight: 700;
-  }
-
   /* CHATBOX
 =============== */
 .chatbox {

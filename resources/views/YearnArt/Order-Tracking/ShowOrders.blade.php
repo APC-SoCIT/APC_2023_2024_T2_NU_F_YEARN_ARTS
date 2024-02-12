@@ -4,8 +4,7 @@
 @include('YearnArt.css')
 <link rel="stylesheet" href="assets/">
 <link rel="stylesheet" href="assets/css/order_tracking.css">
-
-
+<link rel="stylesheet" href="assets/css/navbar.css">
 </head>
 
 <title>Yearn Art | All Orders</title>

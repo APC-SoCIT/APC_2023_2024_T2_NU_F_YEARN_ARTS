@@ -5,11 +5,10 @@
     <base href="/public">
     <!-- Add these in your HTML -->
     <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="public/assets/css/product_details.css">
-    
     <link rel="stylesheet" href="assets/css/typing.css">
     <link rel="stylesheet" href="assets/css/chatbot.css">
+    <link rel="stylesheet" href="public/assets/css/product_details.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -141,10 +140,10 @@
                             </div>
                         </div>
 
-                        <div class="size-div">
-                            <p class="names">Size:
-                                <div class="size-box size">
-                                    <select name="sizeOption" id="sizeOption" class="size-option" required="" onchange="updatePrice(this.value)">
+                        <div class="names size-div">
+                            <p>Size:
+                                <div>
+                                    <select name="sizeOption" id="sizeOption" class="size-option" required="" onchange="updatePrice(this.value)" style="outline: none;">
                                         @if ($products->extra_small_price !== null)
                                         <option value="extra_small">Extra Small</option>
                                         @endif
@@ -167,9 +166,6 @@
                                         @if ($products->iiiii_extra_large_price !== null)
                                         <option value="iiiii_extra_large">5 Extra Large</option>
                                         @endif
-
-
-
                                     </select>
                                 </div>
                             </p>
