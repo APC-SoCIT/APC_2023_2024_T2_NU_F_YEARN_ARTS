@@ -193,6 +193,15 @@
             });
         });
 
+        function toggleAllCheckboxes() {
+            const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+            const productCheckboxes = document.querySelectorAll('.productCheckbox');
+
+            productCheckboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+        }
+
 
 
     </script>
