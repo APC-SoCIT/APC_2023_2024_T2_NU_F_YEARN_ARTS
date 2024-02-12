@@ -4,6 +4,7 @@
     @include('YearnArt.css')
     <link rel="stylesheet" href="assets/">
     <link rel="stylesheet" href="assets/css/order_tracking.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
 </head>
 
 <title>Yearn Art | Order Received</title>
@@ -36,7 +37,7 @@
                         <div class="order-stats">
                             <p>
                                 {{$order->order_status}}
-                               
+
                             </p>
                         </div>
                     </div>
