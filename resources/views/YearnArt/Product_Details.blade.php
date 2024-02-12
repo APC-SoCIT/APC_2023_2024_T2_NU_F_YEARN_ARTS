@@ -4,43 +4,24 @@
 <head>
     <base href="/public">
     <!-- Add these in your HTML -->
+    <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/assets/css/product_details.css">
+    
+    <link rel="stylesheet" href="assets/css/typing.css">
+    <link rel="stylesheet" href="assets/css/chatbot.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     @include('YearnArt.css')
 
-    <style>
-        /* Add this to your CSS or style tag */
-        .color-option {
-            display: none; /* Hide default radio button */
-        }
 
-        /* Add hover effect if desired */
-        .color-option-label:hover {
-            transform: scale(1.3);
-        }
-
-        .color-option-label.selected {
-            transform: scale(1.3);
-        }
-
-        .selected {
-            transform: scale(1.13);
-        }
-
-        .disabled {
-            pointer-events: none; /* Disable pointer events for the label */
-            opacity: 0.5; /* Add a visual cue that the option is disabled */
-        }
-    </style>
 </head>
 
 <body>
     @include('home.header')
-    <div class="main-panel">
-        <div class="content-wrapper">
+    
 
             @if(session()->has('message'))
 
@@ -203,9 +184,7 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
-
+       
     <script src="assets/javascript/home.js"></script>
     @include ('YearnArt.chatbot')
     @include ('YearnArt.script')

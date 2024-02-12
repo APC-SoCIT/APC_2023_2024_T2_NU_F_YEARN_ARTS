@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="/public">
 <link rel="stylesheet" href="assets/css/about.css">
+<link rel="stylesheet" href="assets/css/navbar.css">
 @include('YearnArt.css')
 
 <title>Yearn Art | About</title>
