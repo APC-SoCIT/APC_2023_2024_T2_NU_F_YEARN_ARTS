@@ -72,7 +72,7 @@
                             </div>
                             <div class="product-detail">
                                 <div class="img-edit">
-                                    <img src="assets\image\baby.jpg" alt="">
+                                    <img src="product/{{$cart->image}}" alt="">
                                 </div>
                                 <div class="products">
                                     <p class="name-product">{{$cart->product_name}}</p>
