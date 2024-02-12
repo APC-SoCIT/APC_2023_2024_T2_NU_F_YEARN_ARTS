@@ -1,9 +1,11 @@
     <!DOCTYPE html>
     <html lang="en">
     <head>
+    <base href="/public">
     @include('YearnArt.css')
     <link rel="stylesheet" href="assets/">
     <link rel="stylesheet" href="assets/css/order_tracking.css">
+    <link rel="stylesheet" href="assets/css/faq.css">
 
     <style>
 
@@ -41,7 +43,7 @@
                                     <p class="order-info">Order Created: {{ $order->created_at }}</p>
 
                                 </div>
-                                
+
 
                                 <div class="order-stats">
 

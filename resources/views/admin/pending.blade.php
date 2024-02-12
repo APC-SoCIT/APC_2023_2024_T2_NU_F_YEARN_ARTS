@@ -49,7 +49,7 @@
                         <th class="th-deg">Product Name</th>
                         <th class="th-deg">Price</th>
                         <th class="th-deg">Quantity</th>
-
+                        <th class="th-deg">Order ID</th>
                         <th class="th-deg">Action</th>
 
 
@@ -66,6 +66,7 @@
                         <td>{{$order->product_name}}</td>
                         <td>{{$order->price}}.00</td>
                         <td>{{$order->quantity}}</td>
+                        <td>{{$order->order_id}}</td>
 
                         <td>
                             @if($order->order_status=='On Process')
