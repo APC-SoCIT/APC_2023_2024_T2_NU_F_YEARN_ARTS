@@ -34,8 +34,7 @@ class HomeController extends Controller
     public function About(){
         return view ('YearnArt.About');
 
-        $user=Auth::user();
-        return view ('YearnArt.About');
+
 
     }
 
@@ -46,9 +45,7 @@ class HomeController extends Controller
 
 
     //PAg naka login yung users
-        $usertype=Auth::user()->usertype;
-        $products=Product::all();
-        return view('YearnArt.Products',compact('products'));
+
 
 
     }
@@ -61,9 +58,7 @@ class HomeController extends Controller
 
 
     // PAg naka login yung users
-        $usertype=Auth::user()->usertype;
-        $products=Product::all();
-        return view('YearnArt.Products',compact('products'));
+
     }
 
     public function add_cart(Request $request, $id) {
@@ -156,16 +151,20 @@ class HomeController extends Controller
         $user=Auth::user();
 
         $userid=$user->id;
-       
+
 
         $data=cart::where('user_id','=', $userid)->get();
 
 
         foreach($data as $data){
 
+            $quantity = $request->input('quantity.' . $data->id);
+
             $orderId = strtoupper(Str::random(10));
 
             $order=new order;
+
+            $totalPrice = $data->price * $quantity;
 
                 $order->name=$data->name;
                 $order->email=$data->email;
@@ -176,8 +175,8 @@ class HomeController extends Controller
 
                 $order->order_id = $orderId;
                 $order->product_name=$data->product_name;
-                $order->quantity=$data->quantity;
-                $order->price=$data->quantity * $data->price;
+                $order->quantity = $quantity;
+                $order->price = $totalPrice;
                 $order->image=$data->image;
                 $order->processing_time=$data->processing_time;
                 $order->primaryclr=$data->primaryclr;

@@ -46,38 +46,78 @@
                     <div class="actions">Actions</div>
                 </div>
 
-                @foreach ($cart as $cartItem)
-                    <?php $totalprice = 0; ?>
-                    <?php $totalitem = 0; ?>
+                @foreach ($cart as $index =>  $cart)
+
+
+                    <?php
+                    $totalprice = 0;
+                    $totalitem = 0;
+                    $totalprice += ($cart->price * $cart->quantity);
+                    $downpayment = $totalprice / 2;
+
+
+                    // Generate unique IDs for each item in the loop
+                    $uniqueId = 'item_' . $index;
+                    $quantityInputId = 'quantityInput_' . $uniqueId;
+                    $unitPriceId = 'unitPrice_' . $uniqueId;
+                    $totalPriceId = 'totalPrice_' . $uniqueId;
+                    $downpaymentId = 'downpayment_' . $uniqueId;
+                    ?>
+
 
                     <div class="product-bar">
                         <div class="product-bar">
                             <div class="checkbox">
-                                <input type="checkbox" name="selectedItems[]" class="productCheckbox" id="productCheckbox{{$cartItem->id}}">
+                                <input type="checkbox" name="selectedItems[]" class="productCheckbox" id="productCheckbox{{$cart->id}}">
                             </div>
                             <div class="product-detail">
                                 <div class="img-edit">
                                     <img src="assets\image\baby.jpg" alt="">
                                 </div>
                                 <div class="products">
-                                    <p class="name-product">{{$cartItem->product_name}}</p>
+                                    <p class="name-product">{{$cart->product_name}}</p>
+                                    <p>{{$cart->size}}</p>
                                 </div>
                             </div>
-                            <div class="downpayment">₱{{ number_format($cartItem->price / 2, 2) }}</div>
-                            <div class="unit-price">₱{{ number_format($cartItem->price, 2) }}</div>
+                            <div id="{{ $downpaymentId }}" class="downpayment">₱ {{ number_format($downpayment, 2) }}</div>
+                            <div id="{{ $unitPriceId }}" class="unit-price">₱{{ number_format($cart->price, 2) }}</div>
                             <div class="quantity">
-                                <input type="number" name="quantity[{{ $cartItem->id }}]" value="{{ $cartItem->quantity }}" min="1" required="" style="border:1.5px solid #b0968f;border-radius: 5px; width: 100px; height: 30px; background: transparent; margin-left: 10px;">
+                                <input type="number" id="{{ $quantityInputId }}" name="quantity[{{ $cart->id }}]" value="{{ $cart->quantity }}" min="1" required="" style="border:1.5px solid #b0968f;border-radius: 5px; width: 100px; height: 30px; background: transparent; margin-left: 10px;">
                             </div>
-                            <div class="total-price">₱{{ number_format($cartItem->price * $cartItem->quantity, 2) }}</div>
+                            <div mame="price" id="{{ $totalPriceId }}" class="total-price">₱ {{ number_format($totalprice, 2) }}</div>
                             <div class="actions remove-btn">
-                                <a href="{{url('/remove_cart', $cartItem->id)}}"  onclick="return confirm('Are you sure to delete it in your CART?')">
+                                <a href="{{url('/remove_cart', $cart->id)}}" onclick="return confirm('Are you sure to delete it in your CART?')">
                                     <img src="assets\image\trash.png" alt="" class="trash">
                                 </a>
                             </div>
                         </div>
-                        <?php $totalprice += ($cartItem->price * $cartItem->quantity); ?>
-                        <?php $totalitem += $cartItem->quantity; ?>
                     </div>
+
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            var quantityInput = document.getElementById('{{ $quantityInputId }}');
+                            var unitPriceElement = document.getElementById('{{ $unitPriceId }}');
+                            var totalPriceElement = document.getElementById('{{ $totalPriceId }}');
+                            var downpaymentElement = document.getElementById('{{ $downpaymentId }}');
+
+                            quantityInput.addEventListener('input', function() {
+                                var quantityValue = parseInt(this.value) || 0;
+                                var unitPrice = parseFloat(unitPriceElement.textContent.replace('₱', '')) || 0;
+                                var totalPrice = unitPrice * quantityValue;
+                                var downpayment = totalPrice / 2;
+
+                                totalPriceElement.textContent = '₱' + totalPrice.toFixed(2);
+                                downpaymentElement.textContent = '₱' + downpayment.toFixed(2);
+
+                                console.log("Quantity: " + quantityValue);
+                                console.log("Unit Price: ₱" + unitPrice.toFixed(2));
+                                console.log("Total Price: ₱" + totalPrice.toFixed(2));
+                                console.log("Downpayment: ₱" + downpayment.toFixed(2));
+                            });
+                        });
+                    </script>
+
                 @endforeach
 
                 <div>
@@ -153,14 +193,8 @@
             });
         });
 
-        function toggleAllCheckboxes() {
-            const selectAllCheckbox = document.getElementById('selectAllCheckbox');
-            const productCheckboxes = document.querySelectorAll('.productCheckbox');
 
-            productCheckboxes.forEach(checkbox => {
-                checkbox.checked = selectAllCheckbox.checked;
-            });
-        }
+
     </script>
 </body>
 </html>
