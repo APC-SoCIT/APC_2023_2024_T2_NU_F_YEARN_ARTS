@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="assets/css/about.css">
 <link rel="stylesheet" href="assets/css/typing.css">
 <link rel="stylesheet" href="assets/css/chatbot.css">
-<link rel="stylesheet" href="assets/css/product_details.css">
+
 <link rel="stylesheet" href="assets/css/faq.css">
 <link rel="stylesheet" href="assets/css/navbar.css">
 

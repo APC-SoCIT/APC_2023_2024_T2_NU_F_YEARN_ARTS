@@ -24,7 +24,6 @@
         <div class="center">
             <div class="header">
                 <h6 class="mycart">My Cart</h6>
-                <p class="process-time">Time:</p>
             </div>
             @if(session()->has('message'))
                 <div class='alert alert-success'>
@@ -121,63 +120,39 @@
 
                 @endforeach
 
-                <div>
-                    <button type="submit" class="" onclick="return confirm('Please be advised that the estimated delivery time for your order is anticipated to be between 2 to 3 weeks, although it may vary depending on the number of products you have ordered. Our team is working diligently to fulfill each order in a timely manner, ensuring that each item is carefully packaged and delivered to you in pristine condition.')">Place Order</button>
-                </div>
+                
             </div>
 
             {{-- Existing JavaScript and other code --}}
         </div>
     </form>
+
+    <footer>
+        <div class="container-footer">
+            <div class="checkbox">
+                <input type="checkbox" id="selectAll">
+            </div>
+            <div class="select-all">Select All</div>
+            <div class="delete-function">
+                <button id="deleteBtn">Delete</button>
+            </div>
+            <div class="total-item">
+                Total items: <span id="totalItems">0</span>
+            </div>
+            <div class="total-prices">
+                <span id="totalItems">₱0</span>
+            </div>
+            <div class="btn-submit"> 
+                    <button type="submit"  onclick="return confirm('Please be advised that the estimated delivery time for your order is anticipated to be between 2 to 3 weeks, although it may vary depending on the number of products you have ordered. Our team is working diligently to fulfill each order in a timely manner, ensuring that each item is carefully packaged and delivered to you in pristine condition.')">Check Out</button>
+                </div>
+        </div>
+    </footer>
+
+
 {{-- SCRIPTTT --}}
 <script src="assets/javascript/home.js"></script>
 
-<div class="chatbot">
-    <div class="chatbox">
-        <div class="chatbox__support">
-            <div class="chatbox__header">
-                <div class="chatbox__content--header">
-                    <h4 class="chatbox__heading--header">YearnBot</h4>
-                </div>
-            </div>
-            <div class="chatbox__messages">
-                <div>
-                    <div class="messages__item messages__item--visitor">
-                        Can you let me talk to the support?
-                    </div>
-                    <div class="messages__item messages__item--operator">
-                        Sure!
-                    </div>
-                    <div class="messages__item messages__item--visitor">
-                        Need your help, I need a developer in my site.
-                    </div>
-                    <div class="messages__item messages__item--operator">
-                        Hi... What is it? I'm a front-end developer, yay!
-                    </div>
-                    <div class="messages__item messages__item--typing">
-                        <span class="messages__dot"></span>
-                        <span class="messages__dot"></span>
-                        <span class="messages__dot"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="chatbox__footer">
-                <div class="file">
-                    <img src="assets/image/file.png" alt="file">
-                </div>
-                <input type="text" placeholder="Write a message...">
-                <div class="icon">
-                    <img src="assets/image/send.png" alt="Send">
-                </div>
-            </div>
-        </div>
-        <div class="chatbox__button">
-            <button>button</button>
-        </div>
-    </div>
-</div>
-<script src="assets/javascript/Chat.js"></script>
-<script src="assets/javascript/app.js"></script>
+
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

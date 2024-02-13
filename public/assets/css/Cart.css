@@ -10,6 +10,7 @@ body{
     align-items: center;
     
     gap: 30px;
+    margin-bottom: 150px;
 }
 
 .header {
@@ -37,6 +38,7 @@ body{
 
     background-color: #D0A59F;
     width: 85vw;
+    min-width: 85vw;
     padding: 20px;
     margin-bottom: 20px;
 }
@@ -45,7 +47,6 @@ body{
 .prod{
     display: flex;
     width: 40%;
-    
 }
 .downpayment, .unit-price, .quantity, .total-price, .actions{
     width: 11%;
@@ -68,6 +69,7 @@ body{
     background-color: #D0A59F;
     width: 85vw;
     padding: 20px;
+    
 }
 
 .product-detail{
@@ -103,4 +105,63 @@ body{
     width: 40px;
     opacity: .7;
     cursor: pointer;
+}
+
+.container-footer {
+    position: fixed;
+    bottom: 0;
+    width: 85vw;
+    height: 100px;
+    background-color: #7D5452;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #E4D8CC;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.select-all{
+    display: flex;
+    width: 11%;
+}
+
+.delete-function{
+    display: flex;
+    width: 40%;
+}
+
+.total-prices{
+    width: 11%;
+    text-align: center;
+    cursor: default;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.total-item{
+    width: 11%;
+    text-align: center;
+    cursor: default;
+}
+
+.btn-submit{
+    flex: 1;
+    text-align: center;
+    cursor: default;
+}
+
+button[type="submit"],
+input[type="submit"]{
+    cursor: pointer; 
+    background-color: #D0A59F; 
+    width: 200px; 
+    height: 50px; 
+    color: #7D5452; 
+    font-family: Inter;
+    font-size: 15px; 
+    font-style: normal; 
+    line-height: normal;
+    outline: none;
 }
