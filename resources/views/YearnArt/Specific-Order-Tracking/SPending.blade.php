@@ -4,7 +4,7 @@
     <base href="/public">
 @include('YearnArt.css')
 <link rel="stylesheet" href="assets/">
-<link rel="stylesheet" href="assets/css/order_tracking.css">
+<link rel="stylesheet" href="assets/css/S-order-tracking.css">
 
 </head>
 
@@ -18,7 +18,7 @@
 </div>
 <section class="custom-section">
     <div class="order-tracking-status">
-        <img src="assets\image\OrderTrackingSpecific\Order-Placed-SOrder.png" alt="" style="height: 19vh; width: auto;">
+        <img src="assets\image\OrderTrackingSpecific\Order-Placed-SOrder.png" alt="" style="">
     </div>
             <div class="order-container">
                 <!-- Loop through your order data here -->
@@ -36,7 +36,7 @@
 
                             <div class="order-stats">
                                 <p>
-                                    {{$order->order_status}}/Pending
+                                    {{$order->order_status}} / Pending
                                 </p>
                             </div>
                         </div>
@@ -44,8 +44,8 @@
                         <div class="line"></div>
 
                         <div class="lower-part">
-                            <div>
-                                <p class="processing-paragraph">
+                            <div class="main-description">
+                                <p class="paragraph-1">
                                     We kindly ask for your patience as your order is being processed by Yearn Art.
                                     This may take a while, but we assure you of our commitment to providing the best service possible.
                                 </p>
@@ -77,7 +77,6 @@
 
 
 <script src="assets/javascript/home.js"></script>
-@include ('YearnArt.chatbot')
 @include ('YearnArt.script')
 </body>
 </html>
