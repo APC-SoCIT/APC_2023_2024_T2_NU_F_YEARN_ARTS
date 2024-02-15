@@ -4,7 +4,7 @@
     <base href="/public">
 @include('YearnArt.css')
 <link rel="stylesheet" href="assets/">
-<link rel="stylesheet" href="assets/css/order_tracking.css">
+<link rel="stylesheet" href="assets/css/S-order-tracking.css">
 
 </head>
 
@@ -18,7 +18,7 @@
 </div>
 <section class="custom-section">
     <div class="order-tracking-status">
-        <img src="assets\image\OrderTrackingSpecific\Shipping-SOrder.png" alt="" style="height: 19vh; width: auto;">
+        <img src="assets\image\OrderTrackingSpecific\Shipping-SOrder.png" alt="" >
     </div>
             <div class="order-container">
 
@@ -37,18 +37,19 @@
                                 <p>
                                     {{$order->order_status}}
                                 </p>
+                                <div class="pos-price">
+                                <p class="total-1">Fullpayment: </p>
+                                <p class="price-num-1">Paid</p>
                             </div>
-                            <div >
-                                <p>Fullpayment: </p>
-                                <p>Paid</p>
                             </div>
+                            
                         </div>
 
                         <div class="line"></div>
 
                         <div class="lower-part">
-                            <div>
-                                <p class="paragraph">
+                            <div  class="main-description">
+                                <p class="paragraph-1">
                                     We would like to inform you that your  {{ $order->product_name }} is now shipping!
                                 </p>
                             </div>
