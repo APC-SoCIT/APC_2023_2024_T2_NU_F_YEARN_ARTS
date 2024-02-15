@@ -4,7 +4,7 @@
 <base href="/public">
 @include('YearnArt.css')
 <link rel="stylesheet" href="assets/">
-<link rel="stylesheet" href="assets/css/order_tracking.css">
+<link rel="stylesheet" href="assets/css/S-order-tracking.css">
 
 <style>
 
@@ -24,7 +24,7 @@
 
 <section class="custom-section">
     <div class="order-tracking-status">
-        <img src="assets\image\OrderTrackingSpecific\To-Pay-SOrder.png" alt="" style="height: 19vh; width: auto;">
+        <img src="assets\image\OrderTrackingSpecific\To-Pay-SOrder.png" alt="" >
     </div>
 
             <div class="order-container">
@@ -50,8 +50,8 @@
                                 </p>
                                 <div class="pos-price">
 
-                                    <p class="total">Fullpayment:</p>
-                                    <p class="price-num">₱{{ number_format($order->price/2, 2) }}</p>
+                                    <p class="total-1">Fullpayment:</p>
+                                    <p class="price-num-1">₱{{ number_format($order->price/2, 2) }}</p>
                                 </div>
 
                             </div>
@@ -63,27 +63,29 @@
                         <div class="line"></div>
 
                         <div class="lower-part">
-                            <div class="paragraph">
+                            <div class="main-description">
 
-                                <div>
+                                <div class="paragraph-1">
                                     <p>We are thrilled to inform you that your order has been completed!To finalize the transaction, we kindly request that you make the payment for the remaining 50% of the total order cost. Once the payment is received, we will proceed with the necessary arrangements for shipping your order to its destination.</p>
                                 </div>
-                                <div>
-                                    <p>Payment Procedure:</p>
+                                
+                                <div class="paragraph-2">
+                                    <div>
+                                        <p>Please follow the procedure below to complete the payment:</p>
+                                        <p>1. Open your GCash mobile app.</p>
+                                        <p>2. Select 'Send Money' from the main menu.</p>
+                                        <p>3. Enter the GCash number: 09482989479</p>
+                                        <p>4. The recipient's name should be A*****z M.</p>
+                                        <p>5. Enter the amount of the indicated amount showed in this screen.</p>
+                                        <p>6. Review the details and confirm the transaction.</p>
+                                        <p>7. Take a screenshot of your receipt and send it to YearnBot to confirm that you already paid.</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p>Please follow the procedure below to complete the payment:</p>
-                                    <p>1. Open your GCash mobile app.</p>
-                                    <p>2. Select 'Send Money' from the main menu.</p>
-                                    <p>3. Enter the GCash number: 09482989479</p>
-                                    <p>4. The recipient's name should be A*****z M.</p>
-                                    <p>5. Enter the amount of the indicated amount showed in this screen.</p>
-                                    <p>6. Review the details and confirm the transaction.</p>
-                                    <p>7. Take a screenshot of your receipt and send it to YearnBot to confirm that you already paid.</p>
-                                </div>
-                                <div>
+                                <div class="paragraph-3">
                                     <p>You may scan this GCash QR code to pay.</p>
-                                    <img src="assets\image\OrderTrackingSpecific\GcashQR.png" alt="">
+                                    <div class="qrcode">
+                                                <img src="assets\image\OrderTrackingSpecific\GcashQR.png" alt="">
+                                            </div>
                                 </div>
                             </div>
 

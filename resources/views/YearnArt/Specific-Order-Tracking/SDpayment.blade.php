@@ -49,7 +49,6 @@
                                         {{$order->order_status}}
                                     </p>
                                     <div class="pos-price">
-                                        
                                         <p class="total-1">TOTAL:</p>
                                         <p class="price-num-1">₱{{ number_format($order->price/2, 2) }}</p>
                                     </div>
@@ -76,7 +75,7 @@
 
                                     </div>
                                     <div class="paragraph-2">
-                                        <div class="paragraph-2a">
+                                        <div>
                                             <p>Please follow the procedure below to complete the payment:</p>
                                             <p>1. Open your GCash mobile app.</p>
                                             <p>2. Select 'Send Money' from the main menu.</p>

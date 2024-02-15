@@ -4,7 +4,7 @@
 <base href="/public">
 @include('YearnArt.css')
 <link rel="stylesheet" href="assets/">
-<link rel="stylesheet" href="assets/css/order_tracking.css">
+<link rel="stylesheet" href="assets/css/S-order-tracking.css">
 
 </head>
 
@@ -18,7 +18,7 @@
 </div>
 <section class="custom-section">
     <div class="order-tracking-status">
-        <img src="assets\image\OrderTrackingSpecific\On-Process-SOrder.png" alt="" style="height: 19vh; width: auto;">
+        <img src="assets\image\OrderTrackingSpecific\On-Process-SOrder.png" alt="" >
     </div>
             <div class="order-container">
                 <!-- Loop through your order data here -->
@@ -38,22 +38,23 @@
                                 <p>
                                     {{$order->order_status}}
                                 </p>
+                                <div class="pos-price">
+                                    <p class="total-1">Downpayment: </p>
+                                    <p class="price-num-1">Paid</p>
                             </div>
-                            <div >
-                                <p>Downpayment: </p>
-                                <p>Paid</p>
                             </div>
+                            
                         </div>
 
                         <div class="line"></div>
 
                         <div class="lower-part">
-                            <div>
-                                <p class="paragraph">
+                            <div class="main-description">
+                                <div class="paragraph-1">
                                     Thank you for placing your order with us. We wanted to inform you that the processing time for your product(s) will depend on the quantity ordered. For a single product, it will take approximately  {{$order->processing_time}} to complete. <br>
                                     We want to ensure that your crochet masterpiece is crafted with utmost care and attention to detail. The time required for processing multiple products may be longer due to the additional complexity and quantity involved. <br>
                                     Please feel free to take your time and reach out to us if you have any questions or concerns.
-                                </p>
+                                </div>
                             </div>
 
                             <div class="pos-price">
