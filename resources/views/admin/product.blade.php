@@ -67,58 +67,39 @@
                                 <input type="text" name="product_description" placeholder="Product Description"id="" required="" autocomplete="off">
                             </div>
 
-                            {{-- <div class="size-inputs">
-                                <label for="size">Sizes:</label>
-
-                                $sizeNames = ['Extra Small', 'Small', 'Medium', 'Large', 'Extra Large', '2 Extra Large', '3 Extra Large', '4 Extra Large', '5 Extra Large'];
-                                for ($i = 0; $i < 9; $i++):
-
-                            </div> --}}
-                            <div class="size-inputs">
-                                <label for="size">Sizes:</label>
-
-                                <div class="size-input">
-                                    <input type="text" name="extra_small" value="Extra Small" readonly>
-                                    <input type="number" name="extra_small_price" placeholder="Extra Small Price" autocomplete="off">
-                                </div>
-                                <div class="size-input">
-                                    <input type="text" name="small" value="Small" readonly required>
-                                    <input type="number" name="small_price" placeholder="Small Price" required autocomplete="off">
-                                </div>
-                                <div class="size-input">
-                                    <input type="text" name="medium" value="Medium" readonly required>
-                                    <input type="number" name="medium_price" placeholder="Medium Price" required autocomplete="off">
-                                </div>
-                                <div class="size-input">
-                                    <input type="text" name="large" value="Large" readonly required>
-                                    <input type="number" name="large_price" placeholder="Large Price" required autocomplete="off">
-                                </div>
-                                <div class="size-input">
-                                    <input type="text" name="extra_large" value="Extra Large" readonly>
-                                    <input type="number" name="i_extra_large_price" placeholder="Extra Large Price" autocomplete="off">
-                                </div>
-                                <div class="size-input">
-                                    <input type="text" name="2_extra_large" value="2 Extra Large" readonly>
-                                    <input type="number" name="ii_extra_large_price" placeholder="2 Extra Large Price" autocomplete="off">
-                                </div>
-                                <div class="size-input">
-                                    <input type="text" name="3_extra_large" value="3 Extra Large" readonly>
-                                    <input type="number" name="iii_extra_large_price" placeholder="3 Extra Large Price" autocomplete="off">
-                                </div>
-                                <div class="size-input">
-                                    <input type="text" name="4_extra_large" value="4 Extra Large" readonly>
-                                    <input type="number" name="iiii_extra_large_price" placeholder="4 Extra Large Price" autocomplete="off">
-                                </div>
-                                <div class="size-input">
-                                    <input type="text" name="5_extra_large" value="5 Extra Large" readonly>
-                                    <input type="number" name="iiiii_extra_large_price" placeholder="5 Extra Large Price" autocomplete="off">
-                                </div>
-                            </div>
-
+                            
 
                             <div class="process-time">
-                                <input class="text_color" type="number" name="processing_time" placeholder="Processing Time"id="" required="" autocomplete="off">
+                                <input class="text_color" type="number" name="processing_time" placeholder="Processing Time (weeks)" id="" required="" autocomplete="off">
                             </div>
+
+                            <label for="size">Sizes:</label>
+                            <div class="size-inputs">
+                                <div class="size-input">
+                                    <div class="size-label">
+                                        Small:
+                                    </div>
+                                    <input type="text" name="small_price" placeholder="Size" required autocomplete="off">
+                                    <input type="number" id="integerInput" name="small_price" placeholder="Price" required autocomplete="off">
+                                </div>
+                                <div class="size-input">
+                                    <div class="size-label">
+                                        Medium:
+                                    </div>
+                                    <input type="text" name="medium_price" placeholder="Size" required autocomplete="off">
+                                    <input type="number" id="integerInput" name="medium_price" placeholder="Price" required autocomplete="off">
+                                </div>
+                                <div class="size-input">
+                                    <div class="size-label">
+                                        Large:
+                                    </div>
+                                    <input type="text" name="large_price" placeholder="Size" required autocomplete="off">
+                                    <input type="number" id="integerInput" name="large_price" placeholder="Price" required autocomplete="off">
+                                </div>
+                            </div>
+
+
+                            
                     </div>
                 </div>
 
@@ -172,8 +153,18 @@
                 localStorage.removeItem('imageData');
             });
 
+            document.getElementById("integerInput").addEventListener("input", function(event) {
+        let input = event.target.value;
+        // Remove leading zeros
+        input = input.replace(/^0+/, '');
+        // Remove non-numeric characters except -
+        input = input.replace(/\D/g, '');
+        event.target.value = input;
+    });
 
         </script>
+
+        
 
     <!-- container-scroller -->
     <!-- plugins:js -->

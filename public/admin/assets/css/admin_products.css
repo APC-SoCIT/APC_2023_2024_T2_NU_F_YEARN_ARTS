@@ -73,6 +73,38 @@ body{
     opacity: .6;
 }
 
+.size-inputs{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.size-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 30px;
+    gap: 50px;
+}
+
+.size-input input{
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #9c7c77;
+}
+
+.size-input input::placeholder {
+    color: #7D5452; 
+    opacity: .6;
+}
+
+.size-label{
+    width: 50px;
+    opacity: .7;
+}
+
 .process-time input {
     appearance: none;
     background-color: transparent;
@@ -80,6 +112,7 @@ body{
     font-size: 1.2em;
     border-bottom: 2px solid #9c7c77;
     margin-bottom: 20px;
+    width: 300px;
 }
 
 .process-time input::placeholder {
