@@ -7,7 +7,16 @@
     <div class="menu">
         <div class="menu-links">
             <a href="Products" class="Products">Products</a>
+            @if (Route::has('login'))
+
+            @auth
             <a href="{{url('/show_orders')}}" class="Orders">My Orders</a>
+            @else
+
+            @endauth
+
+            @endif
+
             {{-- <a href="{{url('/show_cart')}}" class="Orders">My Orders</a> --}}
             <a href="{{url('/About')}}" class="About">About Us</a>
             <a href="FAQ" class="FAQ">FAQ</a>
