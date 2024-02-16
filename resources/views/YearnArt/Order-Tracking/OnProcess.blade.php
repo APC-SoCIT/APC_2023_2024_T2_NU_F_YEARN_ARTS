@@ -31,6 +31,7 @@
                         <div class="order-details">
                             <p class="product-names">{{ $order->product_name }}</p>
                             <p class="order-info">Variation: x{{ $order->quantity }}</p>
+                            <p class="order-info">Order ID: {{ $order->order_id }}</p>
                         </div>
 
                         <div class="order-stats">
