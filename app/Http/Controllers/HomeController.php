@@ -87,26 +87,18 @@ class HomeController extends Controller
             $cart->quantity=$request->quantity;
             $cart->primaryclr=$request->colorOption;
             $cart->secondaryclr=$request->secondaryColor;
-            $cart->size=$request->sizeOption;
+        
 
             if ($request->sizeOption == 'small' && $products->small_price !== null) {
                 $cart->price = $products->small_price;
+                $cart->size = $products->small_size;
             } elseif ($request->sizeOption == 'medium' && $products->medium_price !== null) {
                 $cart->price = $products->medium_price;
+                $cart->size = $products->medium_size;
             } elseif ($request->sizeOption == 'large' && $products->large_price !== null) {
                 $cart->price = $products->large_price;
-            } elseif ($request->sizeOption == 'extra_small' && $products->extra_small_price !== null) {
-                $cart->price = $products->extra_small_price;
-            } elseif ($request->sizeOption == 'i_extra_large' && $products->i_extra_large_price !== null) {
-                $cart->price = $products->i_extra_large_price;
-            } elseif ($request->sizeOption == 'ii_extra_large' && $products->ii_extra_large_price !== null) {
-                $cart->price = $products->ii_extra_large_price;
-            } elseif ($request->sizeOption == 'iii_extra_large' && $products->iii_extra_large_price !== null) {
-                $cart->price = $products->iii_extra_large_price;
-            } elseif ($request->sizeOption == 'iiii_extra_large' && $products->iiii_extra_large_price !== null) {
-                $cart->price = $products->iiii_extra_large_price;
-            } elseif ($request->sizeOption == 'iiiii_extra_large' && $products->iiiii_extra_large_price !== null) {
-                $cart->price = $products->iiiii_extra_large_price;
+                $cart->size = $products->large_size;
+
             } else {
                 // Handle the case where sizeOption does not match any condition
                 // You may want to set a default price or handle it as needed

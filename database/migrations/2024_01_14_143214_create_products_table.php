@@ -16,15 +16,12 @@ return new class extends Migration
             $table->string('product_name')->nullable();
             $table->string('category')->nullable();
             $table->string('product_description')->nullable();
-            $table->string('extra_small_price')->nullable();
             $table->string('small_price')->nullable();
             $table->string('medium_price')->nullable();
             $table->string('large_price')->nullable();
-            $table->string('i_extra_large_price')->nullable();
-            $table->string('ii_extra_large_price')->nullable();
-            $table->string('iii_extra_large_price')->nullable();
-            $table->string('iiii_extra_large_price')->nullable();
-            $table->string('iiiii_extra_large_price')->nullable();
+            $table->string('small_size')->nullable();
+            $table->string('medium_size')->nullable();
+            $table->string('large_size')->nullable();
             $table->string('processing_time')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();

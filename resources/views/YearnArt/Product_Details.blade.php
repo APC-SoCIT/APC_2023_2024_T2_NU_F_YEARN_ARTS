@@ -12,16 +12,16 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    
+
     @include('YearnArt.css')
-     
-    
+
+
 
 </head>
 
 <body>
     @include('home.header')
-    
+
 
             @if(session()->has('message'))
 
@@ -46,10 +46,13 @@
                             Description: {{$products->product_description}}
                         </p>
                         <p class="price" id="price">
-                            ₱{{ number_format($products->small_price, 2) }}
+                            ₱{{ number_format($products->medium_price, 2) }}
                         </p>
                         <p class="names">
                             Processing Time: {{$products->processing_time}}
+                        </p>
+                        <p  id="size" class="names">
+                            Size: {{$products->medium_size}}
                         </p>
                         <p class="names">
                             Color:
@@ -145,28 +148,10 @@
                             <p>Size:
                                 <div>
                                     <select name="sizeOption" id="sizeOption" class="size-option" required="" onchange="updatePrice(this.value)" style="outline: none;">
-                                        @if ($products->extra_small_price !== null)
-                                        <option value="extra_small">Extra Small</option>
-                                        @endif
-                                        <option value="small" selected>Small</option>
-                                        <option value="medium">Medium</option>
+                                        <option value="small" >Small</option>
+                                        <option value="medium" selected>Medium</option>
                                         <option value="large">Large</option>
                                         <!-- Add more size options as needed -->
-                                        @if ($products->i_extra_large_price !== null)
-                                        <option value="i_extra_large">Extra Large</option>
-                                        @endif
-                                        @if ($products->ii_extra_large_price !== null)
-                                        <option value="ii_extra_large">2 Extra Large</option>
-                                        @endif
-                                        @if ($products->iii_extra_large_price !== null)
-                                        <option value="iii_extra_large">3 Extra Large</option>
-                                        @endif
-                                        @if ($products->iiii_extra_large_price !== null)
-                                        <option value="iiii_extra_large">4 Extra Large</option>
-                                        @endif
-                                        @if ($products->iiiii_extra_large_price !== null)
-                                        <option value="iiiii_extra_large">5 Extra Large</option>
-                                        @endif
                                     </select>
                                 </div>
                             </p>
@@ -181,7 +166,7 @@
                     </div>
                 </div>
             </form>
-       
+
     <script src="assets/javascript/home.js"></script>
     @include ('YearnArt.chatbot')
     @include ('YearnArt.script')
@@ -190,10 +175,10 @@
          document.addEventListener('DOMContentLoaded', function () {
         // Set the first color and size options as default
         const defaultColorOption = document.getElementById('colorOption1');
-        const defaultSizeOption = document.getElementById('sizeOptionSmall');
+        const defaultSizeOption = document.getElementById('sizeOptionMedium');
         const defaultSecondaryColorOption = document.getElementById('secondaryColorOption1');
         defaultColorOption.checked = true;
-
+        defaultSizeOption.checked = true;
         defaultSecondaryColorOption.checked = true;
 
         // Trigger change event to update selected style
@@ -203,6 +188,10 @@
         defaultColorOption.dispatchEvent(colorChangeEvent);
         defaultSizeOption.dispatchEvent(sizeChangeEvent);
         defaultSecondaryColorOption.dispatchEvent(secondaryColorChangeEvent);
+
+        sizeOptions.forEach(option => {
+        option.addEventListener('change', updateSelectedSize);
+    });
 
         // Trigger updatePrice function for the initial size
         updatePrice(defaultSizeOption.value);
@@ -233,39 +222,28 @@
                 const optionsOfType = document.querySelectorAll(`[name="${event.target.name}"]`);
                 optionsOfType.forEach(option => option.nextElementSibling.classList.remove('selected'));
 
-                selectedLabel.classList.add('selected');
+                const sizeLabels = document.querySelectorAll('.size-option-label');
+                sizeLabels.forEach(label => label.classList.remove('selected-size'));
+
+                selectedLabel.classList.add('selected-size');
             }
         }
 
     function updatePrice(size) {
     const priceElement = document.getElementById('price');
+    const sizeElement = document.getElementById('size');
     switch (size) {
-        case 'extra_small':
-            priceElement.textContent = '₱{{ number_format($products->extra_small_price, 2) }}';
-            break;
         case 'small':
             priceElement.textContent = '₱{{ number_format($products->small_price, 2) }}';
+            sizeElement.textContent = 'Size: {{$products->small_size}}';
             break;
         case 'medium':
             priceElement.textContent = '₱{{ number_format($products->medium_price, 2) }}';
+            sizeElement.textContent = 'Size: {{$products->medium_size}}';
             break;
         case 'large':
             priceElement.textContent = '₱{{ number_format($products->large_price, 2) }}';
-            break;
-        case 'i_extra_large':
-            priceElement.textContent = '₱{{ number_format($products->i_extra_large_price, 2) }}';
-            break;
-        case 'ii_extra_large':
-            priceElement.textContent = '₱{{ number_format($products->ii_extra_large_price, 2) }}';
-            break;
-        case 'iii_extra_large':
-            priceElement.textContent = '₱{{ number_format($products->iii_extra_large_price, 2) }}';
-            break;
-        case 'iiii_extra_large':
-            priceElement.textContent = '₱{{ number_format($products->iiii_extra_large_price, 2) }}';
-            break;
-        case 'iiiii_extra_large':
-            priceElement.textContent = '₱{{ number_format($products->iiiii_extra_large_price, 2) }}';
+            sizeElement.textContent = 'Size: {{$products->large_size}}';
             break;
         default:
             // Handle other cases if needed
