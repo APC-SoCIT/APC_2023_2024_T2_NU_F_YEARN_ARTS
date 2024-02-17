@@ -87,7 +87,7 @@ class HomeController extends Controller
             $cart->quantity=$request->quantity;
             $cart->primaryclr=$request->colorOption;
             $cart->secondaryclr=$request->secondaryColor;
-        
+
 
             if ($request->sizeOption == 'small' && $products->small_price !== null) {
                 $cart->price = $products->small_price;
@@ -159,7 +159,7 @@ class HomeController extends Controller
 
             $order=new order;
 
-            $totalPrice = $data->price * $quantity;
+           
 
                 $order->name=$data->name;
                 $order->email=$data->email;
@@ -171,7 +171,7 @@ class HomeController extends Controller
                 $order->order_id = $orderId;
                 $order->product_name=$data->product_name;
                 $order->quantity = $quantity;
-                $order->price = $totalPrice;
+                $order->price = $data->price;
                 $order->image=$data->image;
                 $order->processing_time=$data->processing_time;
                 $order->primaryclr=$data->primaryclr;

@@ -27,9 +27,9 @@
                                             <p class="customer-name">{{ $order->name }}</p>
                                             <p class="customer-num">1</p>
                                         </div>
-                                        
-                                        
-                                        
+
+
+
                                         <div class="column-2">
                                             <div>
                                                 <img src="{{ asset('product/' . $order->image) }}" class="img-fluid" alt="{{ $order->product_name }}">
@@ -37,7 +37,7 @@
                                             <div class="product-details">
                                                 <p class="product-name">{{ $order->product_name }}</p>
                                                 <p class="order-info">Quantity: {{ $order->quantity }}</p>
-                                                
+
                                                 <p class="order-info">Order Status:  @if($order->order_status=='Order Placed')
                                                         Pending
                                                     @else
@@ -48,7 +48,8 @@
                                         </div>
 
                                         <div class="column-3">
-                                            <p class="order-info">Order Total: <b>₱{{ $order->price }}</b></p>
+                                            <p>Unit Price: ₱{{ number_format($order->price, 2) }}</p>
+                                            <p class="order-info">Order Total: <b>₱{{ number_format($order->price * $order->quantity, 2) }}</b></p>
                                         </div>
 
                                             <!-- Add buttons inside each order -->
@@ -63,7 +64,7 @@
                                                 <a href="{{url('to_ship', $order->id)}}" class="btn btn-success" onclick="return confirm('Are you sure this order can be made?')">Paid</a>
                                                 @endif
                                             </div>
-                                    
+
                                 </div>
                             @endif
                         @endforeach

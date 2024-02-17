@@ -75,7 +75,7 @@
 
 
                         <td>{{$order->product_name}}</td>
-                        <td>{{$order->price}}</td>
+                        <td>₱{{ number_format($order->price * $order->quantity, 2) }}</td>
                         <td>{{$order->quantity}}</td>
                         <td>{{$order->processing_time}}</td>
                         <td style="background-color: {{$order->primaryclr}}"></td>

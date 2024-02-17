@@ -44,7 +44,7 @@ route::get('/track_Sorder/{id}',[HomeController::class,'track_Sorder']);
 route::get('/receive_order/{id}',[HomeController::class,'receive_order']);
 
 
-
+route::get('/home',[HomeController::class,'home'])->middleware('auth', 'verified');
 
 Route::middleware([
     'auth:sanctum',
@@ -82,7 +82,7 @@ Route::get('/FAQ', function () {
 
 
 //ADMIN SIDE
-route::get('/home',[HomeController::class,'home']);
+
 route::get('/admin_dashboard',[AdminController::class,'admin_dashboard']);
 route::get('/view_category',[AdminController::class,'view_category']);
 route::post('/add_category',[AdminController::class,'add_category']);

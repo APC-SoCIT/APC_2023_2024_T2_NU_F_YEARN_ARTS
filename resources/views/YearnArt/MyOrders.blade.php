@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -120,12 +120,12 @@
 
                 @endforeach
 
-                
+
             </div>
 
             {{-- Existing JavaScript and other code --}}
         </div>
-    </form>
+
 
     <footer>
         <div class="container-footer">
@@ -142,13 +142,13 @@
             <div class="total-prices">
                 <span id="totalItems">₱0</span>
             </div>
-            <div class="btn-submit"> 
+            <div class="btn-submit">
                     <button type="submit"  onclick="return confirm('Please be advised that the estimated delivery time for your order is anticipated to be between 2 to 3 weeks, although it may vary depending on the number of products you have ordered. Our team is working diligently to fulfill each order in a timely manner, ensuring that each item is carefully packaged and delivered to you in pristine condition.')">Check Out</button>
                 </div>
         </div>
     </footer>
 
-
+</form>
 {{-- SCRIPTTT --}}
 <script src="assets/javascript/home.js"></script>
 
