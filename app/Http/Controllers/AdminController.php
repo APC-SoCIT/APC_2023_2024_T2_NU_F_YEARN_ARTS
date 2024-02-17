@@ -7,6 +7,12 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Order;
 
+
+use Illuminate\Support\Facades\Notification;
+
+use App\Notifications\YearnArtNotification;
+
+
 class AdminController extends Controller
 {
 
@@ -141,11 +147,20 @@ class AdminController extends Controller
 
     public function to_dpay($id){
 
-        $order=order::find($id);
-
-        $order->order_status="Downpayment";
-
+        $order = Order::find($id); // Assuming your model is named Order, not order
+        $order->order_status = "Downpayment";
         $order->save();
+
+        $details = [
+            'subject' => 'Down Payment Requirement',
+            'greeting' => 'greeting',
+            'firstline' => 'firstline',
+            'button' => 'button',
+            'url' => 'url',
+            'lastline' => 'lastline',
+        ];
+
+        Notification::send($order, new YearnArtNotification($details));
 
         return redirect()->back();
     }
@@ -157,6 +172,18 @@ class AdminController extends Controller
 
         $order->save();
 
+        $details = [
+            'subject' => 'Downpayment Paid',
+            'greeting' => 'greeting',
+            'firstline' => 'firstline',
+            'button' => 'button',
+            'url' => 'url',
+            'lastline' => 'lastline',
+        ];
+
+        Notification::send($order, new YearnArtNotification($details));
+
+
         return redirect()->back();
     }
     public function to_fpay($id){
@@ -166,6 +193,16 @@ class AdminController extends Controller
         $order->order_status="To Pay";
 
         $order->save();
+        $details = [
+            'subject' => 'On Process Done (Mag babayad na)',
+            'greeting' => 'greeting',
+            'firstline' => 'firstline',
+            'button' => 'button',
+            'url' => 'url',
+            'lastline' => 'lastline',
+        ];
+
+        Notification::send($order, new YearnArtNotification($details));
 
         return redirect()->back();
     }
@@ -174,8 +211,20 @@ class AdminController extends Controller
         $order=order::find($id);
 
         $order->order_status="Shipping";
-
         $order->save();
+
+        $details = [
+            'subject' => 'Downpayment Done (Will Ship)',
+            'greeting' => 'greeting',
+            'firstline' => 'firstline',
+            'button' => 'button',
+            'url' => 'https://www.youtube.com/watch?v=WI5dHACiOjQ&list=PLm8sgxwSZofdIdWQxDhg3HUplNJIZRjqb&index=20  ',
+            'lastline' => 'lastline',
+        ];
+
+        Notification::send($order, new YearnArtNotification($details));
+
+
 
         return redirect()->back();
     }
