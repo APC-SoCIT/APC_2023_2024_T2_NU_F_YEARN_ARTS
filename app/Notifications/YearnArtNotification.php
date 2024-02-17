@@ -40,7 +40,7 @@ class YearnArtNotification extends Notification
                     ->subject($this->details['subject'])
                     ->greeting($this->details['greeting'])
                     ->line($this->details['firstline'])
-                    ->line($this->details['button'] , $this->details['url'])
+                    ->action($this->details['button'] , $this->details['url'])
                     ->line($this->details['lastline']);
     }
 

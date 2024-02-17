@@ -155,8 +155,8 @@ class AdminController extends Controller
             'subject' => 'Down Payment Requirement',
             'greeting' => 'greeting',
             'firstline' => 'firstline',
-            'button' => 'button',
-            'url' => 'url',
+            'button' => 'Track Order',
+            'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
             'lastline' => 'lastline',
         ];
 
@@ -176,8 +176,8 @@ class AdminController extends Controller
             'subject' => 'Downpayment Paid',
             'greeting' => 'greeting',
             'firstline' => 'firstline',
-            'button' => 'button',
-            'url' => 'url',
+            'button' => 'Track Order',
+            'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
             'lastline' => 'lastline',
         ];
 
@@ -197,8 +197,8 @@ class AdminController extends Controller
             'subject' => 'On Process Done (Mag babayad na)',
             'greeting' => 'greeting',
             'firstline' => 'firstline',
-            'button' => 'button',
-            'url' => 'url',
+            'button' => 'Track Order',
+            'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
             'lastline' => 'lastline',
         ];
 
@@ -217,8 +217,8 @@ class AdminController extends Controller
             'subject' => 'Downpayment Done (Will Ship)',
             'greeting' => 'greeting',
             'firstline' => 'firstline',
-            'button' => 'button',
-            'url' => 'https://www.youtube.com/watch?v=WI5dHACiOjQ&list=PLm8sgxwSZofdIdWQxDhg3HUplNJIZRjqb&index=20  ',
+            'button' => 'Track Order',
+            'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
             'lastline' => 'lastline',
         ];
 
