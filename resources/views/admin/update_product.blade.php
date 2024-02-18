@@ -28,7 +28,7 @@
 
                 @endif
 
-                <form action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{url('/update_product_confirm', $product->id)}}" method="POST" enctype="multipart/form-data">
                 <div class="div-main">
 
                     <div class="child1">
@@ -49,14 +49,14 @@
 
                     <div class="child2">
                             <div class="product-name">
-                                <input type="text" name="product_name" placeholder="Product Name" id="" required="" autocomplete="off">
+                                <input type="text" name="product_name" value="{{$product->product_name}}" placeholder="Product Name" id="" required="" autocomplete="off">
                             </div>
 
                         @csrf
 
                             <div class="product-type">
                                 <select name="category" id="" required="" >
-                                <option value="" selected="">Product Type</option>
+                                <option value="{{$product->category}}" selected="">{{$product->category}}</option>
                                 @foreach($category as $category)
                                 <option value="{{$category->category_name}}">{{$category->category_name}}</option>
                                 @endforeach
@@ -65,13 +65,13 @@
                             </div>
 
                             <div class="product-description">
-                                <input type="text" name="product_description" placeholder="Product Description"id="" required="" autocomplete="off">
+                                <input type="text" value="{{$product->product_description}}"  name="product_description" placeholder="Product Description"id="" required="" autocomplete="off">
                             </div>
 
 
 
                             <div class="process-time">
-                                <input class="text_color" id="integerInput" type="number" name="processing_time" placeholder="Processing Time (weeks)" id="" required="" autocomplete="off">
+                                <input class="text_color"  value="{{$product->processing_time}}" id="integerInput" type="number" name="processing_time" placeholder="Processing Time (weeks)" id="" required="" autocomplete="off">
                             </div>
 
                             <label for="size">Sizes:</label>
@@ -80,22 +80,22 @@
                                     <div class="size-label">
                                         Small:
                                     </div>
-                                    <input type="text" name="small_size" placeholder="Size" required autocomplete="off">
-                                    <input type="number" id="smallIntegerInput" name="small_price" placeholder="Price" required autocomplete="off">
+                                    <input type="text" value="{{$product->small_size}}"  name="small_size" placeholder="Size" required autocomplete="off">
+                                    <input type="number" value="{{$product->small_price}}"  id="smallIntegerInput" name="small_price" placeholder="Price" required autocomplete="off">
                                 </div>
                                 <div class="size-input">
                                     <div class="size-label">
                                         Medium:
                                     </div>
-                                    <input type="text" name="medium_size" placeholder="Size" required autocomplete="off">
-                                    <input type="number" id="mediumIntegerInput" name="medium_price" placeholder="Price" required autocomplete="off">
+                                    <input type="text"  value="{{$product->medium_size}}" name="medium_size" placeholder="Size" name="medium_size" required autocomplete="off">
+                                    <input type="number"  value="{{$product->medium_price}}" id="mediumIntegerInput" name="medium_price" placeholder="Price" required autocomplete="off">
                                 </div>
                                 <div class="size-input">
                                     <div class="size-label">
                                         Large:
                                     </div>
-                                    <input type="text" name="large_size" placeholder="Size" required autocomplete="off">
-                                    <input type="number" id="largeIntegerInput" name="large_price" placeholder="Price" required autocomplete="off">
+                                    <input type="text" value="{{$product->large_size}}" name="large_size" placeholder="Size" required autocomplete="off">
+                                    <input type="number" value="{{$product->large_size}}" id="largeIntegerInput" name="large_price" placeholder="Price" required autocomplete="off">
                                 </div>
                             </div>
 

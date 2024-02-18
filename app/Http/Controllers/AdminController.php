@@ -96,18 +96,15 @@ class AdminController extends Controller
 
 
         $product->product_name=$request->product_name;
-        $product->category=$request->category;
         $product->product_description=$request->product_description;
-        $product->extra_small_price=$request->extra_small_price;
         $product->small_price=$request->small_price;
         $product->medium_price=$request->medium_price;
         $product->large_price=$request->large_price;
-        $product->i_extra_large_price=$request->i_extra_large_price;
-        $product->ii_extra_large_price=$request->ii_extra_large_price;
-        $product->iii_extra_large_price=$request->iii_extra_large_price;
-        $product->iiii_extra_large_price=$request->iiii_extra_large_price;
-        $product->iiiii_extra_large_price=$request->iiiii_extra_large_price;
+        $product->small_size=$request->small_size;
+        $product->medium_size=$request->medium_size;
+        $product->large_size=$request->large_size;
         $product->processing_time=$request->processing_time;
+        $product->category=$request->category;
 
         $image = $request->image;
         if($image){
