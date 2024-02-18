@@ -70,7 +70,7 @@
 
 
                             <div class="process-time">
-                                <input class="text_color" type="number" name="processing_time" placeholder="Processing Time (weeks)" id="" required="" autocomplete="off">
+                                <input class="text_color" id="integerInput" type="number" name="processing_time" placeholder="Processing Time (weeks)" id="" required="" autocomplete="off">
                             </div>
 
                             <label for="size">Sizes:</label>
@@ -80,21 +80,21 @@
                                         Small:
                                     </div>
                                     <input type="text" name="small_size" placeholder="Size" required autocomplete="off">
-                                    <input type="number" id="integerInput" name="small_price" placeholder="Price" required autocomplete="off">
+                                    <input type="number" id="smallIntegerInput" name="small_price" placeholder="Price" required autocomplete="off">
                                 </div>
                                 <div class="size-input">
                                     <div class="size-label">
                                         Medium:
                                     </div>
                                     <input type="text" name="medium_size" placeholder="Size" required autocomplete="off">
-                                    <input type="number" id="integerInput" name="medium_price" placeholder="Price" required autocomplete="off">
+                                    <input type="number" id="mediumIntegerInput" name="medium_price" placeholder="Price" required autocomplete="off">
                                 </div>
                                 <div class="size-input">
                                     <div class="size-label">
                                         Large:
                                     </div>
                                     <input type="text" name="large_size" placeholder="Size" required autocomplete="off">
-                                    <input type="number" id="integerInput" name="large_price" placeholder="Price" required autocomplete="off">
+                                    <input type="number" id="largeIntegerInput" name="large_price" placeholder="Price" required autocomplete="off">
                                 </div>
                             </div>
 
@@ -153,14 +153,19 @@
                 localStorage.removeItem('imageData');
             });
 
-            document.getElementById("integerInput").addEventListener("input", function(event) {
-        let input = event.target.value;
-        // Remove leading zeros
-        input = input.replace(/^0+/, '');
-        // Remove non-numeric characters except -
-        input = input.replace(/\D/g, '');
-        event.target.value = input;
-    });
+
+            function handleIntegerInput(event) {
+                let input = event.target.value;
+                // Remove leading zeros
+                input = input.replace(/^0+/, '');
+                // Remove non-numeric characters except -
+                input = input.replace(/\D/g, '');
+                event.target.value = input;
+            }
+            document.getElementById("integerInput").addEventListener("input", handleIntegerInput);
+            document.getElementById("smallIntegerInput").addEventListener("input", handleIntegerInput);
+            document.getElementById("mediumIntegerInput").addEventListener("input", handleIntegerInput);
+            document.getElementById("largeIntegerInput").addEventListener("input", handleIntegerInput);
 
         </script>
 
