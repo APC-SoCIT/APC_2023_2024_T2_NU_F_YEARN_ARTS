@@ -104,7 +104,7 @@ class AdminController extends Controller
         $product->medium_size=$request->medium_size;
         $product->large_size=$request->large_size;
         $product->processing_time=$request->processing_time;
-        $product->category=$request->category;  
+        $product->category=$request->category;
 
         $image = $request->image;
         if($image){
@@ -227,7 +227,13 @@ class AdminController extends Controller
     }
 
 
+    public function customer_list(){
+        $order=order::all();
 
+
+
+        return view ('admin.customerlist', compact('order'));
+    }
 
 
 }
