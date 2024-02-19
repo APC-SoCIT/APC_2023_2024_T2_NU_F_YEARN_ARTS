@@ -51,7 +51,7 @@
                         <p class="names">
                             Processing Time: {{$products->processing_time}}
                         </p>
-                       
+
                         <p class="names">
                             Color:
                         </p>
@@ -134,7 +134,7 @@
                                             style="background-color: #D46BD6"></label>
 
                                         <input type="radio" name="secondaryColor" id="secondaryColorOption7"
-                                            value="rgba(255, 255, 255, 0.00);" class="color-option" style="display: none;">
+                                            value="none" class="color-option" style="display: none;">
                                         <label for="secondaryColorOption7"
                                             class="color-option-label color-none"></label>
                                     </div>
@@ -177,10 +177,10 @@
         // Set the first color and size options as default
         const defaultColorOption = document.getElementById('colorOption1');
         const defaultSizeOption = document.getElementById('sizeOptionMedium');
-        const defaultSecondaryColorOption = document.getElementById('secondaryColorOption1');
-        defaultColorOption.checked = true;
+        const defaultSecondaryColorOption = document.getElementById('secondaryColorOption7');
+        defaultColorOption.selected = true;
         defaultSizeOption.checked = true;
-        defaultSecondaryColorOption.checked = true;
+        defaultSecondaryColorOption.selected = true;
 
         // Trigger change event to update selected style
         const colorChangeEvent = new Event('change');
@@ -200,9 +200,9 @@
 
         // Add event listeners to update selected style for color options
         const colorOptions = document.querySelectorAll('.color-option');
-        colorOptions.forEach(option => {
-            option.addEventListener('change', updateSelectedStyle);
-        });
+            colorOptions.forEach(option => {
+                option.addEventListener('change', updateSelectedStyle);
+            });
 
         // Add event listeners to update selected style for size options
         const sizeOptions = document.querySelectorAll('.size-option');
@@ -216,17 +216,15 @@
             option.addEventListener('change', updateSelectedStyle);
         });
 
-        function updateSelectedStyle(event) {
+         function updateSelectedStyle(event) {
             const selectedLabel = document.querySelector(`[for="${event.target.id}"]`);
             if (event.target.checked) {
                 // Remove 'selected' class from all labels of the same type
                 const optionsOfType = document.querySelectorAll(`[name="${event.target.name}"]`);
                 optionsOfType.forEach(option => option.nextElementSibling.classList.remove('selected'));
 
-                const sizeLabels = document.querySelectorAll('.size-option-label');
-                sizeLabels.forEach(label => label.classList.remove('selected-size'));
-
-                selectedLabel.classList.add('selected-size');
+                // Add 'selected' class to the selected label
+                selectedLabel.classList.add('selected');
             }
         }
 

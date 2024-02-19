@@ -58,9 +58,7 @@ class HomeController extends Controller
 
 
     // PAg naka login yung users
-    $usertype=Auth::user()->usertype;
-    $products=Product::all();
-    return view('YearnArt.Products_Details',compact('products'));
+  
 
     }
 
@@ -159,7 +157,7 @@ class HomeController extends Controller
 
             $order=new order;
 
-           
+
 
                 $order->name=$data->name;
                 $order->email=$data->email;
