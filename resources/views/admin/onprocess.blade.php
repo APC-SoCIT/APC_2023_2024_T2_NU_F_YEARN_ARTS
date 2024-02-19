@@ -3,7 +3,6 @@
 <head>
     @include('admin.css')
     <link rel="stylesheet" href="admin/assets/css/admin_onprocess.css">
-    <link rel="stylesheet" href="admin/assets/css/ordertracking.css">
 </head>
 <body>
 

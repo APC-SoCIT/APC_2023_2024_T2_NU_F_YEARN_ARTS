@@ -3,32 +3,7 @@
   <head>
     <title>Yearn Art | Order</title>
    @include('admin.css')
-   <style>
-    .title-deg {
-        text-align: center;
-        font-size: 25px;
-        font-weight: bold;
-    }
-    .table-deg {
-        border: 2px solid white;
-        width: 100%; /* Set the width of the table */
-        margin: auto;
-        text-align: center;
-        table-layout: fixed; /* Ensure fixed layout */
-    }
-    .table-deg th, .table-deg td {
-        width: auto; /* You can set fixed widths for each column as needed */
-        padding: 10px; /* Add padding for better appearance */
-        word-wrap: break-word; /* Allow word wrapping for long content */
-    }
-    .img-size{
-        width: 100px;
-        height: 100px;
-    }
-    .th-deg{
-        background: #FAC6BF;
-    }
-   </style>
+   <link rel="stylesheet" href="admin/assets/css/admin_ordertracking.css">
 
   </head>
   <body>
