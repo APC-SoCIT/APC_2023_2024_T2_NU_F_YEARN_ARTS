@@ -51,9 +51,7 @@
                         <p class="names">
                             Processing Time: {{$products->processing_time}}
                         </p>
-                        <p  id="size" class="names">
-                            Size: {{$products->medium_size}}
-                        </p>
+                       
                         <p class="names">
                             Color:
                         </p>
@@ -155,6 +153,9 @@
                                     </select>
                                 </div>
                             </p>
+                            <p  id="size">
+                            {{$products->medium_size}}
+                        </p>
                         </div>
 
                         <p class="names">Quantity:
@@ -235,15 +236,15 @@
     switch (size) {
         case 'small':
             priceElement.textContent = '₱{{ number_format($products->small_price, 2) }}';
-            sizeElement.textContent = 'Size: {{$products->small_size}}';
+            sizeElement.textContent = '{{$products->small_size}}';
             break;
         case 'medium':
             priceElement.textContent = '₱{{ number_format($products->medium_price, 2) }}';
-            sizeElement.textContent = 'Size: {{$products->medium_size}}';
+            sizeElement.textContent = '{{$products->medium_size}}';
             break;
         case 'large':
             priceElement.textContent = '₱{{ number_format($products->large_price, 2) }}';
-            sizeElement.textContent = 'Size: {{$products->large_size}}';
+            sizeElement.textContent = '{{$products->large_size}}';
             break;
         default:
             // Handle other cases if needed
