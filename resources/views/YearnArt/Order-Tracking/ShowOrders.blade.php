@@ -48,10 +48,15 @@
 
                     <div class="lower-part">
                         <div class="pos-price">
-                                <p class="total">Unit Price:</p>
-                                <p class="price-num">₱{{ number_format($order->price, 2) }}</p>
+                            <div class="pos-unit-price">
+                                <p class="total-1">Unit Price:</p>
+                                <p class="price-num-1">₱{{ number_format($order->price, 2) }}</p>
+                            </div>
+                            <div class="pos-total-price">
                                 <p class="total">TOTAL:</p>
                                 <p class="price-num">₱{{ number_format($order->price * $order->quantity, 2) }}</p>
+                            </div>
+                                
                         </div>
 
                         <div class="buttons">

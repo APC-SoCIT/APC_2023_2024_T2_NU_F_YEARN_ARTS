@@ -17,9 +17,9 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <h1 class="title-deg">All Orders</h1>
-                <table class="table-deg">
+                <table class="main-table">
                     <tr>
+                        <th class="th-deg">No.</th>
                         <th class="th-deg">Name</th>
                         <th class="th-deg">Email</th>
                         <th class="th-deg">Phone</th>
@@ -44,28 +44,31 @@
 
 
                     <tr>
-                        <td>{{$order->name}}</td>
-                        <td>{{$order->email}}</td>
-                        <td>{{$order->phone}}</td>
+                        <td class="th-deg">1</td>
+                        <td class="th-deg">{{$order->name}}</td>
+                        <td class="th-deg">{{$order->email}}</td>
+                        <td class="th-deg">{{$order->phone}}</td>
 
 
-                        <td>{{$order->product_name}}</td>
-                        <td>₱{{ number_format($order->price * $order->quantity, 2) }}</td>
-                        <td>{{$order->quantity}}</td>
-                        <td>{{$order->processing_time}}</td>
-                        <td style="background-color: {{$order->primaryclr}}"></td>
-                        <td style="background-color: {{$order->secondaryclr}}"></td>
-                        <td>{{$order->size}}</td>
-
-
-                        <td>{{$order->order_id}}</td>
-                        <td>
+                        <td class="th-deg">{{$order->product_name}}</td>
+                        <td class="th-deg">₱{{ number_format($order->price * $order->quantity, 2) }}</td>
+                        <td class="th-deg">{{$order->quantity}}</td>
+                        <td class="th-deg">{{$order->processing_time}}</td>
+                        <td class="th-deg">
+                          <div class="color-style" style="background-color: {{$order->primaryclr}}"></div>
+                        </td>
+                        <td class="th-deg">
+                          <div class="color-style" style="background-color: {{$order->secondaryclr}}"></div>
+                        </td>
+                        <td class="th-deg">{{$order->size}}</td>
+                        <td class="th-deg">{{$order->order_id}}</td>
+                        <td class="th-deg">
                             @if($order->order_status=='Order Placed')
                             <p>Pending</p>
                             @else
                             {{$order->order_status}}
                             @endif
-                        </td>
+                          </td>
 
 
 

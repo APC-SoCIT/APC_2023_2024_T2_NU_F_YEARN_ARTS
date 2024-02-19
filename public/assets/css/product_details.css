@@ -172,7 +172,7 @@ input[type="submit"]{
 }
 
 .color-option-label.selected {
-
+    transform: scale(1.3);
 }
 
 
