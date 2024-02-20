@@ -22,14 +22,15 @@
                 <div class="">
                     <p class="Head-title">Pending Orders</p>
                     <div class="order-container">
-
+                    @php $customerCount = 0 @endphp
                     @foreach ($order as $order)
 
                       @if($order->order_status=='Order Placed')
+                      @php $customerCount++ @endphp
                     <div class="order-item">
                         <div class="column-1">
                           <p class="customer-name">{{ $order->name }}</p>
-                          <p class="customer-num">1</p>
+                          <p class="customer-num">{{ $customerCount }}</p> 
                         </div>
                         <div class="column-2">
                           <div>

@@ -19,12 +19,14 @@
                     <p class="Head-title">On process</p>
                     <div class="order-container">
                         <!-- Loop through your order data here -->
+                        @php $customerCount = 0 @endphp
                         @foreach ($order as $order)
                             @if ($order->order_status === 'On Process' || $order->order_status === 'To Pay')
+                            @php $customerCount++ @endphp
                                 <div class="order-item">
                                         <div class="column-1">
                                             <p class="customer-name">{{ $order->name }}</p>
-                                            <p class="customer-num">1</p>
+                                            <p class="customer-num">{{ $customerCount }}</p>
                                         </div>
                                         <div class="column-2">
                                             <div>
