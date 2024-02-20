@@ -1,12 +1,13 @@
 body{
     background-color: #E4D8CC;
     color: #7D5452;
-    
 }
 
-.content-wrapper{
-    overflow-x: auto;
+.main-content{
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    margin-top: 10px;
 }
 
 .main-table{
@@ -15,7 +16,7 @@ body{
     background-color: #D0A59F;
     border-radius: 20px;
     width: auto;
-    margin: 50px;
+    margin-bottom: 50px;
    }
 
    .Head-title{
@@ -24,19 +25,8 @@ body{
     font-weight: bold;
    }
 
-   .color-style{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-   }
-
-   .th-deg {
-    padding: 30px ;
-    position: relative;
+   .th_deg {
+    padding: 30px;
    }
 
    .main-table tr:not(:last-child) {

@@ -2,7 +2,7 @@
         <html lang="en">
         <head>
         @include('admin.css')
-        <link rel="stylesheet" href="admin/assets/css/admin_show-products.css">
+        <link rel="stylesheet" href="admin/assets/css/admin_cutomerlist.css">
         <title>Yearn Art | Show Product</title>
         </head>
         <style type="text/css">
@@ -29,12 +29,12 @@
                         </div>
 
                         @endif
-                        <h2 class="Head-title">All Products</h2>
+                        <h2 class="Head-title">Customer Lists</h2>
                         <div class="main-table">
                             <table>
                                 <tr>
                                     <th class="th_deg"></th>
-                                    <th class="th_deg">Customer Name</th>
+                                    <th class="th_deg">Name</th>
                                     <th class="th_deg">Email</th>
                                     <th class="th_deg">Phone Number</th>
                                     <th class="th_deg">No. Of Purchases</th>
@@ -42,7 +42,7 @@
                                 </tr>
 
                                 @php
-                                $index = 0; // Initialize $index before the loop
+                                $index = 0; 
                                 @endphp
                                 @foreach($order->groupBy('user_id') as $customerId => $customerOrders)
                                 @php
@@ -60,15 +60,15 @@
                                 @if ($recentOrders->isNotEmpty())
                                     <tr>
                                         <!-- need to add size -->
-                                        <td>{{ $index }}</td>
-                                        <td>{{ $recentOrders->first()->name }}</td>
-                                        <td>{{ $recentOrders->first()->email }}</td>
-                                        <td>{{ $recentOrders->first()->phone }}</td>
-                                        <td>{{ $recentOrders->count() }}</td>
+                                        <td class="th_deg">{{ $index }}</td>
+                                        <td class="th_deg">{{ $recentOrders->first()->name }}</td>
+                                        <td class="th_deg">{{ $recentOrders->first()->email }}</td>
+                                        <td class="th_deg">{{ $recentOrders->first()->phone }}</td>
+                                        <td class="th_deg">{{ $recentOrders->count() }}</td>
                                     </tr>
                                 @endif
                             @endforeach
-                           z
+                           
                             </table>
                         </div>
 

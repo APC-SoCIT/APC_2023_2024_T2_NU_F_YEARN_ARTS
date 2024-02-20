@@ -11,13 +11,12 @@
             align-items: center;
     
         }
-    
-        .cart-link {
-            text-decoration: none;
-            color: #000; /* Set your desired text color */
-        }
-    
-        /* order items */
+        .Head-title{
+            text-align:center;
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 20px;
+           }
     
         .custom-section {
             display: flex;

@@ -4,18 +4,18 @@
 <head>
     <base href="/public">
     <!-- Add these in your HTML -->
+    
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/typing.css">
     <link rel="stylesheet" href="assets/css/chatbot.css">
-    <link rel="stylesheet" href="assets/css/product_details.css">
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    @include('YearnArt.css')
-
-
+    <link rel="stylesheet" href="assets/css/product_details.css">
+    
 
 </head>
 
@@ -168,7 +168,7 @@
                 </div>
             </form>
 
-    <script src="assets/javascript/home.js"></script>
+    
     @include ('YearnArt.chatbot')
     @include ('YearnArt.script')
 
@@ -250,6 +250,8 @@
     }
 }
     </script>
+
+
 </body>
 
 </html>

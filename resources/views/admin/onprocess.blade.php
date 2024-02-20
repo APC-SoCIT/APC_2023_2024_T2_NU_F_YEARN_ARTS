@@ -14,9 +14,9 @@
     @include('admin.header')
     <!-- partial -->
     <div class="main-panel">
-        <div class="">
-            <section class="custom-section">
+        <section class="custom-section">
                 <div class="">
+                    <p class="Head-title">On process</p>
                     <div class="order-container">
                         <!-- Loop through your order data here -->
                         @foreach ($order as $order)
@@ -26,9 +26,6 @@
                                             <p class="customer-name">{{ $order->name }}</p>
                                             <p class="customer-num">1</p>
                                         </div>
-
-
-
                                         <div class="column-2">
                                             <div>
                                                 <img src="{{ asset('product/' . $order->image) }}" class="img-fluid" alt="{{ $order->product_name }}">
@@ -45,7 +42,6 @@
                                                 </p>
                                             </div>
                                         </div>
-
                                         <div class="column-3">
                                             <p>Unit Price: ₱{{ number_format($order->price, 2) }}</p>
                                             <p class="order-info">Order Total: <b>₱{{ number_format($order->price * $order->quantity, 2) }}</b></p>
@@ -67,14 +63,11 @@
                                 </div>
                             @endif
                         @endforeach
-
-                        <!-- Your existing receipt footer -->
-                        <!-- ... -->
                     </div>
                 </div>
-            </section>
-        </div>
+        </section>
     </div>
+</div>
     <!-- container-scroller -->
     <!-- plugins:js -->
     @include('admin.script')

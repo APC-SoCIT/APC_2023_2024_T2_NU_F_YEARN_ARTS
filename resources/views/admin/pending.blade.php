@@ -1,87 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>Yearn Art | Payment</title>
   <head>
+  <title>Yearn Art | Payment</title>
+  
    @include('admin.css')
-   <style>
-    .title-deg {
-        text-align: center;
-        font-size: 25px;
-        font-weight: bold;
-    }
-    .table-deg {
-        border: 2px solid white;
-        width: 100%; /* Set the width of the table */
-        margin: auto;
-        text-align: center;
-        table-layout: fixed; /* Ensure fixed layout */
-    }
-    .table-deg th, .table-deg td {
-        width: auto; /* You can set fixed widths for each column as needed */
-        padding: 10px; /* Add padding for better appearance */
-        word-wrap: break-word; /* Allow word wrapping for long content */
-    }
-    .img-size{
-        width: 100px;
-        height: 100px;
-    }
-    .th-deg{
-        background: #FAC6BF;
-    }
-   </style>
+   <link rel="stylesheet" href="admin/assets/css/admin_pending.css">
+
 
   </head>
   <body>
 
-    <div class="container-scroller">
-      <!-- partial:partials/_sidebar.html -->
-      @include('admin.sidebar')
-      <!-- partial -->
-        <!-- partial:partials/_navbar.html -->
-        @include('admin.header')
-        <!-- partial -->
-        <div class="main-panel">
-            <div class="content-wrapper">
-                <h1 class="title-deg">Pending Orders</h1>
-                <table class="table-deg">
-                    <tr>
-                        <th class="th-deg">Name</th>
-                        <th class="th-deg">Product Name</th>
-                        <th class="th-deg">Total Price</th>
-                        <th class="th-deg">Quantity</th>
-                        <th class="th-deg">Order ID</th>
-                        <th class="th-deg">Action</th>
+  <div class="container-scroller">
+    <!-- partial:partials/_sidebar.html -->
+    @include('admin.sidebar')
+    <!-- partial -->
+    <!-- partial:partials/_navbar.html -->
+    @include('admin.header')
+    <!-- partial -->
+    <div class="main-panel">
+        <section class="custom-section">
+                <div class="">
+                    <p class="Head-title">Pending Orders</p>
+                    <div class="order-container">
 
-
-
-
-
-
-                    </tr>
                     @foreach ($order as $order)
 
-                    @if($order->order_status=='Order Placed')
-                    <tr>
-                        <td>{{$order->name}}</td>
-                        <td>{{$order->product_name}}</td>
-                        <td>₱{{ number_format($order->price * $order->quantity, 2) }}</td>
-                        <td>{{$order->quantity}}</td>
-                        <td>{{$order->order_id}}</td>
+                      @if($order->order_status=='Order Placed')
+                    <div class="order-item">
+                        <div class="column-1">
+                          <p class="customer-name">{{ $order->name }}</p>
+                          <p class="customer-num">1</p>
+                        </div>
+                        <div class="column-2">
+                          <div>
+                                                
+                          </div>
+                          <div class="product-details">
+                            <p class="product-name">{{$order->product_name}}</p> 
+                            <p class="order-info">Quantity: {{$order->quantity}}</p> 
+                          </div>
+                        </div>
+                        <div class="column-3">
+                          <p class="order-info">Order  Total: <b>₱{{ number_format($order->price * $order->quantity, 2) }}</b></p> 
+                        </div>
+                        <div class="column-4">
+                          @if($order->order_status=='On Process')
+                                <p>Confirmed</p>
+                                @else
+                                <a href="{{url('to_dpay', $order->id)}}" class="btn btn-success" onclick="return confirm('Are you sure this order can be made?')">Confirm</a>
 
-                        <td>
-                            @if($order->order_status=='On Process')
-                            <p>Confirmed</p>
-                            @else
-                            <a href="{{url('to_dpay', $order->id)}}" class="btn btn-success" onclick="return confirm('Are you sure this order can be made?')">Confirm</a>
+                                @endif
+                        </div>
 
-                            @endif
-                        </td>
-                    </tr>
-                    @endif
+                    </div>
+                      @endif
                     @endforeach
-                </table>
-            </div>z
-        </div>
+                    </div>
+                </div>
+        </section>
+    </div>
+</div> 
+           
     <!-- container-scroller -->
     <!-- plugins:js -->
    @include('admin.script')
