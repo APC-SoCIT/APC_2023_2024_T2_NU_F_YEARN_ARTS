@@ -156,9 +156,7 @@ input[type="submit"]{
 .size-option-label:hover {
     transform: scale(1.3);
 }
-.size-option-label.selected-size {
-    transform: scale(1.3);
-}
+
 
 .color-option-label.selected {
     transform: scale(1.3);
@@ -208,7 +206,7 @@ input[type="submit"]{
     transform: translateY(-40px);
     z-index: 123456;
     opacity: 1;
-    
+
 }
 
 /* BUTTON */

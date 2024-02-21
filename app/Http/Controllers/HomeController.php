@@ -180,7 +180,7 @@ class HomeController extends Controller
 
 
                 
-                $order->order_status='Order Placed';
+                $order->order_status='Downpayment';
 
             $order->save();
 

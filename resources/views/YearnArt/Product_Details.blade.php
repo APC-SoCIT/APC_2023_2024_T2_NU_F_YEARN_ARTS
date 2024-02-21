@@ -4,18 +4,18 @@
 <head>
     <base href="/public">
     <!-- Add these in your HTML -->
-    
+
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/typing.css">
     <link rel="stylesheet" href="assets/css/chatbot.css">
-    
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="assets/css/product_details.css">
-    
+
 
 </head>
 
@@ -62,7 +62,7 @@
                                 <p class="names">Primary:
                                     <div class="color-box color-primary1">
                                         <input type="radio" name="colorOption" id="colorOption1" value="#67598E"
-                                            class="color-option" style="display: none;">
+                                            class="color-option" style="display: none;" required selected>
                                         <label for="colorOption1" class="color-option-label color-primary"
                                             style="background-color: #67598E"></label>
 
@@ -168,7 +168,7 @@
                 </div>
             </form>
 
-    
+
     @include ('YearnArt.chatbot')
     @include ('YearnArt.script')
 
@@ -178,7 +178,9 @@
         const defaultColorOption = document.getElementById('colorOption1');
         const defaultSizeOption = document.getElementById('sizeOptionMedium');
         const defaultSecondaryColorOption = document.getElementById('secondaryColorOption7');
-        defaultColorOption.selected = true;
+
+        
+        defaultColorOption.checked = true;
         defaultSizeOption.checked = true;
         defaultSecondaryColorOption.selected = true;
 
@@ -194,8 +196,6 @@
         option.addEventListener('change', updateSelectedSize);
     });
 
-        // Trigger updatePrice function for the initial size
-        updatePrice(defaultSizeOption.value);
     });
 
         // Add event listeners to update selected style for color options
