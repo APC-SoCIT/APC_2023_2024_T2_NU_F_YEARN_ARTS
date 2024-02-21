@@ -18,6 +18,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <table class="main-table">
+                    <p>Order Tracking</p>
                     <tr>
                         <th class="th-deg">No.</th>
                         <th class="th-deg">Name</th>
@@ -40,11 +41,13 @@
 
 
                     </tr>
+                    @php
+                    $count = 1;
+                    @endphp
+
                     @foreach ($order as $order)
-
-
                     <tr>
-                        <td class="th-deg">1</td>
+                        <td class="th-deg">{{ $count++ }}</td>
                         <td class="th-deg">{{$order->name}}</td>
                         <td class="th-deg">{{$order->email}}</td>
                         <td class="th-deg">{{$order->phone}}</td>
