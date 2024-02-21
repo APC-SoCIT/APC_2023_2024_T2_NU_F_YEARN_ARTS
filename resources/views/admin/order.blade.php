@@ -18,7 +18,14 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <table class="main-table">
-                    <p>Order Tracking</p>
+                    <h2 class="Head-title">Order Tracking</h2>
+
+                    <form action="{{url('search')}}" method="get">
+                        @csrf
+
+                        <input type="text" name="search" id="" placeholder="Search for Something">
+                        <input type="submit" name="" id="" value="search" >
+                    </form>
                     <tr>
                         <th class="th-deg">No.</th>
                         <th class="th-deg">Name</th>

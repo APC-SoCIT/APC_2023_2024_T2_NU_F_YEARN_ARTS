@@ -211,7 +211,7 @@ class AdminController extends Controller
         $order->save();
 
         $details = [
-            'subject' => 'Downpayment Done (Will Ship)',
+            'subject' => 'Full Payment Done (Will Ship)',
             'greeting' => 'greeting',
             'firstline' => 'firstline',
             'button' => 'Track Order',
@@ -233,6 +233,20 @@ class AdminController extends Controller
 
 
         return view ('admin.customerlist', compact('order'));
+    }
+
+    public function search(Request $request){
+
+        $searchtext= $request->search;
+
+        $order=order::where('name','LIKE', "%$searchtext%")->orWhere('email','LIKE', "%$searchtext%")
+        ->orWhere('product_name','LIKE', "%$searchtext%")
+        ->orWhere('size','LIKE', "%$searchtext%")
+        ->orWhere('order_id','LIKE', "%$searchtext%")
+        ->get();
+
+
+        return view('admin.order', compact('order'));
     }
 
 

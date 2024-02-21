@@ -58,7 +58,7 @@ class HomeController extends Controller
 
 
     // PAg naka login yung users
-  
+
 
     }
 
@@ -179,7 +179,7 @@ class HomeController extends Controller
 
 
 
-                $order->payment_status='Cash';
+                
                 $order->order_status='Order Placed';
 
             $order->save();

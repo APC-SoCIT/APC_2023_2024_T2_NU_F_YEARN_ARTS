@@ -98,6 +98,8 @@ route::get('/pending',[AdminController::class,'pending']);
 route::get('/dpayment',[AdminController::class,'dpayment']);
 route::get('/onprocess',[AdminController::class,'onprocess']);
 route::get('/customer_list',[AdminController::class,'customer_list']);
+route::get('/search',[AdminController::class,'search']);
+
 
 
 
