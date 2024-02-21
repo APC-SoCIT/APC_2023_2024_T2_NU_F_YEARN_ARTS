@@ -5,6 +5,7 @@
 @include('YearnArt.css')
 <link rel="stylesheet" href="assets/">
 <link rel="stylesheet" href="assets/css/S-order-tracking.css">
+<link rel="stylesheet" href="assets/css/navbar.css">
 
 </head>
 

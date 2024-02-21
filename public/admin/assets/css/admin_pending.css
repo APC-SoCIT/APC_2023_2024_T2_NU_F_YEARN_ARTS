@@ -4,6 +4,7 @@ body{
 }
 
 .Head-title{
+    font-family: Inter;
     text-align:center;
     font-size: 40px;
     font-weight: bold;
@@ -30,6 +31,7 @@ body{
 }
 
 .column-1{
+    font-family: Inter;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -37,6 +39,7 @@ body{
 }
 
 .column-2{
+    font-family: Inter;
     display: flex;
     flex-direction: row;
     margin-bottom: 30px;
@@ -48,16 +51,19 @@ body{
     justify-content: flex-end;
 }
 .column-3 p{
+    font-family: Inter;
     font-size: 20px;
     margin-bottom: 20px;
 }
 
 .column-4{
+    font-family: Inter;
     display: flex;
     justify-content: space-evenly;
 }
 
 .customer-name, .customer-num{
+    font-family: Inter;
     font-weight: bold;
     font-size: 20px;
 }

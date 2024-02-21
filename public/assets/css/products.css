@@ -37,6 +37,7 @@ body {
 }
 
 .title-header{
+  font-family: Inter;
   color: #7D5452;
   font-size: 24px;
   font-weight: bolder;
@@ -95,6 +96,7 @@ body {
 }
 
 .product_section .box .detail-box h6 {
+  font-family: Inter;
   margin-top: 10px;
   color: #FAC6BF;
   font-weight: 600;
@@ -249,6 +251,7 @@ body {
   .menu-links a:active,
   .menu-links a:focus,
 .menu-links a:hover {
+  font-family: Inter;
     color: #FAC6BF;
     font-weight: 700;
 }
@@ -273,6 +276,7 @@ body {
   }
 
   .logo a{
+    font-family: Inter;
     color: #E4D8CC;
     text-decoration: none;
     font-size: 20px;

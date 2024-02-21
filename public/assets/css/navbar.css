@@ -32,6 +32,7 @@
   .menu-links a:active,
   .menu-links a:focus,
 .menu-links a:hover {
+    font-family: Inter;
     color: #FAC6BF;
     font-weight: 700;
 }
@@ -56,6 +57,7 @@
   }
 
   .logo a{
+    font-family: Inter;
     color: #E4D8CC;
     text-decoration: none;
     font-size: 20px;

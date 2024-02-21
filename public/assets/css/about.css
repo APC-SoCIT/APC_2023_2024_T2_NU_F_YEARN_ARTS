@@ -15,11 +15,13 @@ body {
   }
 
   .About{
+    font-family: Inter;
     color: #FAC6BF;
     font-weight: 700;
   }
 
   .title{
+    font-family: Inter;
     font-size: 30px;
     font-weight: 800;
   }

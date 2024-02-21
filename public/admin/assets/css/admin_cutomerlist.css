@@ -20,12 +20,14 @@ body{
    }
 
    .Head-title{
+    font-family: Inter;
     text-align:center;
     font-size: 40px;
     font-weight: bold;
    }
 
    .th_deg {
+    font-family: Inter;
     padding: 30px;
    }
 

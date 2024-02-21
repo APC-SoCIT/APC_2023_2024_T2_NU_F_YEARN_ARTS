@@ -1,3 +1,7 @@
+body{
+    background-color: #E4D8CC;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -9,6 +13,7 @@
 }
 
 .orders{
+    font-family: Inter;
     font-size: 36px;
     font-weight: bolder;
     color: #7D5452;
@@ -67,6 +72,7 @@
 }
 
 .product-names {
+    font-family: Inter;
     color: #7D5452;
     margin-bottom: 10px;
     font-size: 30px;
@@ -153,6 +159,7 @@
 
 }
 .price-num {
+    font-family: Inter;
     font-size: 36px;
     color: #7D5452;
 }
@@ -225,6 +232,7 @@
     opacity: .5;
 }
 .status-links a.selected {
+    font-family: Inter;
 font-weight: bold; /* Highlight selected link with bold font */
 color: #D0A59F; /* Set your desired highlight color */
 }

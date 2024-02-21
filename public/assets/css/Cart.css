@@ -1,6 +1,7 @@
 body{
     background-color: #E4D8CC;
     color: #7D5452;
+    
 }
 
 .container-cart{
@@ -25,6 +26,7 @@ body{
 }
 
 .mycart{
+    font-family: Inter;
     font-size: 36px;
     font-weight: bolder;
     color: #7D5452;
@@ -52,6 +54,7 @@ body{
     width: 11%;
     text-align: center;
     cursor: default;
+    font-family: Inter;
 }
 
 .checkbox{
@@ -133,17 +136,19 @@ body{
 }
 
 .total-prices{
+    font-family: Inter;
     width: 11%;
     text-align: center;
     cursor: default;
     font-size: 30px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .total-item{
     width: 11%;
     text-align: center;
     cursor: default;
+    font-family: Inter;
 }
 
 .btn-submit{
