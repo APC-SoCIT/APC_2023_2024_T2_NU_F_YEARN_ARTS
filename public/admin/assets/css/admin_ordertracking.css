@@ -1,21 +1,42 @@
 body{
     background-color: #E4D8CC;
     color: #7D5452;
-    
+    overflow-x: auto;
 }
 
 .content-wrapper{
-    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
+    
+}
+
+.column-1{
+    flex: 1;
+    text-align: center;
+   }
+
+.column-3{
+    overflow-x: auto;
+    margin-bottom: 50px;
+}
+
+.column-3::-webkit-scrollbar {
+    display: none;
+}
+
+.main-table{
+    margin: 0px 50px;
+    overflow-x: auto;
 }
 
 .main-table{
     text-align:center;
-    margin-top:40px;
     background-color: #D0A59F;
     border-radius: 20px;
     width: auto;
-    margin: 50px;
+    
    }
 
    .Head-title{
@@ -24,6 +45,21 @@ body{
     font-size: 40px;
     font-weight: bold;
    }
+
+   .search-bar input{
+    font-family: Inter;
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid #7D5452;
+    border-radius: 50px;
+    padding: 10px 20px;
+   }
+
+   .search-bar input::placeholder {
+    font-family: Inter;
+    color: #7D5452;
+}
+
 
    .color-style{
     position: absolute;
