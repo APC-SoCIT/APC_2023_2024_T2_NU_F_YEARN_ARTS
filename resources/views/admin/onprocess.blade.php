@@ -52,13 +52,13 @@
                                             <!-- Add buttons inside each order -->
                                             <div class="column-4">
                                                 @if ($order->order_status === 'On Process')
-                                                    <a href="{{url('to_fpay', $order->id)}}" class="btn btn-success" onclick="return confirm('Are you sure this order is done?')">Done</a>
-                                                    <a href="{{ url('to_ship', $order->id) }}" class="btn btn-action btn-low-opacity btn-confirm-payment disabled" onclick="confirmOrderPayment({{ $order->id }})">Paid</a>
+                                                    <a href="{{ url('to_ship', $order->id) }}" class="btn btn-action btn-low-opacity btn-confirm-payment btn-paid disabled" onclick="confirmOrderPayment({{ $order->id }})">Paid</a>
+                                                    <a href="{{url('to_fpay', $order->id)}}" class="btn-done" onclick="return confirm('Are you sure this order is done?')">Done</a>
                                                 @endif
 
                                                 @if ($order->order_status === 'To Pay')
-                                                <a href="{{url('to_fpay', $order->id)}}" class="btn btn-action btn-low-opacity disabled" onclick="return confirm('Are you sure this order can be made?')">Done</a>
-                                                <a href="{{url('to_ship', $order->id)}}" class="btn btn-success" onclick="return confirm('Are you sure this order can be made?')">Paid</a>
+                                                <a href="{{url('to_ship', $order->id)}}" class="btn-paid" onclick="return confirm('Are you sure this order can be made?')">Paid</a>
+                                                <a href="{{url('to_fpay', $order->id)}}" class="btn btn-action btn-low-opacity btn-done disabled" onclick="return confirm('Are you sure this order can be made?')">Done</a>
                                                 @endif
                                             </div>
 

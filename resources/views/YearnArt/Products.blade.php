@@ -20,45 +20,47 @@
 @include('home.header')
 
 
-<section class="product_section layout_padding">
-         <div class="Container">
-            <div>
-               <h2>
-                  Our products
-               </h2>
-            </div>
-            <div class="container-box">
-            @foreach($products as $products)
-               <div class="col-sm-6 col-md-4 col-lg-3">
 
-                  <div class="box">
-                     <div class="option_container">
-                        <div class="options">
-                           <a href="{{url('product_details',$products->id)}}" class="option1">
-                           Product Details
-                           </a>
+   <div class="main-container">
+      <div class="title-header">
+         <h2>
+            Our products
+         </h2>
+      </div>
+      <div class="product-container">
+         <section class="product_section">
+               <div class="container-box">
+                  @foreach($products as $products)
+                  <div class="col-sm-6 col-md-4 col-lg-3">
+                     <div class="box">
+                        <div class="option_container">
+                           <div class="options">
+                              <a href="{{url('product_details',$products->id)}}" class="option1">
+                              Product Details
+                              </a>
+                           </div>
                         </div>
-                     </div>
 
-                     <div class="img-box">
-                        <img src="product/{{$products->image}}" alt="">
-                     </div>
-                     <div class="detail-box">
-                        <h5>
-                        {{$products->product_name}}
-                        </h5>
-                        <h6>
-                        ₱{{ number_format($products->medium_price, 2)}}
-                        </h6>
-                     </div>
+                        <div class="img-box">
+                           <img src="product/{{$products->image}}" alt="">
+                        </div>
+                        <div class="detail-box">
+                           <h5>
+                           {{$products->product_name}}
+                           </h5>
+                           <h6>
+                           ₱{{ number_format($products->medium_price, 2)}}
+                           </h6>
+                        </div>
 
                   </div>
 
                </div>
-               @endforeach
+                  @endforeach
+         </section>
+      </div>
+   </div>
 
-         </div>
-      </section>
 @include ('YearnArt.chatbot')
 @include ('YearnArt.script')
 </body>
