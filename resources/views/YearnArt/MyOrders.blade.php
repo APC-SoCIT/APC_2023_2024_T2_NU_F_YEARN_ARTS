@@ -18,7 +18,7 @@
 <body>
     @include('home.header')
 
-    <form action="{{ url('/cash_order'  ) }}" method="post">
+    <form action="{{ url('/cash_order')}}" method="post">
         @csrf
 
         <div class="center">

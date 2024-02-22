@@ -252,3 +252,26 @@ input[type="submit"]{
     position: sticky;
     bottom: 0;
 }
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-link {
+    text-decoration: none;
+}
+
+.cart-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #7D5452; /* Set your desired text color */
+}
+
+    .cart-icon {
+    margin: 0px 30px 0 5px; /* Adjust the margin as needed */
+    width: 30px; /* Set your desired width */
+}

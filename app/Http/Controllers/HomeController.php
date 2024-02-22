@@ -47,7 +47,7 @@ class HomeController extends Controller
     return view('YearnArt.Products', compact( 'categories', 'products'));
 
     }
-    
+
 
     public function product_details($id)
     {
@@ -62,54 +62,145 @@ class HomeController extends Controller
     }
 
     public function add_cart(Request $request, $id) {
-
-        if(Auth::id()){
-            $user=Auth::user();
-
-            $products=product::find($id);
-
-            $cart=new cart;
-
-            $cart->name=$user->name;
-            $cart->email=$user->email;
-            $cart->phone=$user->phone;
-            $cart->address=$user->address;
-            $cart->user_id=$user->id;
-            $cart->user_id=$user->id;
-            $cart->product_name=$products->product_name;
-            $cart->price=$products->price;
-            $cart->processing_time=$products->processing_time;
-            $cart->image=$products->image;
-            $cart->product_id=$products->id;
-            $cart->quantity=$request->quantity;
-            $cart->primaryclr=$request->colorOption;
-            $cart->secondaryclr=$request->secondaryColor;
+        if (Auth::id()) {
+            $user = Auth::user();
+            $products = Product::find($id);
+            $cart=Cart::find($id);
 
 
-            if ($request->sizeOption == 'small' && $products->small_price !== null) {
-                $cart->price = $products->small_price;
-                $cart->size = $products->small_size;
-            } elseif ($request->sizeOption == 'medium' && $products->medium_price !== null) {
-                $cart->price = $products->medium_price;
-                $cart->size = $products->medium_size;
-            } elseif ($request->sizeOption == 'large' && $products->large_price !== null) {
-                $cart->price = $products->large_price;
-                $cart->size = $products->large_size;
 
-            } else {
-                // Handle the case where sizeOption does not match any condition
-                // You may want to set a default price or handle it as needed
-                $cart->price = 0; // Set a default value for the price
+
+            $secondaryclr = $request->secondaryColor;
+            $primaryclr = $request->colorOption;
+
+            switch ($request->sizeOption) {
+                case 'small':
+                        $size = $products->small_size;
+                    break;
+                case 'medium':
+                        $size = $products->medium_size;
+                    break;
+                case 'large':
+                        $size = $products->large_size;
+                    break;
+            }
+            switch ($request->secondaryColor) {
+                case 'A3D0EF':
+                        $secondaryclr = 'A3D0EF';
+                    break;
+                case 'D66B78':
+                        $secondaryclr = 'D66B78';
+                    break;
+                case 'D4D66B':
+                        $secondaryclr = 'D4D66B';
+                    break;
+                case '6BD689':
+                        $secondaryclr = '6BD689';
+                    break;
+                case 'D6986B':
+                        $secondaryclr = 'D6986B';
+                    break;
+                case 'D46BD6':
+                        $secondaryclr = 'D46BD6';
+                    break;
+                case 'none':
+                        $secondaryclr = 'none';
+                    break;
+            }
+            switch ($request->colorOption) {
+                case 'A3D0EF':
+                        $primaryclr = '67598E';
+                    break;
+                case 'D66B78':
+                        $primaryclr = 'D66B78';
+                    break;
+                case 'D4D66B':
+                        $primaryclr = 'D4D66B';
+                    break;
+                case '6BD689':
+                        $primaryclr = '6BD689';
+                    break;
+                case 'D6986B':
+                        $primaryclr = 'D6986B';
+                    break;
+                case 'D46BD6':
+                        $primaryclr = 'D46BD6';
+                    break;
+
             }
 
-            $cart->save();
+
+
+
+
+            $existingCartItem = Cart::where('user_id', $user->id)
+            ->where('product_id', $products->id)
+            ->where('secondaryclr', $secondaryclr)
+            ->where('primaryclr', $primaryclr)
+
+            ->where('size', $size)
+            ->first();
+
+
+            if ($existingCartItem) {
+                // Update the quantity if the same product is found
+                $existingCartItem->quantity += $request->quantity;
+                $existingCartItem->save();
+            } else {
+                // Create a new cart item if the product with the same attributes is not found
+                $cart = new Cart;
+
+                $cart->name = $user->name;
+                $cart->email = $user->email;
+                $cart->phone = $user->phone;
+                $cart->address = $user->address;
+                $cart->user_id = $user->id;
+                $cart->product_name = $products->product_name;
+                $cart->price = $products->price;
+                $cart->processing_time = $products->processing_time;
+                $cart->image = $products->image;
+                $cart->product_id = $products->id;
+                $cart->quantity = $request->quantity;
+                $cart->primaryclr = $request->colorOption;
+                $cart->secondaryclr = $request->secondaryColor;
+
+                // Set the size and price based on the selected sizeOption
+                switch ($request->sizeOption) {
+                    case 'small':
+                        if ($products->small_price !== null) {
+                            $cart->price = $products->small_price;
+                            $cart->size = $products->small_size;
+                        }
+                        break;
+                    case 'medium':
+                        if ($products->medium_price !== null) {
+                            $cart->price = $products->medium_price;
+                            $cart->size = $products->medium_size;
+                        }
+                        break;
+                    case 'large':
+                        if ($products->large_price !== null) {
+                            $cart->price = $products->large_price;
+                            $cart->size = $products->large_size;
+                        }
+                        break;
+                    default:
+                        // Handle the case where sizeOption does not match any condition
+                        // You may want to set a default value or handle it as needed
+                        $cart->price = 0; // Set a default value for the price
+                        break;
+                }
+
+
+                $cart->save();
+            }
 
             return redirect()->back()->with('message', 'Added to Cart');
-        }
-        else{
+        } else {
             return redirect('login');
         }
     }
+
 
 
     public function show_cart(){

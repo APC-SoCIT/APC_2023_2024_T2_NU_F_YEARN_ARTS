@@ -21,6 +21,11 @@
 
 <body>
     @include('home.header')
+    <div class="header">
+        <h6 class="orders">My Orders</h6>
+        <a href="{{url('/show_cart')}}" class="cart-link">My Cart
+            <img src="assets/image/Cart.png" alt="Cart Icon" class="cart-icon"></a>
+    </div>
 
 
             @if(session()->has('message'))
@@ -29,6 +34,7 @@
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
                 {{session()->get('message')}}
             </div>
+
 
             @endif
 
@@ -133,8 +139,8 @@
                                             class="color-option-label color-secondary"
                                             style="background-color: #D46BD6"></label>
 
-                                        <input type="radio" name="secondaryColor" id="secondaryColorOption7"
-                                            value="none" class="color-option" style="display: none;">
+                                            <input type="radio" name="secondaryColor" id="secondaryColorOption7"
+                                             value="none" class="color-option" style="display: none;" checked>
                                         <label for="secondaryColorOption7"
                                             class="color-option-label color-none"></label>
                                     </div>
@@ -179,10 +185,10 @@
         const defaultSizeOption = document.getElementById('sizeOptionMedium');
         const defaultSecondaryColorOption = document.getElementById('secondaryColorOption7');
 
-        
+
         defaultColorOption.checked = true;
         defaultSizeOption.checked = true;
-        defaultSecondaryColorOption.selected = true;
+        defaultSecondaryColorOption.checked = true;
 
         // Trigger change event to update selected style
         const colorChangeEvent = new Event('change');
