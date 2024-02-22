@@ -48,6 +48,9 @@ class AdminController extends Controller
 
     }
         public function add_product(Request $request){
+            $category = Category::find($request->category);
+
+
         $product = new product;
 
         $product->product_name=$request->product_name;
@@ -59,7 +62,8 @@ class AdminController extends Controller
         $product->medium_size=$request->medium_size;
         $product->large_size=$request->large_size;
         $product->processing_time=$request->processing_time;
-        $product->category=$request->category;
+        $product->category = $category->category_name;
+        $product->category_id = $request->category;
         $image = $request->file('image');
         $imagename=time().'.'.$image->getClientOriginalExtension();
 

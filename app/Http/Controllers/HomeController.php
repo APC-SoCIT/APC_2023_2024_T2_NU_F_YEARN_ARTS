@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Support\Str;
@@ -40,8 +41,10 @@ class HomeController extends Controller
 
     public function Products(){
     //pag hindi naka login yung user
-        $products=Product::all();
-        return view('YearnArt.Products',compact('products'));
+    $products = Product::all();
+    $categories = Category::all();
+
+    return view('YearnArt.Products', compact('products', 'categories'));
 
 
     //PAg naka login yung users
@@ -179,7 +182,7 @@ class HomeController extends Controller
 
 
 
-                
+
                 $order->order_status='Downpayment';
 
             $order->save();
