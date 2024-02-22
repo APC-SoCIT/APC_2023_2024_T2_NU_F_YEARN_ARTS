@@ -130,7 +130,7 @@
     <footer>
         <div class="container-footer">
             <div class="checkbox">
-                <input type="checkbox" id="selectAll">
+                <input type="checkbox" id="selectAll"  onclick="toggleAllCheckboxes()">
             </div>
             <div class="select-all">Select All</div>
             <div class="delete-function">
