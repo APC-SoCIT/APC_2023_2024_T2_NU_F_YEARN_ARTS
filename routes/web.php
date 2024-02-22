@@ -39,6 +39,8 @@ route::get('/show_shipping',[HomeController::class,'show_shipping']);
 route::get('/show_order_received',[HomeController::class,'show_order_received']);
 route::get('/show_order_completed',[HomeController::class,'show_order_completed']);
 
+
+
 // track specific order
 route::get('/track_Sorder/{id}',[HomeController::class,'track_Sorder']);
 route::get('/receive_order/{id}',[HomeController::class,'receive_order']);

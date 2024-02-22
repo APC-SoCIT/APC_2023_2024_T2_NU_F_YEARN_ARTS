@@ -41,17 +41,13 @@ class HomeController extends Controller
 
     public function Products(){
     //pag hindi naka login yung user
-    $products = Product::all();
     $categories = Category::all();
+    $products = Product::all();
 
-    return view('YearnArt.Products', compact('products', 'categories'));
-
-
-    //PAg naka login yung users
-
-
+    return view('YearnArt.Products', compact( 'categories', 'products'));
 
     }
+    
 
     public function product_details($id)
     {
