@@ -507,6 +507,20 @@ class HomeController extends Controller
 
     }
 
+    public function cancel_order($id){
+
+        $order=order::find($id);
+
+        $order->order_status="Cancel Order";
+
+
+        $order->save();
+
+        return view('YearnArt.Specific-Order-Tracking.SOrderReceived', compact('order'));
+
+
+    }
+
 
 
 

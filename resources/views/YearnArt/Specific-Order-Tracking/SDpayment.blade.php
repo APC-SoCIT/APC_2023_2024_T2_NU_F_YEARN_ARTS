@@ -113,7 +113,7 @@
 
 
                                 <div class="buttons">
-                                    <a href="{{ url('/track_Sorder', $order->id) }}" class="custom-button track-order-button">Cancel Order</a>
+                                    <a href="{{ url('/cancel_order', $order->id) }}" class="custom-button track-order-button">Cancel Order</a>
                                     <button class="custom-button">Contact Yearn Art</button>
                                 </div>
                             </div>
