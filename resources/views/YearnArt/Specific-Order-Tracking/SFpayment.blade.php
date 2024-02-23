@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
 <base href="/public">
-@include('YearnArt.css')
-<link rel="stylesheet" href="assets/">
 <link rel="stylesheet" href="assets/css/S-order-tracking.css">
+<link rel="stylesheet" href="assets/css/navbar.css">
+<link rel="stylesheet" href="assets/css/typing.css">
+<link rel="stylesheet" href="assets/css/chatbot.css">
 
+@include('YearnArt.css')
 <style>
 
 
@@ -37,8 +39,10 @@
                             </div>
 
                             <div class="order-details">
+                                <p class="order-info">Order ID: {{$order->order_id}}</p>
                                 <p class="product-names">{{ $order->product_name }}</p>
-                                <p class="order-info">Variation: x{{ $order->quantity }} | {{$order->size}}</p></p>
+                                <p class="order-info">Variation: x{{ $order->quantity }} | {{$order->size}}</p>
+                                <p class="order-info">Order Created: {{ $order->created_at }}</p>
                             </div>
 
 
@@ -68,7 +72,7 @@
                                 <div class="paragraph-1">
                                     <p>We are thrilled to inform you that your order has been completed!To finalize the transaction, we kindly request that you make the payment for the remaining 50% of the total order cost. Once the payment is received, we will proceed with the necessary arrangements for shipping your order to its destination.</p>
                                 </div>
-                                
+
                                 <div class="paragraph-2">
                                     <div>
                                         <p>Please follow the procedure below to complete the payment:</p>

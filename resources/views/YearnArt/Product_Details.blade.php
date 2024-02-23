@@ -16,13 +16,15 @@
 
     <link rel="stylesheet" href="assets/css/product_details.css">
 
+    @include('YearnArt.css')
+
 
 </head>
 
 <body>
     @include('home.header')
     <div class="header">
-        <h6 class="orders">My Orders</h6>
+       
         <a href="{{url('/show_cart')}}" class="cart-link">My Cart
             <img src="assets/image/Cart.png" alt="Cart Icon" class="cart-icon"></a>
     </div>

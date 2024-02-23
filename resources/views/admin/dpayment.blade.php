@@ -17,6 +17,14 @@
         <div class="main-panel">
             <div class="main-content content-wrapper">
                 <h1 class="Head-title">DownPayment</h1>
+                <form action="{{url('searchDpayment')}}" method="get">
+                    @csrf
+
+                    <div class="search-bar">
+                      <input type="text" name="search" id="" placeholder="Search...">
+                    </div>
+
+                </form>
                 <table class="main-table">
                     <tr>
                         <th class="th-deg">Name</th>

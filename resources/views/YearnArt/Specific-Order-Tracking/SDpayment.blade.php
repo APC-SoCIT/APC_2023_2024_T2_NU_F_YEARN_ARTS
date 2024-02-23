@@ -2,9 +2,13 @@
     <html lang="en">
     <head>
     <base href="/public">
-    @include('YearnArt.css')
-    <link rel="stylesheet" href="assets/">
     <link rel="stylesheet" href="assets/css/S-order-tracking.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/typing.css">
+    <link rel="stylesheet" href="assets/css/chatbot.css">
+
+    @include('YearnArt.css')
+
 
     <style>
 
@@ -37,9 +41,11 @@
                                 </div>
 
                                 <div class="order-details">
+                                    <p class="order-info">Order ID: {{$order->order_id}}</p>
                                     <p class="product-names">{{ $order->product_name }}</p>
                                     <p class="order-info">Variation: x{{ $order->quantity }} | {{$order->size}}</p>
                                     <p class="order-info">Order Created: {{ $order->created_at }}</p>
+
 
                                 </div>
 
@@ -64,13 +70,11 @@
                             <div class="lower-part">
                                 <div class="main-description">
                                     <div class="paragraph-1">
-                                        Payment methods include cash or online via Gcash. In the event of an emergency on our part, we are committed to providing you with a 100% refund of your down payment. 
                                         <br><br>
                                         <b>NOTE!</b>
                                         <br>
-                                        - 50% refund of the down payment has a grace period for 5 days. If you decide to cancel your order within this grace period, you will be eligible for the 50% refund. However, after the 5-day grace period, the down payment becomes non-refundable.
+                                        Once a down payment has been made for your order, please be aware that cancellations will no longer be possible. The down payment serves as a commitment to proceed with the purchase, and as such, it is non-refundable in the event of a cancellation.
                                         <br>
-                                        -  If the downpayment is not made within one day, your order will be automatically cancelled.
 
 
                                     </div>
@@ -83,18 +87,19 @@
                                             <p>4. The recipient's name should be A*****z M.</p>
                                             <p>5. Enter the amount of the indicated amount showed in this screen.</p>
                                             <p>6. Review the details and confirm the transaction.</p>
-                                            <p>7. Take a screenshot of your receipt and send it to YearnBot to confirm that you already paid.</p>
+                                            <p>7. Take a screenshot of your receipt and send with the it with the order id (Order ID: {{$order->order_id}}) to YearnBot to confirm that you already paid.</p>
+                                            <p>8. Wait for your order to be confirmed by Yearn Art.</p>
                                         </div>
 
-                                        
+
                                     </div>
-                                    
+
                                     <div class="paragraph-3">
                                             <p>You may scan this GCash QR code to pay.</p>
                                             <div class="qrcode">
                                                 <img src="assets\image\OrderTrackingSpecific\GcashQR.png" alt="">
                                             </div>
-                                            
+
                                         </div>
                                 </div>
 
@@ -104,7 +109,7 @@
                                         <p class="price-num">₱{{ number_format($order->price/2, 2) }}</p>
                                 </div>
 
-                                
+
                                 <div class="buttons">
                                     <a href="{{ url('/track_Sorder', $order->id) }}" class="custom-button track-order-button">Cancel Order</a>
                                     <button class="custom-button">Contact Yearn Art</button>

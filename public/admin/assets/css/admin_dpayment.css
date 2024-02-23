@@ -18,7 +18,7 @@ body{
     width: auto;
     margin-bottom: 50px;
    }
-   
+
    .Head-title{
     font-family: Inter;
     text-align:center;
@@ -48,11 +48,25 @@ body{
     }
 
    .main-table tr:not(:last-child) {
-    border-bottom: 1px solid #7D5452; 
-    
+    border-bottom: 1px solid #7D5452;
+
 }
 
 .main-table th:not(:last-child),
 .main-table td:not(:last-child) {
     border-right: 1px solid #7D5452;
+}
+
+.search-bar input{
+    font-family: Inter;
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid #7D5452;
+    border-radius: 50px;
+    padding: 10px 20px;
+   }
+
+   .search-bar input::placeholder {
+    font-family: Inter;
+    color: #7D5452;
 }

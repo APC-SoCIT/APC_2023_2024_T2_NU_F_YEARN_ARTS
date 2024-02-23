@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <base href="/public">
-@include('YearnArt.css')
-<link rel="stylesheet" href="assets/">
-<link rel="stylesheet" href="assets/css/S-order-tracking.css">
-<link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/S-order-tracking.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/typing.css">
+    <link rel="stylesheet" href="assets/css/chatbot.css">
 
+    @include('YearnArt.css')
 </head>
 
 <title>Yearn Art | {{ $order->product_name }}</title>
@@ -31,8 +32,10 @@
                             </div>
 
                             <div class="order-details">
+                                <p class="order-info">Order ID: {{$order->order_id}}</p>
                                 <p class="product-names">{{ $order->product_name }}</p>
-                                <p class="order-info">Variation: x{{ $order->quantity }} | {{$order->size}}</p></p>
+                                <p class="order-info">Variation: x{{ $order->quantity }} | {{$order->size}}</p>
+                                <p class="order-info">Order Created: {{ $order->created_at }}</p>
                             </div>
 
                             <div class="order-stats">

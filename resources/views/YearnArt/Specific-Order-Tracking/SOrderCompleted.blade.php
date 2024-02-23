@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <base href="/public">
-@include('YearnArt.css')
-<link rel="stylesheet" href="assets/">
-<link rel="stylesheet" href="assets/css/S-order-tracking.css">
+    <link rel="stylesheet" href="assets/css/S-order-tracking.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/typing.css">
+    <link rel="stylesheet" href="assets/css/chatbot.css">
+
+    @include('YearnArt.css')
 
 </head>
 
@@ -30,8 +33,10 @@
                             </div>
 
                             <div class="order-details">
+                                <p class="order-info">Order ID: {{$order->order_id}}</p>
                                 <p class="product-names">{{ $order->product_name }}</p>
                                 <p class="order-info">Variation: x{{ $order->quantity }} | {{$order->size}}</p>
+                                <p class="order-info">Order Created: {{ $order->created_at }}</p>
                             </div>
 
                             <div class="order-stats">
@@ -43,7 +48,7 @@
                                     <p class="price-num-1">Paid</p>
                                 </div>
                             </div>
-                            
+
                         </div>
 
                         <div class="line"></div>
@@ -54,14 +59,14 @@
                                 <p>
                                     Thank you for choosing Yearn Art! We take pride in the quality and craftsmanship of our crochet masterpieces, and we want to ensure your complete satisfaction with your purchase.
                                     <br><br>
-                                    We understand that sometimes adjustments or repairs may be necessary to meet your specific requirements. Therefore, we offer a return policy for adjustments and repairs within 10 days from the date of delivery. 
+                                    We understand that sometimes adjustments or repairs may be necessary to meet your specific requirements. Therefore, we offer a return policy for adjustments and repairs within 10 days from the date of delivery.
                                     <br><br>
                                     <b>NOTE!</b>
                                     <br>
                                     While we can accommodate adjustments and repairs, refunds are not available for our products. If you find that your product requires any modifications or repairs, please reach out to our customer service team within the specified timeframe. We will guide you through the return process and provide instructions on how to send the item back to us.
                                 </p>
                                 </div>
-                                
+
                                 @php
                             $receivedTimestamp = strtotime($order->order_received_at);
                             $tenDaysAgo = strtotime('+10 days');
@@ -78,7 +83,7 @@
                                     <p class="total">TOTAL:</p>
                                     <p class="price-num">₱{{ number_format($order->price/2, 2) }}</p>
                             </div>
-                            
+
 
 
                             <!-- Assuming $order->order_received_at contains varchar timestamp -->

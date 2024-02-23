@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
 <base href="/public">
-@include('YearnArt.css')
-<link rel="stylesheet" href="assets/">
 <link rel="stylesheet" href="assets/css/S-order-tracking.css">
+<link rel="stylesheet" href="assets/css/navbar.css">
+<link rel="stylesheet" href="assets/css/typing.css">
+<link rel="stylesheet" href="assets/css/chatbot.css">
+
+@include('YearnArt.css')
+
+
 
 </head>
 
@@ -30,8 +35,10 @@
                             </div>
 
                             <div class="order-details">
+                                <p class="order-info">Order ID: {{$order->order_id}}</p>
                                 <p class="product-names">{{ $order->product_name }}</p>
                                 <p class="order-info">Variation: x{{ $order->quantity }} | {{$order->size}}</p>
+                                <p class="order-info">Order Created: {{ $order->created_at }}</p>
                             </div>
 
                             <div class="order-stats">
@@ -43,7 +50,7 @@
                                     <p class="price-num-1">Paid</p>
                             </div>
                             </div>
-                            
+
                         </div>
 
                         <div class="line"></div>
@@ -51,7 +58,7 @@
                         <div class="lower-part">
                             <div class="main-description">
                                 <div class="paragraph-1">
-                                    Thank you for placing your order with us. We wanted to inform you that the processing time for your product(s) will depend on the quantity ordered. For a single product, it will take approximately  {{$order->processing_time}} to complete. <br>
+                                    Thank you for placing your order with us. We wanted to inform you that the processing time for your product(Order ID: {{$order->order_id}}) will depend on the quantity ordered. For a single product, it will take approximately  {{$order->processing_time}} weeks to complete. <br>
                                     We want to ensure that your crochet masterpiece is crafted with utmost care and attention to detail. The time required for processing multiple products may be longer due to the additional complexity and quantity involved. <br>
                                     Please feel free to take your time and reach out to us if you have any questions or concerns.
                                 </div>
@@ -64,7 +71,7 @@
 
                             <div class="buttons">
 
-                                <a href="{{ url('/track_Sorder', $order->id) }}" class="custom-button track-order-button">Cancel Order</a>
+
 
 
                                 <button class="custom-button">Contact Yearn Art</button>

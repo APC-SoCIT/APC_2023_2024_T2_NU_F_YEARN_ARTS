@@ -1,9 +1,6 @@
 <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
-
-            </div>
-            <div class="row">
               <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -148,7 +145,7 @@
 
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
-       
+
           <!-- partial -->
         </div>
         <!-- main-panel ends -->

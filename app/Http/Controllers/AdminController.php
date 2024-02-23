@@ -254,5 +254,21 @@ class AdminController extends Controller
         return view('admin.order', compact('order'));
     }
 
+    public function searchDpayment(Request $request){
+
+        $searchtext= $request->search;
+
+        $order=order::where('name','LIKE', "%$searchtext%")
+        ->orWhere('email','LIKE', "%$searchtext%")
+        ->orWhere('product_name','LIKE', "%$searchtext%")
+        ->orWhere('size','LIKE', "%$searchtext%")
+        ->orWhere('order_id','LIKE', "%$searchtext%")
+        ->get();
+
+
+        return view('admin.dpayment', compact('order'));
+    }
+
+
 
 }
