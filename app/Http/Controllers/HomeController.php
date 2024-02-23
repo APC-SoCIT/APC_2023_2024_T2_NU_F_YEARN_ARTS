@@ -12,6 +12,8 @@ use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Support\Str;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+
 class HomeController extends Controller
 {
     public function home()
@@ -489,17 +491,25 @@ class HomeController extends Controller
 
     }
 
+    public function downpayment_receipt($id){
+        $order=order::find($id);
+
+        $data = [
+            'title' => 'Downpayment Receipt',
+            'date' => date('Y-m-d'),
+            'orderid' => $order->order_id,
+        ];
+
+
+
+        $pdf = Pdf::loadView('admin.dpayment_receipt', $data);
+        return $pdf->download('invoice.pdf');
+
+    }
 
 
 
 
-//
-//
-//
-//
-//
-//
-//
 
 
 

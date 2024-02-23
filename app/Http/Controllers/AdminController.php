@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Order;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 use Illuminate\Support\Facades\Notification;
@@ -129,6 +130,7 @@ class AdminController extends Controller
         return view ('admin.order', compact('order'));
     }
 
+
     public function pending(){
         $order=order::all();
 
@@ -174,11 +176,12 @@ class AdminController extends Controller
         $order->save();
 
         $details = [
+
             'subject' => 'Downpayment Paid',
             'greeting' => 'greeting',
             'firstline' => 'firstline',
-            'button' => 'Track Order',
-            'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
+            'button' => 'Print Receipt',
+            'url' => 'http://127.0.0.1:8000/downpayment_receipt/' . $id,
             'lastline' => 'lastline',
         ];
 

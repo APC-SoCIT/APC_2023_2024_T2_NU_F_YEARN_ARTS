@@ -89,6 +89,8 @@
                                             <p>6. Review the details and confirm the transaction.</p>
                                             <p>7. Take a screenshot of your receipt and send with the it with the order id (Order ID: {{$order->order_id}}) to YearnBot to confirm that you already paid.</p>
                                             <p>8. Wait for your order to be confirmed by Yearn Art.</p>
+                                            <p>9. Check your email.</p>
+                                            <p>10. Print Receipt to see the breakdown of your orders.</p>
                                         </div>
 
 

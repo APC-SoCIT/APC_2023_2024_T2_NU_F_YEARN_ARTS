@@ -39,6 +39,8 @@ route::get('/show_shipping',[HomeController::class,'show_shipping']);
 route::get('/show_order_received',[HomeController::class,'show_order_received']);
 route::get('/show_order_completed',[HomeController::class,'show_order_completed']);
 
+route::get('/show_order_completed',[HomeController::class,'show_order_completed']);
+
 
 
 // track specific order
@@ -102,6 +104,8 @@ route::get('/onprocess',[AdminController::class,'onprocess']);
 route::get('/customer_list',[AdminController::class,'customer_list']);
 route::get('/search',[AdminController::class,'search']);
 route::get('/searchDpayment',[AdminController::class,'searchDpayment']);
+
+route::get('/downpayment_receipt/{id}',[HomeController::class,'downpayment_receipt']);
 
 
 
