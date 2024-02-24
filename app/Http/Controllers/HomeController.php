@@ -522,6 +522,21 @@ class HomeController extends Controller
     }
 
 
+    public function downpayment_receipt_edit(){
+
+        $order=order::get();
+
+        $data = [
+            'title' => 'Downpayment Receipt',
+            'date' => date('Y-m-d'),
+            'orderid' => 'Order ID',
+        ];
+        return view('admin.dpayment_receipt', compact('data'));
+
+
+    }
+
+
 
 
 

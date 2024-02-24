@@ -107,6 +107,9 @@ route::get('/searchDpayment',[AdminController::class,'searchDpayment']);
 
 route::get('/downpayment_receipt/{id}',[HomeController::class,'downpayment_receipt']);
 
+route::get('/downpayment_receipt_edit',[HomeController::class,'downpayment_receipt_edit']);
+
+
 
 
 
