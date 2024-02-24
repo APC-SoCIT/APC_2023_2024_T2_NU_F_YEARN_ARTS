@@ -273,5 +273,15 @@ class AdminController extends Controller
     }
 
 
+// chart
+    public function getData()
+    {
+        // Fetch your data from the database or any other source
+        $data = [1, 20, 30, 40, 50];
+
+        return response()->json(['data' => $data]);
+    }
+
+
 
 }

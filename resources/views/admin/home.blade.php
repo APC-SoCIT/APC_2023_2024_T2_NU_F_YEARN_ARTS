@@ -79,31 +79,73 @@
     <!-- partial -->
     <div class="main-panel">
         <div class="content-wrapper">
-            <div class="bar-container">
-                <table>
-                   <tr>
-                    <td>
-                        <div class="bar" style="height: 60%;">
-                            <div class="bar-text">60%</div>
-                        </div>
-                    </td>
-                   </tr>
-                   <tr>
-                    <th>Jan</th>
-                    <th>Feb</th>
-                    <th>Mar</th>
-                    <th>Apr</th>
-                    <th>May</th>
-                    <th>Jun</th>
-                    <th>Jul</th>
-                    <th>Aug</th>
-                    <th>Sep</th>
-                    <th>Oct</th>
-                    <th>Nov</th>
-                    <th>Dec</th>
-                   </tr>
-                </table>
+            <h2>Quantity Sold</h2>
+            <div style="display: flex; justify-content: space-between;">
+                <canvas id="verticalChart"></canvas>
+
+                <!-- Horizontal Bar Chart -->
+
             </div>
+
+            <canvas id="horizontalChart"></canvas>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Vertical Bar Chart
+                    fetch('/get-data')
+                        .then(response => response.json())
+                        .then(data => {
+                            var ctx = document.getElementById('verticalChart').getContext('2d');
+                            var myChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['Jan', 'Feb', 'Mar', 'Label 4', 'Label 5'],
+                                    datasets: [{
+                                        label: 'Quantity Sold',
+                                        data: data.data,
+                                        backgroundColor: '#7D5452',
+                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
+                        });
+
+                    // Horizontal Bar Chart
+                    fetch('/get-data')  // Adjust the route for horizontal data
+                        .then(response => response.json())
+                        .then(data => {
+                            var ctx = document.getElementById('horizontalChart').getContext('2d');
+                            var myChart = new Chart(ctx, {
+                                type: 'horizontalBar',
+                                data: {
+                                    labels: ['Category A', 'Category B', 'Category C', 'Category D', 'Category E'],
+                                    datasets: [{
+                                        label: 'Quantity Sold',
+                                        data: data.data,
+                                        backgroundColor: '#2ecc71',
+                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        x: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
+                        });
+                });
+            </script>
         </div>
     </div>
     <!-- container-scroller -->
