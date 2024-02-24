@@ -12,7 +12,7 @@
 
 
       <div class="logo-container">
-        <img src="https://app.useanvil.com/img/email-logo-black.png">
+        <img src="logo\YearnArt.png">
       </div>
 
       <table class="invoice-info-container">
