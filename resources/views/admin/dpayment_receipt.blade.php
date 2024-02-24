@@ -12,9 +12,9 @@
 
 
       <div class="logo-container">
-        <img src="logo\YearnArt.png">
+        <img src="https://app.useanvil.com/img/email-logo-black.png">
       </div>
-      
+
       <table class="invoice-info-container">
         <tr>
           <td rowspan="2" class="client-name">
@@ -46,9 +46,9 @@
           </td>
         </tr>
       </table>
-      
-      
-      
+
+
+
       <table class="line-items-container">
         <thead>
           <tr>
@@ -77,8 +77,8 @@
           </tr>
         </tbody>
       </table>
-      
-      
+
+
 
       <table class="line-items-container has-bottom-border">
         <thead>

@@ -493,11 +493,12 @@ class HomeController extends Controller
 
     public function downpayment_receipt($id){
         $order=order::find($id);
-
+        
         $data = [
             'title' => 'Downpayment Receipt',
             'date' => date('Y-m-d'),
             'orderid' => $order->order_id,
+            'image' => public_path('logo/YearnArt.png')
         ];
 
 
