@@ -4,6 +4,9 @@
 <base href="/public">
 <link rel="stylesheet" href="assets/css/about.css">
 <link rel="stylesheet" href="assets/css/navbar.css">
+<link rel="stylesheet" href="assets/css/typing.css">
+<link rel="stylesheet" href="assets/css/chatbot.css">
+
 @include('YearnArt.css')
 
 <title>Yearn Art | About</title>

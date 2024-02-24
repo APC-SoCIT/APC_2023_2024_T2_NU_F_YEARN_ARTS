@@ -8,9 +8,16 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
     
 }
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
 
 .column-1{
     flex: 1;
@@ -20,6 +27,7 @@ body{
 .column-3{
     overflow-x: auto;
     margin-bottom: 50px;
+    width: 100%;
 }
 
 .column-3::-webkit-scrollbar {
@@ -35,8 +43,6 @@ body{
     text-align:center;
     background-color: #D0A59F;
     border-radius: 20px;
-    width: auto;
-    
    }
 
    .Head-title{

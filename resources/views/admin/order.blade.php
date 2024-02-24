@@ -16,6 +16,7 @@
         @include('admin.header')
         <!-- partial -->
         <div class="main-panel">
+            <div class="main-content">
             <div class="content-wrapper">
                 <div class="column-1">
                   <h2 class="Head-title">Order Tracking</h2>
@@ -51,9 +52,6 @@
 
                           <th class="th-deg">Order ID</th>
                           <th class="th-deg">Order Status</th>
-
-
-
                       </tr>
                       @php
                       $count = 1;
@@ -86,13 +84,11 @@
                               {{$order->order_status}}
                               @endif
                             </td>
-
-
-
                       </tr>
                       @endforeach
                   </table>
                 </div>
+            </div>
             
         </div>
     <!-- container-scroller -->

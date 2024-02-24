@@ -15,17 +15,27 @@
         @include('admin.header')
         <!-- partial -->
         <div class="main-panel">
-            <div class="main-content content-wrapper">
-                <h1 class="Head-title">DownPayment</h1>
-                <form action="{{url('searchDpayment')}}" method="get">
-                    @csrf
+          <div class="main-content">
+          <div class="content-wrapper">
+                <div class="column-1">
+                  <h2 class="Head-title">Down Payment</h2>
+                </div>
+                
+                <div class="column-2">
+                  <form action="{{url('search')}}" method="get">
+                            @csrf
 
-                    <div class="search-bar">
-                      <input type="text" name="search" id="" placeholder="Search...">
-                    </div>
-
-                </form>
-                <table class="main-table">
+                            <div class="search-bar">
+                              <input type="text" name="search" id="" placeholder="Search...">
+                            </div>
+                            
+                  </form>
+                </div>
+                
+            </div>
+          </div>
+          <div class="column-3">
+          <table class="main-table">
                     <tr>
                         <th class="th-deg">Name</th>
                         <th class="th-deg">Product Name</th>
@@ -33,12 +43,6 @@
                         <th class="th-deg">Quantity</th>
                         <th class="th-deg">Order ID</th>
                         <th class="th-deg">Action</th>
-
-
-
-
-
-
                     </tr>
                     @foreach ($order as $order)
 
@@ -62,7 +66,8 @@
                     @endif
                     @endforeach
                 </table>
-            </div>
+          </div>
+            
         </div>
     <!-- container-scroller -->
     <!-- plugins:js -->

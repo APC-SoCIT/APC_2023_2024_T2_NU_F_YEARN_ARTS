@@ -3,6 +3,12 @@ body{
     color: #7D5452;
 }
 
+.content-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .main-content{
     display: flex;
     flex-direction: column;
@@ -10,12 +16,27 @@ body{
     margin-top: 10px;
 }
 
+
+.column-1{
+    flex: 1;
+    text-align: center;
+   }
+
+.column-3{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.column-3::-webkit-scrollbar {
+    display: none;
+}
+
+
 .main-table{
     text-align:center;
-    margin-top:40px;
     background-color: #D0A59F;
     border-radius: 20px;
-    width: auto;
     margin-bottom: 50px;
    }
 
