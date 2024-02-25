@@ -18,11 +18,15 @@ class HomeController extends Controller
 {
     public function home()
     {
+        $order=order::orderBy('created_at', 'desc')->get();
+
         $usertype=Auth::user()->usertype;
 
         if($usertype=='1')
         {
-            return view('admin.home');
+
+
+            return view('admin.home', compact('order')) ;
         }
         else
         {
@@ -210,7 +214,7 @@ class HomeController extends Controller
         if(Auth::id()){
         $id=Auth::user()->id;
 
-        $cart=cart::where('user_id', '=', $id)->get();
+        $cart=cart::where('user_id', '=', $id)->orderBy('created_at', 'desc')->get();
 
         return view('YearnArt.MyOrders', compact('cart'));
 
@@ -293,7 +297,7 @@ class HomeController extends Controller
         if(Auth::id()){
             $id=Auth::user()->id;
 
-            $order=order::where('user_id', '=', $id)->get();
+            $order=order::where('user_id', '=', $id)->orderBy('created_at', 'desc')->get();
 
             return view('YearnArt.Order-Tracking.ShowOrders', compact('order'));
 
@@ -312,7 +316,7 @@ class HomeController extends Controller
         if(Auth::id()){
             $id=Auth::user()->id;
 
-            $order=order::where('user_id', '=', $id)->get();
+            $order=order::where('user_id', '=', $id)->orderBy('created_at', 'desc')->get();
 
             return view('YearnArt.Order-Tracking.pending', compact('order'));
 
@@ -329,7 +333,7 @@ class HomeController extends Controller
         if(Auth::id()){
             $id=Auth::user()->id;
 
-            $order=order::where('user_id', '=', $id)->get();
+            $order=order::where('user_id', '=', $id)->orderBy('created_at', 'desc')->get();
 
             return view('YearnArt.Order-Tracking.Dpayment', compact('order'));
 
@@ -346,7 +350,7 @@ class HomeController extends Controller
         if(Auth::id()){
             $id=Auth::user()->id;
 
-            $order=order::where('user_id', '=', $id)->get();
+            $order=order::where('user_id', '=', $id)->orderBy('created_at', 'desc')->get();
 
             return view('YearnArt.Order-Tracking.OnProcess', compact('order'));
 
@@ -363,7 +367,7 @@ class HomeController extends Controller
         if(Auth::id()){
             $id=Auth::user()->id;
 
-            $order=order::where('user_id', '=', $id)->get();
+            $order=order::where('user_id', '=', $id)->orderBy('created_at', 'desc')->get();
 
             return view('YearnArt.Order-Tracking.Fpayment', compact('order'));
 
@@ -380,7 +384,7 @@ class HomeController extends Controller
         if(Auth::id()){
             $id=Auth::user()->id;
 
-            $order=order::where('user_id', '=', $id)->get();
+            $order=order::where('user_id', '=', $id)->orderBy('created_at', 'desc')->get();
 
             return view('YearnArt.Order-Tracking.Shipping', compact('order'));
 
@@ -396,7 +400,7 @@ class HomeController extends Controller
         if(Auth::id()){
             $id=Auth::user()->id;
 
-            $order=order::where('user_id', '=', $id)->get();
+            $order=order::where('user_id', '=', $id)->orderBy('created_at', 'desc')->get();
 
             return view('YearnArt.Order-Tracking.OrderReceived', compact('order'));
 
@@ -413,7 +417,7 @@ class HomeController extends Controller
         if(Auth::id()){
             $id=Auth::user()->id;
 
-            $order=order::where('user_id', '=', $id)->get();
+            $order=order::where('user_id', '=', $id)->orderBy('created_at', 'desc')->get();
 
             return view('YearnArt.Order-Tracking.OrderCompleted', compact('order'));
 
@@ -493,7 +497,7 @@ class HomeController extends Controller
 
     public function downpayment_receipt($id){
         $order=order::find($id);
-        
+
         $data = [
             'title' => 'Downpayment Receipt',
             'date' => date('Y-m-d'),

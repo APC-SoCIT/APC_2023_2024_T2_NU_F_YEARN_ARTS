@@ -18,7 +18,8 @@ class AdminController extends Controller
 {
 
     public function admin_dashboard(){
-        return view ('admin.home');
+        $order=order::orderBy('created_at', 'desc')->get();
+        return view ('admin.home', compact('order'));
     }
     public function view_category()
     {
@@ -276,10 +277,36 @@ class AdminController extends Controller
 // chart
     public function getData()
     {
+        $order=order::all();
         // Fetch your data from the database or any other source
         $data = [1, 20, 30, 40, 50];
 
         return response()->json(['data' => $data]);
+    }
+
+    public function to_order_completed($id){
+
+        $order=order::find($id);
+
+        $order->order_status="Order Completed";
+
+        $order->save();
+
+        $details = [
+
+            'subject' => 'Order Completed',
+            'greeting' => 'Dear ' . $order['name'] . ',',
+            'firstline' => '
+            We are delighted to inform you that your order has been successfully completed! Thank you for choosing Yearn Art for your purchase. To view and print your receipt, click on the following button:',
+            'button' => 'Print Receipt',
+            'url' => 'http://127.0.0.1:8000/downpayment_receipt/' . $id,
+            'lastline' => 'lastline',
+        ];
+
+        Notification::send($order, new YearnArtNotification($details));
+
+
+        return redirect()->back();
     }
 
 

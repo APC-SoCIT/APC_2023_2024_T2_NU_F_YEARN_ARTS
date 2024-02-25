@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('admin.css')
+    <link rel="stylesheet" href="admin/assets/css/admin_home.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -12,59 +13,7 @@
             background-color: #E4D8CC;
         }
 
-        .bar-container {
-            width: 80%;
-            margin: 50px auto;
-            background-color: #D0A59F;
-        }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        td {
-            vertical-align: bottom;
-            padding: 0 5px;
-        }
-
-        .bar {
-            height: 150px; /* Adjust the height as needed */
-            width: 10px;
-            background-color: #7D5452;
-            opacity: .5;
-            transition: height 0.6s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #000;
-        }
-
-        .bar-text {
-            padding: 5px;
-            border-radius: 5px;
-            color: #fff;
-            margin-top: 5px;
-        }
-
-        .bar:nth-child(even) {
-            background-color: #2ecc71;
-        }
-
-
-
-        .month-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        th {
-            flex: 1;
-            text-align: center;
-            color: #000;
-        }
     </style>
     <title>Yearn Art | Home</title>
 </head>
@@ -83,11 +32,48 @@
             <div style="display: flex; justify-content: space-between;">
                 <canvas id="verticalChart"></canvas>
 
-                <!-- Horizontal Bar Chart -->
+
+
+            </div>
+            <h2>Best Selling Category</h2>
+            <div style="display: flex; justify-content: space-between;">
+                <canvas id="horizontalChart"></canvas>
 
             </div>
 
-            <canvas id="horizontalChart"></canvas>
+
+            <h2>Sales Order Transaction Confirmation</h2>
+            <table class="main-table">
+                <tr>
+                    <th class="th-deg">Name</th>
+                    <th class="th-deg">Product Name</th>
+                    <th class="th-deg">Price</th>
+                    <th class="th-deg">Quantity</th>
+                    <th class="th-deg">Order ID</th>
+                    <th class="th-deg">Action</th>
+                </tr>
+                @foreach ($order as $order)
+
+                @if($order->order_status=='Order Received')
+                <tr>
+                    <td class="th-deg">{{$order->name}}</td>
+                    <td class="th-deg">{{$order->product_name}}</td>
+                    <td class="th-deg">₱{{ number_format($order->price * $order->quantity, 2) }}</td>
+                    <td class="th-deg">{{$order->quantity}}</td>
+                    <td class="th-deg">{{$order->order_id}}</td>
+
+                    <td class="th-deg">
+                        @if($order->order_status=='On Process')
+                        <p>Done</p>
+                        @else
+                        <a href="{{url('to_order_completed', $order->id)}}" class="btn-confirm" onclick="return confirm('Are you sure this order is already paid??')">Done</a>
+
+                        @endif
+                    </td>
+                </tr>
+                @endif
+                @endforeach
+            </table>
 
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
@@ -128,9 +114,9 @@
                                 data: {
                                     labels: ['Category A', 'Category B', 'Category C', 'Category D', 'Category E'],
                                     datasets: [{
-                                        label: 'Quantity Sold',
+                                        label: 'Best Selling Category',
                                         data: data.data,
-                                        backgroundColor: '#2ecc71',
+                                        backgroundColor: '#7D5452',
                                         borderColor: 'rgba(75, 192, 192, 1)',
                                         borderWidth: 1
                                     }]

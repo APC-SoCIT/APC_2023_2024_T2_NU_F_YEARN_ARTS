@@ -111,7 +111,7 @@ route::get('/downpayment_receipt_edit',[HomeController::class,'downpayment_recei
 
 
 Route::get('/get-data', [AdminController::class, 'getData']);
-    
+
 
 
 
@@ -121,6 +121,8 @@ route::get('/to_dpay/{id}',[AdminController::class,'to_dpay']);  // downpayment 
 route::get('/to_onprocess/{id}',[AdminController::class,'to_onprocess']); // papuntang on process tapos na mag bayad
 route::get('/to_fpay/{id}',[AdminController::class,'to_fpay']);
 route::get('/to_ship/{id}',[AdminController::class,'to_ship']);
+
+route::get('/to_order_completed/{id}',[AdminController::class,'to_order_completed']);
 
 
 
