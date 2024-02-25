@@ -110,7 +110,7 @@ route::get('/downpayment_receipt/{id}',[HomeController::class,'downpayment_recei
 route::get('/downpayment_receipt_edit',[HomeController::class,'downpayment_receipt_edit']);
 
 
-Route::get('/get-data', [AdminController::class, 'getData']);
+Route::get('/get_data', [AdminController::class, 'get_data']);
 
 
 

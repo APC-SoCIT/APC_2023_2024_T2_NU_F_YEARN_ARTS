@@ -29,12 +29,18 @@
     <div class="main-panel">
         <div class="content-wrapper">
             <h2>Quantity Sold</h2>
+            <label for="yearDropdown">Select Year:</label>
+                <select id="yearDropdown" onchange="handleYearChange()">
+                    <!-- Add your year options dynamically here -->
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <!-- Add more years as needed -->
+                </select>
             <div style="display: flex; justify-content: space-between;">
                 <canvas id="verticalChart"></canvas>
-
-
-
             </div>
+
             <h2>Best Selling Category</h2>
             <div style="display: flex; justify-content: space-between;">
                 <canvas id="horizontalChart"></canvas>
@@ -78,14 +84,14 @@
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     // Vertical Bar Chart
-                    fetch('/get-data')
+                    fetch('/get_data')
                         .then(response => response.json())
                         .then(data => {
                             var ctx = document.getElementById('verticalChart').getContext('2d');
                             var myChart = new Chart(ctx, {
                                 type: 'bar',
                                 data: {
-                                    labels:  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug','Sept' ,'Oct', 'Nov' ,'Dec'],
+                                    labels:  data.labels,
                                     datasets: [{
                                         label: 'Quantity Sold',
                                         data: data.data,
@@ -97,7 +103,8 @@
                                 options: {
                                     scales: {
                                         y: {
-                                            beginAtZero: true
+                                            beginAtZero: true,
+                                            min: 0,
                                         }
                                     }
                                 }
@@ -105,7 +112,7 @@
                         });
 
                     // Horizontal Bar Chart
-                    fetch('/get-data')  // Adjust the route for horizontal data
+                    fetch('/get_data')  // Adjust the route for horizontal data
                         .then(response => response.json())
                         .then(data => {
                             var ctx = document.getElementById('horizontalChart').getContext('2d');
@@ -124,7 +131,11 @@
                                 options: {
                                     scales: {
                                         x: {
-                                            beginAtZero: true
+                                            beginAtZero: true, // Start from zero on the x-axis
+                                        },
+                                        y: {
+                                            beginAtZero: true, // Start from zero on the y-axis
+                                            min: 0, // Set a minimum value less than zero on the y-axis
                                         }
                                     }
                                 }

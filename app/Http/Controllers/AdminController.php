@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Order;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 
 
 use Illuminate\Support\Facades\Notification;
@@ -299,25 +300,27 @@ class AdminController extends Controller
 
 
 // chart
-    public function getData()
-    {
-    $completedOrders = Order::where('status', 'Order Completed')
-        ->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as total'))
-        ->groupBy(DB::raw('MONTH(created_at)'))
-        ->pluck('total', 'month')
-        ->toArray();
+public function get_data()
+{
+    $monthLabels = [
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
+    ];
 
-    // Initialize data array with zeros for all months
-    $data = array_fill(1, 12, 0);
+    // Initialize an array with zero values for each month
+    $completedOrders = array_fill_keys($monthLabels, 0);
 
-    // Replace zeros with actual data for months with completed orders
-    foreach ($completedOrders as $month => $total) {
-        $data[$month] = $total;
+    // Fetch data from the database and update the array
+    $ordersData = Order::where('order_status', 'Order Completed')
+        ->selectRaw('MONTH(completed_at) as month, COUNT(*) as total')
+        ->groupBy(DB::raw('MONTH(completed_at)'))
+        ->get();
+
+    foreach ($ordersData as $data) {
+        $completedOrders[$monthLabels[$data->month - 1]] = $data->total;
     }
 
-    return response()->json(['data' => array_values($data)]);
-    }
-
+    return response()->json(['data' => array_values($completedOrders), 'labels' => $monthLabels]);
+}
 
 
 
