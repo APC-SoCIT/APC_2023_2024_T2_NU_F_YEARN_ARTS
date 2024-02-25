@@ -162,6 +162,7 @@ class HomeController extends Controller
                 $cart->address = $user->address;
                 $cart->user_id = $user->id;
                 $cart->product_name = $products->product_name;
+                $cart->category = $products->category;
                 $cart->price = $products->price;
                 $cart->processing_time = $products->processing_time;
                 $cart->image = $products->image;
@@ -264,6 +265,7 @@ class HomeController extends Controller
 
                 $order->order_id = $orderId;
                 $order->product_name=$data->product_name;
+                $order->category=$data->category;
                 $order->quantity = $quantity;
                 $order->price = $data->price;
                 $order->image=$data->image;

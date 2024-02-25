@@ -333,7 +333,7 @@ public function get_data_category(Request $request)
     $selectedYear = $request->input('selected_year', date('Y'));
 
     // Fetch data from the database and update the array
-    $categoryCounts = Order::whereYear('completed_at', $selectedYear) // Filter by the selected year
+    $categoryCounts = Order::whereYear('created_at', $selectedYear) // Filter by the selected year
         ->selectRaw('category, COUNT(*) as total')
         ->groupBy('category')
         ->get();

@@ -21,6 +21,7 @@ return new class extends Migration
 
             $table->string('order_id')->nullable();
             $table->string('product_name')->nullable();
+            $table->string('category')->nullable();
             $table->string('quantity')->nullable();
             $table->string('image')->nullable();
             $table->string('price')->nullable();
@@ -28,7 +29,7 @@ return new class extends Migration
             $table->string('primaryclr')->nullable();
             $table->string('secondaryclr')->nullable();
             $table->string('size')->nullable();
-            $table->string('product_id')->nullable();       
+            $table->string('product_id')->nullable();
 
             $table->string('order_received_at')->nullable();
             $table->string('payment_status')->nullable();
