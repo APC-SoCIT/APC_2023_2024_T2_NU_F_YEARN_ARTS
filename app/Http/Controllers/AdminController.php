@@ -21,6 +21,7 @@ class AdminController extends Controller
     public function admin_dashboard(){
         $order=order::orderBy('created_at', 'desc')->get();
         return view ('admin.home', compact('order'));
+
     }
     public function view_category()
     {
@@ -300,8 +301,11 @@ class AdminController extends Controller
 
 
 // chart
-public function get_data()
+public function get_data(Request $request)
 {
+    // Get the selected year from the request or use the current year as a default
+    $selectedYear = $request->input('selected_year', date('Y'));
+
     $monthLabels = [
         'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
     ];
@@ -311,6 +315,7 @@ public function get_data()
 
     // Fetch data from the database and update the array
     $ordersData = Order::where('order_status', 'Order Completed')
+        ->whereYear('completed_at', $selectedYear) // Filter by the selected year
         ->selectRaw('MONTH(completed_at) as month, COUNT(*) as total')
         ->groupBy(DB::raw('MONTH(completed_at)'))
         ->get();
@@ -321,6 +326,25 @@ public function get_data()
 
     return response()->json(['data' => array_values($completedOrders), 'labels' => $monthLabels]);
 }
+
+public function get_data_category(Request $request)
+{
+    // Get the selected year from the request or use the current year as a default
+    $selectedYear = $request->input('selected_year', date('Y'));
+
+    // Fetch data from the database and update the array
+    $categoryCounts = Order::whereYear('completed_at', $selectedYear) // Filter by the selected year
+        ->selectRaw('category, COUNT(*) as total')
+        ->groupBy('category')
+        ->get();
+
+    // Convert the result to an associative array for easier processing
+    $categoryCountsArray = $categoryCounts->pluck('total', 'category')->toArray();
+
+    return response()->json(['data' => $categoryCountsArray, 'selected_year' => $selectedYear]);
+}
+
+
 
 
 
