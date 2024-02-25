@@ -272,18 +272,6 @@ class AdminController extends Controller
 
         return view('admin.dpayment', compact('order'));
     }
-
-
-// chart
-    public function getData()
-    {
-        $order=order::all();
-        // Fetch your data from the database or any other source
-        $data = [1, 20, 30, 40, 50];
-
-        return response()->json(['data' => $data]);
-    }
-
     public function to_order_completed($id){
 
         $order=order::find($id);
@@ -308,6 +296,29 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+
+// chart
+    public function getData()
+    {
+    $completedOrders = Order::where('status', 'Order Completed')
+        ->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as total'))
+        ->groupBy(DB::raw('MONTH(created_at)'))
+        ->pluck('total', 'month')
+        ->toArray();
+
+    // Initialize data array with zeros for all months
+    $data = array_fill(1, 12, 0);
+
+    // Replace zeros with actual data for months with completed orders
+    foreach ($completedOrders as $month => $total) {
+        $data[$month] = $total;
+    }
+
+    return response()->json(['data' => array_values($data)]);
+    }
+
+
 
 
 

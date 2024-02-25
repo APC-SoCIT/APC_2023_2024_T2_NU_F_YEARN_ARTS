@@ -85,7 +85,7 @@
                             var myChart = new Chart(ctx, {
                                 type: 'bar',
                                 data: {
-                                    labels: ['Jan', 'Feb', 'Mar', 'Label 4', 'Label 5'],
+                                    labels:  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug','Sept' ,'Oct', 'Nov' ,'Dec'],
                                     datasets: [{
                                         label: 'Quantity Sold',
                                         data: data.data,
