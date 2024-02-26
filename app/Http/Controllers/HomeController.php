@@ -296,7 +296,7 @@ class HomeController extends Controller
     // start of order tracking (not specific)
 
     public function show_orders(){
-        if(Auth::id()){ 
+        if(Auth::id()){
             $id=Auth::user()->id;
 
             $order=order::where('user_id', '=', $id)->orderBy('created_at', 'desc')->get();
@@ -497,11 +497,11 @@ class HomeController extends Controller
 
     }
 
-    public function downpayment_receipt($id){
+    public function fullpayment_receipt($id){
         $order=order::find($id);
 
         $data = [
-            'title' => 'Downpayment Receipt',
+            'title' => 'Sales Invoice',
             'date' => date('Y-m-d'),
             'orderid' => $order->order_id,
             'image' => public_path('logo/YearnArt.png')
@@ -509,7 +509,7 @@ class HomeController extends Controller
 
 
 
-        $pdf = Pdf::loadView('admin.dpayment_receipt', $data);
+        $pdf = Pdf::loadView('admin.fpayment_receipt', $data);
         return $pdf->download('invoice.pdf');
 
     }
@@ -529,7 +529,7 @@ class HomeController extends Controller
     }
 
 
-    public function downpayment_receipt_edit(){
+    public function fullpayment_receipt_edit(){
 
         $order=order::get();
 
@@ -538,7 +538,7 @@ class HomeController extends Controller
             'date' => date('Y-m-d'),
             'orderid' => 'Order ID',
         ];
-        return view('admin.dpayment_receipt', compact('data'));
+        return view('admin.dpayment_receipt', compact('data','order'));
 
 
     }

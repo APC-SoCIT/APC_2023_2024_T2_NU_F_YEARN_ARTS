@@ -105,9 +105,9 @@ route::get('/customer_list',[AdminController::class,'customer_list']);
 route::get('/search',[AdminController::class,'search']);
 route::get('/searchDpayment',[AdminController::class,'searchDpayment']);
 
-route::get('/downpayment_receipt/{id}',[HomeController::class,'downpayment_receipt']);
+route::get('/fullpayment_receipt/{id}',[HomeController::class,'fullpayment_receipt']);
 
-route::get('/downpayment_receipt_edit',[HomeController::class,'downpayment_receipt_edit']);
+route::get('/fullpayment_receipt_edit',[HomeController::class,'fullpayment_receipt_edit']);
 
 
 Route::get('/get_data', [AdminController::class, 'get_data']);
