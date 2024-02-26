@@ -332,17 +332,28 @@ public function get_data_category(Request $request)
     // Get the selected year from the request or use the current year as a default
     $selectedYear = $request->input('selected_year', date('Y'));
 
+    // Get all distinct categories from the database
+    $allCategories = Order::distinct()->pluck('category');
+
+    // Initialize category counts array with all categories set to 0
+    $categoryCountsArray = $allCategories->mapWithKeys(function ($category) {
+        return [$category => 0];
+    })->toArray();
+
     // Fetch data from the database and update the array
     $categoryCounts = Order::whereYear('created_at', $selectedYear) // Filter by the selected year
         ->selectRaw('category, COUNT(*) as total')
         ->groupBy('category')
         ->get();
 
-    // Convert the result to an associative array for easier processing
-    $categoryCountsArray = $categoryCounts->pluck('total', 'category')->toArray();
+    // Update the counts for categories with orders
+    foreach ($categoryCounts as $categoryCount) {
+        $categoryCountsArray[$categoryCount->category] = $categoryCount->total;
+    }
 
     return response()->json(['data' => $categoryCountsArray, 'selected_year' => $selectedYear]);
 }
+
 
 
 

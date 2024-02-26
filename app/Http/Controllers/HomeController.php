@@ -296,7 +296,7 @@ class HomeController extends Controller
     // start of order tracking (not specific)
 
     public function show_orders(){
-        if(Auth::id()){
+        if(Auth::id()){ 
             $id=Auth::user()->id;
 
             $order=order::where('user_id', '=', $id)->orderBy('created_at', 'desc')->get();

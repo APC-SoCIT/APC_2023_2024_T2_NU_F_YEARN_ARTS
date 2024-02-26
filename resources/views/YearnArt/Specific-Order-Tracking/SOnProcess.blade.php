@@ -37,9 +37,11 @@
                             <div class="order-details">
                                 <p class="order-info">Order ID: {{$order->order_id}}</p>
                                 <p class="product-names">{{ $order->product_name }}</p>
+                                <p class="order-info">Category: {{ $order->category }}</p>
                                 <p class="order-info">Variation: x{{ $order->quantity }} | {{$order->size}}</p>
                                 <p class="order-info">Order Created: {{ $order->created_at }}</p>
                             </div>
+
 
                             <div class="order-stats">
                                 <p>
