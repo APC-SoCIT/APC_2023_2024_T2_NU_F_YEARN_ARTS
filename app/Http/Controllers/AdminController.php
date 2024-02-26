@@ -184,7 +184,7 @@ class AdminController extends Controller
             'greeting' => 'greeting',
             'firstline' => 'firstline',
             'button' => 'Print Receipt',
-            'url' => 'http://127.0.0.1:8000/downpayment_receipt/' . $id,
+            'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
             'lastline' => 'lastline',
         ];
 
@@ -279,6 +279,7 @@ class AdminController extends Controller
         $order=order::find($id);
 
         $order->order_status="Order Completed";
+        $order->completed_at=now();
 
         $order->save();
 
@@ -289,7 +290,7 @@ class AdminController extends Controller
             'firstline' => '
             We are delighted to inform you that your order has been successfully completed! Thank you for choosing Yearn Art for your purchase. To view and print your receipt, click on the following button:',
             'button' => 'Print Receipt',
-            'url' => 'http://127.0.0.1:8000/downpayment_receipt/' . $id,
+            'url' => 'http://127.0.0.1:8000/fullpayment_receipt/' . $id,
             'lastline' => 'lastline',
         ];
 

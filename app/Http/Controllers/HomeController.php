@@ -504,7 +504,9 @@ class HomeController extends Controller
             'title' => 'Sales Invoice',
             'date' => date('Y-m-d'),
             'orderid' => $order->order_id,
-            'image' => public_path('logo/YearnArt.png')
+            'image' => public_path('logo/YearnArt.png'),
+            'order' => $order,
+            'peso' => '₱',
         ];
 
 
@@ -538,7 +540,7 @@ class HomeController extends Controller
             'date' => date('Y-m-d'),
             'orderid' => 'Order ID',
         ];
-        return view('admin.dpayment_receipt', compact('data','order'));
+        return view('admin.fpayment_receipt', compact('data','order'));
 
 
     }
