@@ -12,6 +12,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Support\Str;
 
+
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class HomeController extends Controller
