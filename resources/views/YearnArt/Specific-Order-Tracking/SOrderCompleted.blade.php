@@ -70,10 +70,13 @@
                                     </div>
 
                                     @php
-                                $receivedTimestamp = strtotime($order->order_received_at);
-                                $formattedreceivedTimestamp = date('Y-m-d', $receivedTimestamp);
-                                $tenDaysAgo = strtotime('+10 days');
-                                $formattedTenDaysAgo = date('Y-m-d', $tenDaysAgo);
+                                    $currentTimestamp = strtotime('now');
+                                    $receivedTimestamp = strtotime($order->completed_at);
+                                    $formattedreceivedTimestamp = date('Y-m-d', $receivedTimestamp);
+
+                                    // Add 10 days to received timestamp
+                                    $tenDaysAgoTimestamp = strtotime('+10 days', $receivedTimestamp);
+                                    $formattedTenDaysAgo = date('Y-m-d', $tenDaysAgoTimestamp);
 
                                 @endphp
                                <div class="paragraph-4">
@@ -92,11 +95,12 @@
                                 <!-- Assuming $order->order_received_at contains varchar timestamp -->
 
                                 <div class="buttons">
-                                @if ($receivedTimestamp >= $tenDaysAgo)
-                                <a href="{{ url('receive_order', $order->id) }}" class="custom-button track-order-button">{{ $formattedTenDaysAgo  }}</a>
+                                @if ($currentTimestamp > $tenDaysAgoTimestamp  )
+                                <a href="#" class="custom-button track-order-button disabled-link" >Return for Resizing/Repair</a>
                                 <button class="custom-button">Contact Yearn Art</button>
+
                                 @else
-                                <a href="#" class="custom-button track-order-button" disabled>Return for Resizing/Repair</a>
+                                <a href="{{ url('receive_order', $order->id) }}" class="custom-button track-order-button" >Return for Resizing/Repair</a>
                                 <button class="custom-button">Contact Yearn Art</button>
                                 @endif
                                 </div>
