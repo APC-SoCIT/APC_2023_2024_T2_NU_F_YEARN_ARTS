@@ -25,7 +25,7 @@ class HomeController extends Controller
 
         if($usertype=='1')
         {
-            
+
 
                 $completedOrders = Order::where('order_status', 'Order Completed')
                 ->select('id', 'quantity', 'created_at') // Adjust these fields based on your Order model
@@ -38,7 +38,6 @@ class HomeController extends Controller
             return view('admin.home', compact('completedOrders', 'totalQuantity', 'order'));
 
 
-            return view('admin.home', compact('order')) ;
         }
         else
         {
