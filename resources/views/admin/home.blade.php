@@ -5,14 +5,7 @@
         <link rel="stylesheet" href="admin/assets/css/admin_home.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #E4D8CC;
-            }
-        </style>
+        
         <title>Yearn Art | Home</title>
     </head>
     <body>
@@ -26,9 +19,9 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <h2>Quantity Sold</h2>
-                <label for="yearDropdown">Select Year:</label>
-                <select name="selected_year" id="yearDropdown" onchange="handleYearChange()">
+                <h2 class="title-header">Quantity Sold</h2>
+                <label for="yearDropdown" class="year">Year:</label>
+                <select class="year-option" name="selected_year" id="yearDropdown" onchange="handleYearChange()">
                     <?php
                     $currentYear = date("Y");
                     $years = range($currentYear - 2, $currentYear + 2);
@@ -48,16 +41,23 @@
                 </div>
 
                 <!-- Add the dropdown for year selection -->
-                <div style="display: flex; justify-content: space-between;">
-                    <canvas id="verticalChart"></canvas>
+                <div class="quantity-table">
+                    <div class="quantity">
+                        <canvas id="verticalChart"></canvas>
+                        <p class="quantity-sold">Quantity sold: <b>2</b></p>  <!-- Palagyan data sam -->
+                    </div>
                 </div>
 
-                <h2>Best Selling Category</h2>
-                <div style="display: flex; justify-content: space-between;">
-                    <canvas id="horizontalChart"></canvas>
+                <h2 class="title-header">Best Selling Category</h2>
+                
+                <div class="quantity-table">
+                    <div class="quantity">
+                        <canvas id="horizontalChart"></canvas>
+                    </div>
                 </div>
-                <h2>Sales Order Transaction Confirmation</h2>
+                <h2 class="title-header">Sales Order Transaction Confirmation</h2>
 
+                <div class="table-1212">
                 <table class="main-table">
 
                     <tr>
@@ -116,7 +116,8 @@
 
                     @endforeach
 
-                </table>
+</table>
+                </div>
                 <script>
                     function fetchDataAndRenderCharts(year) {
                         // Vertical Bar Chart
@@ -159,9 +160,8 @@
                                 datasets: [{
                                     label: label,
                                     data: data,
-                                    backgroundColor: '#7D5452',
-                                    borderColor: 'rgba(75, 192, 192, 1)',
-                                    borderWidth: 1
+                                    backgroundColor: 'rgba(125, 84, 82, .50)',
+                                    
                                 }]
                             },
                             options: {
