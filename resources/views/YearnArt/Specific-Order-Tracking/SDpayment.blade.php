@@ -39,6 +39,13 @@
                                 <div class="img-fluid">
                                     <img src="product/{{ $order->image }}" alt="{{ $order->product_name }}">
                                 </div>
+                                @php
+
+                                $unitprice = ($order->price);
+                                $totalPrice = ($unitprice * $order->quantity);
+                                $dpaymentPrice = ($totalPrice/2);
+                                $fpaymentPrice = ($totalPrice/2);
+                                @endphp
 
                                 <div class="order-details">
                                     <p class="order-info">Order ID: {{$order->order_id}}</p>
@@ -55,7 +62,7 @@
                                     </p>
                                     <div class="pos-price">
                                         <p class="total-1">TOTAL:</p>
-                                        <p class="price-num-1">₱{{ number_format($order->price/2, 2) }}</p>
+                                        <p class="price-num-1">₱{{ number_format($dpaymentPrice, 2) }}</p>
                                     </div>
 
                                 </div>
@@ -107,7 +114,7 @@
 
                                 <div class="pos-price">
                                         <p class="total">TOTAL:</p>
-                                        <p class="price-num">₱{{ number_format($order->price/2, 2) }}</p>
+                                        <p class="price-num">₱{{ number_format($dpaymentPrice, 2) }}</p>
                                 </div>
 
 

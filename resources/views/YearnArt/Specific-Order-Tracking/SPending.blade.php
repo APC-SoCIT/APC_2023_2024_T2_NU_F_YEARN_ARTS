@@ -35,7 +35,7 @@
                                 <p class="order-info">Order ID: {{$order->order_id}}</p>
                                 <p class="product-names">{{ $order->product_name }}</p>
                                 <p class="order-info">Category: {{ $order->category }}</p>
-                                <p class="order-info">Variation: x{{ $order->quantity }} | {{$order->size}}</p>
+                                <p class="order-info">Variation: {{ $order->quantity }} pcs. | {{$order->size}}</p>
                                 <p class="order-info">Order Created: {{ $order->created_at }}</p>
                             </div>
                             <div class="order-stats">
@@ -54,10 +54,20 @@
                                     This may take a while, but we assure you of our commitment to providing the best service possible.
                                 </p>
                             </div>
+                            @php
 
+                            $unitprice = ($order->price);
+                            $totalPrice = ($unitprice * $order->quantity);
+                            $dpaymentPrice = ($totalPrice/2);
+                            $fpaymentPrice = ($totalPrice/2);
+                            @endphp
+                            <div class="pos-price">
+                                <p class="total">Unit Price:</p>
+                                <p class="price-num">₱{{ number_format($unitprice, 2) }}</p>
+                            </div>
                             <div class="pos-price">
                                     <p class="total">TOTAL:</p>
-                                    <p class="price-num">₱{{ number_format($order->price, 2) }}</p>
+                                    <p class="price-num">₱{{ number_format($totalPrice, 2) }}</p>
                             </div>
 
                             <div class="buttons">
