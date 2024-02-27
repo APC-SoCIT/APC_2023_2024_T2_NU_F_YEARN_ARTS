@@ -317,12 +317,12 @@ public function get_data(Request $request)
     // Fetch data from the database and update the array
     $ordersData = Order::where('order_status', 'Order Completed')
         ->whereYear('completed_at', $selectedYear) // Filter by the selected year
-        ->selectRaw('MONTH(completed_at) as month, COUNT(*) as total')
+        ->selectRaw('MONTH(completed_at) as month, SUM(quantity) as total_quantity')
         ->groupBy(DB::raw('MONTH(completed_at)'))
         ->get();
 
     foreach ($ordersData as $data) {
-        $completedOrders[$monthLabels[$data->month - 1]] = $data->total;
+        $completedOrders[$monthLabels[$data->month - 1]] = $data->total_quantity;
     }
 
     return response()->json(['data' => array_values($completedOrders), 'labels' => $monthLabels]);

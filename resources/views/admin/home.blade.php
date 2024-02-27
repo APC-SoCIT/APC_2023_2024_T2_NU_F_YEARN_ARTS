@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="admin/assets/css/admin_home.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         <title>Yearn Art | Home</title>
     </head>
     <body>
@@ -45,12 +45,12 @@
                 <div class="quantity-table">
                     <div class="quantity">
                         <canvas id="verticalChart"></canvas>
-                        <p class="quantity-sold">Quantity sold: <b>2</b></p>  <!-- Palagyan data sam -->
+                        <p class="quantity-sold">Quantity sold: <b id="quantity-sold-value"></b></p>
                     </div>
                 </div>
 
                 <h2 class="title-header">Best Selling Category</h2>
-                
+
                 <div class="quantity-table">
                     <div class="quantity">
                         <canvas id="horizontalChart"></canvas>
@@ -162,6 +162,7 @@
                                     label: label,
                                     data: data,
                                     backgroundColor: 'rgba(125, 84, 82, .50)',
+
                                 }]
                             },
                             options: {
@@ -218,6 +219,9 @@
                         // Initial fetch and render
                         fetchDataAndRenderCharts(selectedYear);
                     });
+
+
+                        
                 </script>
             </div>
         </div>
