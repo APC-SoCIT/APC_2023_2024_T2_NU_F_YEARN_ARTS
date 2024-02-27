@@ -50,7 +50,13 @@
                                 <div class="pos-price">
                                     <p class="total-1">Downpayment: </p>
                                     <p class="price-num-1">Paid</p>
-                            </div>
+
+                                </div>
+                                <div>
+                                    <p class="total-1">Downpayment: </p>
+                                    <p class="price-num-1">₱{{ number_format($order->price/2, 2) }}</p>
+                                </div>
+                                
                             </div>
 
                         </div>
