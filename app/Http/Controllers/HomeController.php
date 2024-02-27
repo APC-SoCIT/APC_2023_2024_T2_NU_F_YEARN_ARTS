@@ -523,7 +523,7 @@ class HomeController extends Controller
 
 
         $pdf = Pdf::loadView('admin.fpayment_receipt', $data);
-        return $pdf->download('invoice.pdf');
+        return $pdf->download('Sales Invoice.pdf');
 
     }
 
