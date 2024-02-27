@@ -39,13 +39,13 @@
                 <div id="loadingIndicator" style="display: none;">
 
                 </div>
-                
+
 
                 <!-- Add the dropdown for year selection -->
                 <div class="quantity-table">
                     <div class="quantity">
                         <canvas id="verticalChart"></canvas>
-                        <p class="quantity-sold">Quantity sold: <b id="quantity-sold-value"></b></p>
+                        <p class="quantity-sold">Quantity sold: <b id="quantity-sold-value">{{ $totalQuantity }}</b></p>
                     </div>
                 </div>
 
@@ -221,7 +221,7 @@
                     });
 
 
-                        
+
                 </script>
             </div>
         </div>

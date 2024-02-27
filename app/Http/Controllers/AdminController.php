@@ -20,7 +20,19 @@ class AdminController extends Controller
 
     public function admin_dashboard(){
         $order=order::orderBy('created_at', 'desc')->get();
-        return view ('admin.home', compact('order'));
+
+        $completedOrders = Order::where('order_status', 'Order Completed')
+        ->select('id', 'quantity', 'created_at') // Adjust these fields based on your Order model
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    // Calculate total quantity
+    $totalQuantity = $completedOrders->sum('quantity');
+
+    return view('admin.home', compact('completedOrders', 'totalQuantity', 'order'));
+
+
+
 
     }
     public function view_category()
