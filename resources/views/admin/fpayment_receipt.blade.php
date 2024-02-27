@@ -11,11 +11,11 @@
             <body>
 
 
-                <div class="logo-container">
+                <!-- <div class="logo-container">
                     <img src="logo\YearnArt.png">
-                </div>
+                </div> -->
 
-
+                <!-- Palagyan ng TIN Number -->
 
                 <table class="invoice-info-container">
                     <tr>
