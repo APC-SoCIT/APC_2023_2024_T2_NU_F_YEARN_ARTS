@@ -312,7 +312,7 @@ public function get_data(Request $request)
     ];
 
     // Initialize an array with zero values for each month
-    $completedQuantities = array_fill_keys($monthLabels, 0);
+    $completedOrders = array_fill_keys($monthLabels, 0);
 
     // Fetch data from the database and update the array
     $ordersData = Order::where('order_status', 'Order Completed')
@@ -322,12 +322,11 @@ public function get_data(Request $request)
         ->get();
 
     foreach ($ordersData as $data) {
-        $completedQuantities[$monthLabels[$data->month - 1]] = $data->total_quantity;
+        $completedOrders[$monthLabels[$data->month - 1]] = $data->total_quantity;
     }
 
-    return response()->json(['data' => array_values($completedQuantities), 'labels' => $monthLabels]);
+    return response()->json(['data' => array_values($completedOrders), 'labels' => $monthLabels]);
 }
-
 
 public function get_data_category(Request $request)
 {
