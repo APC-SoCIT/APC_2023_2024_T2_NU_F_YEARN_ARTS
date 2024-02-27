@@ -1,31 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
+@include('admin.css')
+<link rel="stylesheet" href="admin/assets/css/admin_category.css">
 <head>
     <title>Yearn Art | Category</title>
-    @include('admin.css')
-
-    <style type="text/css">
-        .div_center {
-            text-align: center;
-            padding-top: 40px;
-        }
-
-        .h2_font{
-            font-size: 40px;
-            padding-bottom: 40px;
-        }
-        .input_color{
-            color: black;
-        }
-        .center{
-            margin: auto;
-            width: 50%;
-            text-align: center;
-            margin-top: 30px;
-            border: 3px solid white;
-        }
-    </style>
 </head>
 
 <body>
@@ -38,7 +16,7 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-
+            <h2 class="h2_font">Add Category</h2>
                 @if(session()->has('message'))
 
                 <div class='alert alert-success'>
@@ -47,19 +25,20 @@
                 </div>
 
                 @endif
-                <div class="div_center">
-                    <h2 class="h2_font">Add Category</h2>
-
-
+                
                     <form action="{{url('add_category')}}" method="POST">
-
+                    <div class="div_center">
                         @csrf
-
-                        <input class="input_color" type="text" name="category" placeholder="Write Category Name" required="">
-
-                        <input type="submit" class="btn btn-primary" name="submit" value="Add Category">
+                        <div class="input-category">
+                            <input type="text" name="category" placeholder="Write Category" required="">
+                        </div>
+                        
+                        <div class="btn-add">
+                            <input type="submit"  name="submit" value="Add Category">
+                        </div>
+                        </div>
                     </form>
-                </div>
+                
                 <table class="center">
                     <tr>
                         <td>Category Name</td>
