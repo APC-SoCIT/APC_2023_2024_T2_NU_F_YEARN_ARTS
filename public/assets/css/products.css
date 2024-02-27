@@ -15,7 +15,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 40px;
+  margin: 20px 50px;
   gap: 30px;
 
 }
@@ -23,7 +23,8 @@ body {
 .product-container{
   display: flex;
   flex-direction: row;
-
+  margin-left: 50px;
+  margin-bottom: 40px;
 }
 
 .container-box{

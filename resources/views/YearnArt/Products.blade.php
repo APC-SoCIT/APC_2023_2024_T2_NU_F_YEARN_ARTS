@@ -20,12 +20,10 @@
     @include('home.header')
 
     <div class="main-container">
-        <div class="title-header">
-            <h2>Our products</h2>
-        </div>
+        
 
         @foreach($categories as $category)
-            <div class="category-title">
+            <div class="title-header">
                 <h3>{{ $category->category_name }}</h3>
                 
             </div>
