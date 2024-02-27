@@ -35,10 +35,11 @@
                     }
                     ?>
                 </select>
-                <div id="loadingIndicator" style="display: none; text-align: center; margin-top: 20px;">
-                    <img src="path_to_spinner.gif" alt="Loading..." width="50" height="50">
-                    <p>Loading...</p>
+
+                <div id="loadingIndicator" style="display: none;">
+
                 </div>
+                
 
                 <!-- Add the dropdown for year selection -->
                 <div class="quantity-table">
@@ -161,7 +162,6 @@
                                     label: label,
                                     data: data,
                                     backgroundColor: 'rgba(125, 84, 82, .50)',
-                                    
                                 }]
                             },
                             options: {
