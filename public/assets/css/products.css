@@ -54,7 +54,7 @@ body {
     transition: all .3s;
     overflow: hidden;
     box-shadow: 5px 5px 5px -5px rgba(0,0,0,.2);
-
+    flex-grow: 1;
 }
 
 .product_section .box .img-box {

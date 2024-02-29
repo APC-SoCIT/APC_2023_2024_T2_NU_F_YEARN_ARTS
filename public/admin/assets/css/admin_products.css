@@ -137,7 +137,7 @@ input:focus {
     border: 2px dashed #7D5452;
     border-radius: 20px;
     padding: 170px 120px;
-    opacity: .5;
+
     align-items: center;
 }
 
@@ -163,7 +163,6 @@ input:focus {
     height:50px;
     background-color: #7D5452; 
     border-radius: 50%;
-    opacity: .5;
     color:#E4D8CC;
     font-size: 50px;
     margin-bottom: 10px;
@@ -174,6 +173,7 @@ input:focus {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    background-color:rgba(228, 216, 204, .50);
 }
 
 .image-preview{
