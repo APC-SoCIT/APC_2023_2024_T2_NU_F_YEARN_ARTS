@@ -124,20 +124,8 @@
       });
     });
   </script>
+
+@include('YearnArt.chatbot')
 </body>
-
-
-<link rel="stylesheet" type="text/css" href="">
-
-<script>
-    var botmanWidget = {
-        aboutText: 'Start conversation with Hi',
-        introMessage: "Hi"
-    };
-</script>
-
-<script src="
-https://cdn.jsdelivr.net/npm/botman-web-widget@0.0.20/build/js/widget.min.js
-"></script>
 </html>
 

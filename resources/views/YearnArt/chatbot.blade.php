@@ -1,44 +1,33 @@
-<div class="chatbot">
-    <div class="chatbox">
-        <div class="chatbox__support">
-            <div class="chatbox__header">
-                <div class="chatbox__content--header">
-                    <h4 class="chatbox__heading--header">YearnBot</h4>
-                </div>
-            </div>
-            <div class="chatbox__messages">
-                <div>
-                    <div class="messages__item messages__item--visitor">
-                        Can you let me talk to the support?
-                    </div>
-                    <div class="messages__item messages__item--operator">
-                        Sure!
-                    </div>
-                    <div class="messages__item messages__item--visitor">
-                        Need your help, I need a developer in my site.
-                    </div>
-                    <div class="messages__item messages__item--operator">
-                        Hi... What is it? I'm a front-end developer, yay!
-                    </div>
-                    <div class="messages__item messages__item--typing">
-                        <span class="messages__dot"></span>
-                        <span class="messages__dot"></span>
-                        <span class="messages__dot"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="chatbox__footer">
-                <div class="file">
-                    <img src="assets/image/file.png" alt="file">
-                </div>
-                <input type="text" placeholder="Write a message...">
-                <div class="icon">
-                    <img src="assets/image/send.png" alt="Send">
-                </div>
-            </div>
-        </div>
-        <div class="chatbox__button">
-            <button>button</button>
-        </div>
-    </div>
-</div>
+<script>
+    var botmanWidget = {
+        aboutText: 'Start conversation with Hi',
+        introMessage: ""
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            // Parse the JSON response
+            var jsonData = JSON.parse(this.responseText);
+            
+            // Set the introMessage property of botmanWidget
+            botmanWidget.introMessage = jsonData.message;
+        }
+    };
+    xhr.open("GET", "json.json", true);
+    xhr.send();
+
+    var botmanWidget = {
+        title:'YearnBot',
+        mainColor:'#7D5452',
+        aboutText:'',
+        bubbleBackground:'#7D5452',
+        headerTextColor: '#E4D8CC',
+    };
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/botman-web-widget@0.0.20/build/js/widget.min.js
+">
+
+
+</script>

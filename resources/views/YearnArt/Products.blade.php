@@ -60,8 +60,7 @@
     </div>
 
     @include ('YearnArt.chatbot')
-    @include ('YearnArt.script')
-
+    
 
 </body>
 </html>

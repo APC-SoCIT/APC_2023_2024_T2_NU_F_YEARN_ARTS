@@ -177,8 +177,6 @@
             </form>
 
 
-    @include ('YearnArt.chatbot')
-    @include ('YearnArt.script')
 
     <script>
          document.addEventListener('DOMContentLoaded', function () {
@@ -258,8 +256,7 @@
     }
 }
     </script>
-
+@include('YearnArt.chatbot')
 
 </body>
-
 </html>
