@@ -33,7 +33,7 @@ body{
 
 .quantity{
     width: 60vw;
-    background-color: #D0A59F;
+    background-color: rgba(208, 165, 159, .5);
     padding: 20px 40px;
     border-radius: 15px;
 }

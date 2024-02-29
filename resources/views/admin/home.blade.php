@@ -144,7 +144,7 @@
                             })
                             .then(data => {
                                 console.log('Horizontal Chart Data:', data); // Log data for debugging
-                                const labels = Object.keys(data.data); // Use categories as labels
+                                const labels = Object.keys(data.data); 
                                 updateChart('horizontalChart', 'horizontalBar', 'Best Selling Category', labels, Object.values(data.data));
                             });
 
