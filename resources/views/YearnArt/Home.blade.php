@@ -61,7 +61,7 @@
 
 <script src="assets/javascript/home.js"></script>
 
-<div class="chatbot">
+<!-- <div class="chatbot">
     <div class="chatbox">
         <div class="chatbox__support">
             <div class="chatbox__header">
@@ -106,7 +106,7 @@
     </div>
 </div>
 <script src="assets/javascript/Chat.js"></script>
-<script src="assets/javascript/app.js"></script>
+<script src="assets/javascript/app.js"></script> -->
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -125,5 +125,19 @@
     });
   </script>
 </body>
+
+
+<link rel="stylesheet" type="text/css" href="">
+
+<script>
+    var botmanWidget = {
+        aboutText: 'Start conversation with Hi',
+        introMessage: "Hi"
+    };
+</script>
+
+<script src="
+https://cdn.jsdelivr.net/npm/botman-web-widget@0.0.20/build/js/widget.min.js
+"></script>
 </html>
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BotManController;
 
 /*
 |--------------------------------------------------------------------------
@@ -125,7 +126,8 @@ route::get('/to_ship/{id}',[AdminController::class,'to_ship']);
 
 route::get('/to_order_completed/{id}',[AdminController::class,'to_order_completed']);
 
-
+// for chatbot
+Route::match(['get', 'post'], '/botman', 'App\Http\Controllers\BotManController@handle');
 
 
 
