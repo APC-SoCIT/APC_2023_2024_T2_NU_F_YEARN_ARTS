@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="assets/css/home.css">
 <link rel="stylesheet" href="assets/css/typing.css">
 <link rel="stylesheet" href="assets/css/chatbot.css">
+<link rel="stylesheet" href="assets/css/navbar.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,11 +55,11 @@
               <!-- Slide-end -->
               </div>
           </div>
-        
+
           </div>
       </section>
     </div>
-  </div>  
+  </div>
 
 <script src="assets/javascript/home.js"></script>
 
@@ -117,7 +118,7 @@
 
   <script>
     const menuLinks = document.querySelectorAll('.menu-link');
-    
+
     menuLinks.forEach(link => {
       link.addEventListener('click', () => {
         menuLinks.forEach(otherLink => otherLink.classList.remove('active-link'));

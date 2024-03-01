@@ -41,7 +41,7 @@ class HomeController extends Controller
         }
         else
         {
-            return view('home.userpage');
+            return view('YearnArt.Home');
         }
     }
 
