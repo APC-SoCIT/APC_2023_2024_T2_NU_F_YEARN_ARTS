@@ -23,9 +23,22 @@
             @if (Route::has('login'))
 
             @auth
-            <x-app-layout>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ Auth::user()->name }}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{{ route('profile.show') }}">Profile</a>
 
-            </x-app-layout>
+                    <div class="dropdown-divider"></div>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <input type="submit" value="Logout">
+
+                    </form>
+                </div>
+            </div>
             @else
             <a href="login" class="Login">Log in</a>
             <a href="register" class="Signup">Signup</a>
