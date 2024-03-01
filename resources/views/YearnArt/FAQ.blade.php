@@ -80,11 +80,11 @@
                 <p>How do I care for my crochet items?</p>
             </div>
             <div class="content">
-                <p>Caring for your crochet items is easy-peasy! Hand washing is generally recommended to maintain the shape and quality. Gently soak the item in lukewarm water with a mild detergent, then rinse and lay it flat to dry. Avoid wringing or twisting the crochet pieces. With a little love and care, your crochet creations will last for a long time! 
+                <p>Caring for your crochet items is easy-peasy! Hand washing is generally recommended to maintain the shape and quality. Gently soak the item in lukewarm water with a mild detergent, then rinse and lay it flat to dry. Avoid wringing or twisting the crochet pieces. With a little love and care, your crochet creations will last for a long time!
 
- 
 
-                    I hope these FAQs help you provide valuable information to your customers. If you need any further assistance, feel free to ask. Happy crocheting! </p>
+
+                    </p>
             </div>
         </div>
     </div>
