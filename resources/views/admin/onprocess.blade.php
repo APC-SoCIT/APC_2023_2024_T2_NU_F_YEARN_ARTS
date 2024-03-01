@@ -17,7 +17,19 @@
         <section class="custom-section">
                 <div class="">
                     <p class="Head-title">On process</p>
+                     <!-- Dropdown Filter dagdag ni sam-->
+                     <div class="order-filter">
+                        <form action="{{ url('onprocess') }}" method="GET">
+                            <label for="order-status-filter">Filter by Order Status:</label>
+                            <select id="order-status-filter" name="status" onchange="this.form.submit()">
+                                <option value="all" {{ $status === 'all' ? 'selected' : '' }}>All</option>
+                                <option value="On Process" {{ $status === 'On Process' ? 'selected' : '' }}>On Process</option>
+                                <option value="To Pay" {{ $status === 'To Pay' ? 'selected' : '' }}>To Pay</option>
+                            </select>
+                        </form>
+                    </div>
                     <div class="order-container">
+
                         <!-- Loop through your order data here -->
                         @php $customerCount = 0 @endphp
                         @foreach ($order as $order)
@@ -86,6 +98,29 @@
             // Add logic to confirm payment for the specific order
             alert('Payment confirmed for Order ' + orderId + '!');
         }
+        function filterOrders(order_status) {
+        var orders = document.querySelectorAll('.order-item');
+
+        orders.forEach(function (order) {
+            var orderStatus = order.querySelector('.order-info').textContent.trim();
+
+            if (status === 'all' || orderStatus.includes(order_status)) {
+                order.style.display = 'block';
+            } else {
+                order.style.display = 'none';
+            }
+        });
+    }
+
+    function markOrderAsDone(orderId) {
+        // Add logic to mark the specific order as done
+        alert('Order ' + orderId + ' marked as done!');
+    }
+
+    function confirmOrderPayment(orderId) {
+        // Add logic to confirm payment for the specific order
+        alert('Payment confirmed for Order ' + orderId + '!');
+    }
     </script>
 </body>
 </html>

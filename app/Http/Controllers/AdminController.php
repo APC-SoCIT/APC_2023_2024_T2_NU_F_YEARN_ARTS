@@ -158,10 +158,18 @@ class AdminController extends Controller
 
         return view ('admin.dpayment', compact('order'));
     }
-    public function onprocess(){
-        $order=order::all();
+    public function onprocess(Request $request){
+        $status = $request->input('status'); // Get the selected status from the request
 
-        return view ('admin.onprocess', compact('order'));
+        // Fetch orders based on the selected status
+        if ($status && in_array($status, ['On Process', 'To Pay'])) {
+            $order = Order::where('order_status', $status)->get();
+        } else {
+            // Fetch all orders if no status is selected or if an invalid status is provided
+            $order = Order::all();
+        }
+
+        return view ('admin.onprocess', compact('order', 'status'));
     }
 
 

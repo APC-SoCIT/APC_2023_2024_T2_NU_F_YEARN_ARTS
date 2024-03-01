@@ -20,7 +20,7 @@
                 <div class="column-1">
                   <h2 class="Head-title">Down Payment</h2>
                 </div>
-                
+
                 <div class="column-2">
                   <form action="{{url('search')}}" method="get">
                             @csrf
@@ -28,10 +28,10 @@
                             <div class="search-bar">
                               <input type="text" name="search" id="" placeholder="Search...">
                             </div>
-                            
+
                   </form>
                 </div>
-                
+
             </div>
           </div>
           <div class="column-3">
@@ -50,7 +50,7 @@
                     <tr>
                         <td class="th-deg">{{$order->name}}</td>
                         <td class="th-deg">{{$order->product_name}}</td>
-                        <td class="th-deg">₱{{ number_format($order->price * $order->quantity, 2) }}</td>
+                        <td class="th-deg">₱{{ number_format($order->price * $order->quantity/2, 2) }}</td>
                         <td class="th-deg">{{$order->quantity}}</td>
                         <td class="th-deg">{{$order->order_id}}</td>
 
@@ -67,7 +67,7 @@
                     @endforeach
                 </table>
           </div>
-            
+
         </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
