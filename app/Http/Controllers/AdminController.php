@@ -138,7 +138,8 @@ class AdminController extends Controller
     }
 
     public function order(){
-        $order=order::all();
+        $order = Order::orderBy('created_at', 'desc')->get();
+
 
 
 
@@ -152,7 +153,8 @@ class AdminController extends Controller
         return view ('admin.pending', compact('order'));
     }
     public function dpayment(){
-        $order=order::all();
+        $order = Order::orderBy('created_at', 'desc')->get();
+
 
         return view ('admin.dpayment', compact('order'));
     }
