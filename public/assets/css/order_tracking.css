@@ -169,6 +169,7 @@
     /* STATUS */
 
     .status-links {
+        font-family: Inter;
         display: flex;
         flex-direction: row;
         margin-bottom: 30px;

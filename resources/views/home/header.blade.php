@@ -24,21 +24,22 @@
 
             @auth
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn-name" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                     {{ Auth::user()->name }}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{{ route('profile.show') }}">Profile</a>
+                <div class="dropdown-item" onclick="goToProfile('{{ route('profile.show') }}')">Profile</div>
 
-                    <div class="dropdown-divider"></div>
-                    <form method="POST" action="{{ route('logout') }}">
+                    
+                    <div class="dropdown-item">
+                      <form id="logoutForm" method="POST" action="{{ route('logout') }}">
                         @csrf
-
                         <input type="submit" value="Logout">
-
-                    </form>
+                      </form>
+                    </div>
                 </div>
             </div>
+
             @else
             <a href="login" class="Login">Log in</a>
             <a href="register" class="Signup">Signup</a>
@@ -53,3 +54,20 @@
   </nav>
 
 </header>
+
+<script>
+  // Handle form submission for logout
+document.getElementById('logoutForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    // Optionally, you can add confirmation before logout
+    var confirmLogout = confirm("Are you sure you want to logout?");
+    if (confirmLogout) {
+        this.submit(); // Submit the form
+    }
+});
+
+    function goToProfile(url) {
+        window.location.href = url;
+    }
+</script>
