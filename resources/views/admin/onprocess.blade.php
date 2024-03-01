@@ -58,7 +58,9 @@
                                         </div>
                                         <div class="column-3">
                                             <p>Unit Price: ₱{{ number_format($order->price, 2) }}</p>
-                                            <p class="order-info">Order Total: <b>₱{{ number_format($order->price * $order->quantity, 2) }}</b></p>
+                                            <p class="order-info">
+                                                Order Total: <b>₱{{ number_format(($order->order_status === 'To Pay' ? ($order->price * $order->quantity * 0.5) : ($order->price * $order->quantity)), 2) }}</b>
+                                            </p>
                                         </div>
 
                                             <!-- Add buttons inside each order -->
