@@ -32,6 +32,14 @@
                                     <img src="product/{{ $order->image }}" alt="{{ $order->product_name }}">
                                 </div>
 
+                                @php
+
+                                $unitprice = ($order->price);
+                                $totalPrice = ($unitprice * $order->quantity);
+                                $dpaymentPrice = ($totalPrice/2);
+                                $fpaymentPrice = ($totalPrice/2);
+                                @endphp
+
                                 <div class="order-details">
                                     <p class="order-info">Order ID: {{$order->order_id}}</p>
                                     <p class="product-names">{{ $order->product_name }}</p>
