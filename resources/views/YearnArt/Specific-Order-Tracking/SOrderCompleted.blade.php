@@ -95,7 +95,7 @@
 
                                 <div class="pos-price">
                                         <p class="total">TOTAL:</p>
-                                        <p class="price-num">₱{{ number_format($order->price/2, 2) }}</p>
+                                        <p class="price-num">₱{{ number_format($totalPrice, 2) }}</p>
                                 </div>
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
     <link rel="stylesheet" href="assets/">
     <link rel="stylesheet" href="assets/css/order_tracking.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
@@ -50,12 +50,17 @@
 
                     <div class="lower-part">
                         <div class="pos-price">
+                            <div class="pos-unit-price">
+                                <p class="total-1">Unit Price:</p>
+                                <p class="price-num-1">₱{{ number_format($order->price, 2) }}</p>
+                            </div>
                             <div class="pos-total-price">
                                 <p class="total">TOTAL:</p>
                                 <p class="price-num">₱{{ number_format($order->price * $order->quantity, 2) }}</p>
                             </div>
+
                         </div>
-                        
+
                         <div class="buttons">
                             <a href="{{ url('/track_Sorder', $order->id) }}" class="custom-button track-order-button">Track Order</a>
                             <button class="custom-button">Contact Yearn Art</button>
