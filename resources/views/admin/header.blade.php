@@ -1,37 +1,3 @@
-<style>
-
-.navbar a{
-    font-family: Inter;
-    font-size: 14px;
-    text-decoration: none;
-  }
-/* Hide the dropdown menu by default */
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.dropdown-item {
-  background-color: transparent;
-  color: #7D5452;
-  border: none;
-  padding: 0.375rem 0.75rem;
-  cursor: pointer;
-}
-
-/* Show the dropdown menu on hover */
- .dropdown-menu {
- margin-top: 110px;
-}
-
-
-
-</style>
-
 <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
@@ -54,22 +20,9 @@
 
 
               <li>
-                <div class="down">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ Auth::user()->name }}
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <x-app-layout>
 
-
-                        <div class="dropdown-divider"></div>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <input type="submit" value="Logout">
-
-                        </form>
-                    </div>
-                </div>
+</x-app-layout>
               </li>
 
             </ul>

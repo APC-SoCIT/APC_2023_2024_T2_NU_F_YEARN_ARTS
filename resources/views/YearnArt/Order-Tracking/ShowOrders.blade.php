@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-@include('YearnArt.css')
+
 <link rel="stylesheet" href="assets/">
 <link rel="stylesheet" href="assets/css/order_tracking.css">
 <link rel="stylesheet" href="assets/css/navbar.css">
 <link rel="stylesheet" href="assets/css/chatbot.css">
+@include('YearnArt.css')
 </head>
 
 <title>Yearn Art | All Orders</title>
