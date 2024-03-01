@@ -170,12 +170,12 @@ class AdminController extends Controller
         $order->save();
 
         $details = [
-            'subject' => 'Down Payment Requirement',
-            'greeting' => 'greeting',
-            'firstline' => 'firstline',
+            'subject' => 'Down Payment Required',
+            'greeting' => 'Good day, ' . $order['name'] . '!',
+            'firstline' => 'Thank you for choosing Yearn Art! To proceed with your order, we kindly request a 50% downpayment. This downpayment helps secure your booking and allows us to begin processing your order promptly. Once the downpayment is received, we\'ll swiftly move forward with the necessary arrangements to ensure everything is in place for your satisfaction. Please let us know if you have any questions or if there\'s anything else we can assist you with. We truly appreciate your business and look forward to serving you!',
             'button' => 'Track Order',
             'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
-            'lastline' => 'lastline',
+            'lastline' => '',
         ];
 
         Notification::send($order, new YearnArtNotification($details));
@@ -193,11 +193,11 @@ class AdminController extends Controller
         $details = [
 
             'subject' => 'Downpayment Paid',
-            'greeting' => 'greeting',
-            'firstline' => 'firstline',
+            'greeting' => 'Good day, ' . $order['name'] . '!',
+            'firstline' => 'We would like to infrom you that we already received your downpayment. Now, your order is on process.',
             'button' => 'Print Receipt',
             'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
-            'lastline' => 'lastline',
+            'lastline' => '',
         ];
 
         Notification::send($order, new YearnArtNotification($details));
@@ -213,12 +213,12 @@ class AdminController extends Controller
 
         $order->save();
         $details = [
-            'subject' => 'On Process Done (Mag babayad na)',
-            'greeting' => 'greeting',
-            'firstline' => 'firstline',
+            'subject' => 'Fullpayment Required',
+            'greeting' => 'Good day, ' . $order['name'] . '!',
+            'firstline' => 'We kindly request the full payment (50%) for your order to proceed with its finalization and delivery.',
             'button' => 'Track Order',
             'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
-            'lastline' => 'lastline',
+            'lastline' => '',
         ];
 
         Notification::send($order, new YearnArtNotification($details));
@@ -233,9 +233,9 @@ class AdminController extends Controller
         $order->save();
 
         $details = [
-            'subject' => 'Full Payment Done (Will Ship)',
-            'greeting' => 'greeting',
-            'firstline' => 'firstline',
+            'subject' => 'To ship',
+            'greeting' => 'Good day, ' . $order['name'] . '!',
+            'firstline' => 'Yay! Finally your order is now on shipping',
             'button' => 'Track Order',
             'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
             'lastline' => 'lastline',
