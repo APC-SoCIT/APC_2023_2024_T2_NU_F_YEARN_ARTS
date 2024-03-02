@@ -42,6 +42,10 @@ route::get('/show_order_completed',[HomeController::class,'show_order_completed'
 
 route::get('/show_order_completed',[HomeController::class,'show_order_completed']);
 
+route::get('/forms',[HomeController::class,'forms']);
+
+route::post('/customized_order',[HomeController::class,'customized_order']);
+
 
 
 // track specific order

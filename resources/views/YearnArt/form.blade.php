@@ -3,48 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create Order</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets\css\form.css">
 </head>
 <body>
     <div class="form-container">
-      <p class="title">Customization Form</p>
-      <form class="form">
-        <div class="type-product">
-          <label class="input_label" for="input_field">Product Name</label>
-          <input type="text" class="input" placeholder="" id="input_field">
-        </div>
-        
-        <div class="type-product">
-          <label class="input_label" for="input_field">Details</label>
-          <textarea rows="4" class="input" name="textarea"></textarea>
-        </div>
-      </form>
+        <p class="title">Customization Form</p>
+        <form class="form" action="{{ url('/customized_order') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="type-product">
+                <label class="input_label" for="product_name">Product Name</label>
+                <input name="product_name" type="text" class="input" placeholder="Enter product name" id="product_name" required>
+            </div>
 
-      
-        <label class="custum-file-upload" id="productPhoto">
-                <input type="file" name="image" id="fileInput" accept="image/*" required="" style="display: none;">
-                <div for="fileInput" class="" style="cursor: pointer;">
+            <div class="type-product">
+                <label class="input_label" for="note">Details</label>
+                <input name="note" type="text" class="input" placeholder="Enter product details" id="note" required>
+            </div>
+
+            <input type="file" name="image" id="fileInput" accept="image/*" required style="display: none;">
+            <label class="custum-file-upload" for="fileInput" style="cursor: pointer;">
                 <div class="plus-icon">Add photo</div>
-                </div>
-        </label>
+            </label>
+
+            <div>
+                <p class="names">Quantity:
+                    <input type="number" name="quantity" value="1" min="1" required
+                        placeholder="Enter quantity" style="border:1.5px solid #b0968f;border-radius: 5px; width: 100px; height: 30px; background: transparent; margin-left: 10px;">
+                </p>
+
+                <p>
+                    <label class="names" name="size" for="size">Size</label>
+                    <input type="text" name="size" class="input" placeholder="Enter size" id="size" required>
+                </p>
+
+                <p>
+                    <label class="names" for="color">Primary Color</label>
+                    <input class="input" type="color" name="color" id="color" value="#000000" oninput="hexColor.value = color.value" required>
+                    <input class="input" type="text" name="primaryclr" id="hexColor" oninput="color.value = hexColor.value" placeholder="Choose primary color" required>
+                </p>
+
+                <p>
+                    <label class="names" for="color">Secondary Color</label>
+                    <input class="input" type="color" name="color2" id="color2" value="#000000" oninput="hexColor2.value = color2.value" required>
+                    <input class="input" type="text" name="secondaryclr" id="hexColor2" oninput="color2.value = hexColor2.value" placeholder="Choose secondary color" required>
+                </p>
+            </div>
+
             <div class="imagePreview">
                 <div id="imagePreview" class="image-preview"></div>
-
                 <button id="removeButton" class="rm-btn">Delete</button>
-
             </div>
-    
 
-      <div class="btn-submit">
-        <button title="Sign In" type="submit" class="sign-in_btn">
-          <span>Submit</span>
-        </button>
-      </div>
+            <div class="btn-submit">
+                <button title="Sign In" type="submit" class="sign-in_btn">
+                    <span>Submit</span>
+                </button>
+            </div>
+        </form>
     </div>
-
-
 <script>
 const fileInput = document.getElementById('fileInput');
                 const imagePreview = document.getElementById('imagePreview');
@@ -94,5 +112,6 @@ const fileInput = document.getElementById('fileInput');
                     localStorage.removeItem('imageData');
                 });
 </script>
+@include('YearnArt.chatbot')
 </body>
 </html>

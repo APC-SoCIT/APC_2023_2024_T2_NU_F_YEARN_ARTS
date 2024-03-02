@@ -563,6 +563,68 @@ class HomeController extends Controller
     }
 
 
+    public function forms(){
+
+        if(Auth::id()){
+            $id=Auth::user()->id;
+
+
+
+            return view('YearnArt.form');
+
+            }
+            else{
+                return redirect('login');
+            }
+    }
+
+    public function customized_order(Request $request){
+
+        if(Auth::id()){
+            $user = Auth::user();
+
+            $order = new order;
+            $orderId = strtoupper(Str::random(10));
+
+
+                $order->name = $user->name;
+                $order->email = $user->email;
+                $order->phone = $user->phone;
+                $order->address = $user->address;
+                $order->user_id = $user->id;
+                $order->product_name = $request->product_name;
+                $order->category = 'Customized Product';
+                $order->order_id = $orderId;
+                $order->note = $request->note;
+                $order->size = $request->size;
+                $order->order_status =  'Order Placed';
+
+
+
+
+                $order->quantity = $request->quantity;
+                $order->primaryclr = $request->primaryclr;
+                $order->secondaryclr = $request->secondaryclr;
+
+                $image = $request->file('image');
+                $imagename=time().'.'.$image->getClientOriginalExtension();
+
+                $request->image->move('product',$imagename);
+                $order->image=$imagename;
+
+                $order->save();
+
+
+
+
+            return view('home.userpage');
+
+            }
+            else{
+                return redirect('login');
+            }
+    }
+
 
 
 
