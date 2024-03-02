@@ -1,5 +1,3 @@
-@for ($order as $order)
 
-    {{$order->order_id}}
+        {{ $order->order_id }}
 
-@endfor

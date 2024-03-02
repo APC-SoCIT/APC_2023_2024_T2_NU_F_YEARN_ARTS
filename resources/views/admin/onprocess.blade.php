@@ -45,7 +45,9 @@
                                                 <img src="{{ asset('product/' . $order->image) }}" class="img-fluid" alt="{{ $order->product_name }}">
                                             </div>
                                             <div class="product-details">
+
                                                 <p class="product-name">{{ $order->product_name }}</p>
+                                                <p class="order-info">{{ $order->order_id }}</p>
                                                 <p class="order-info">Quantity: {{ $order->quantity }}</p>
 
                                                 <p class="order-info">Order Status:  @if($order->order_status=='Order Placed')
