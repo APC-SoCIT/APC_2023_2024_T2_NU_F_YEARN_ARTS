@@ -133,7 +133,7 @@ input:focus {
 }
 
 
-.product-photo label{
+.product-photo{
     border: 2px dashed #7D5452;
     border-radius: 20px;
     padding: 170px 120px;
