@@ -48,12 +48,14 @@
                           <p class="order-info">Order  Total: <b>₱{{ number_format($order->price * $order->quantity, 2) }}</b></p>
                         </div>
                         <div class="column-4">
-                            @if($order->order_status == 'On Process')
+                            @if($order->order_status == 'Downpayment')
                             <p>Confirmed</p>
                                 @elseif($customerCount > 1)
                                     <button class="btn btn-success" disabled>Confirm</button>
+                                    <a href="{{ url('edit_order', $order->id) }}" class="btn btn-info">Edit</a>
                                 @else
                                     <a href="{{ url('to_dpay', $order->id) }}" class="btn btn-success" onclick="return confirm('Are you sure this order can be made?')">Confirm</a>
+                                    <a href="{{ url('edit_order', $order->id) }}" class="btn btn-info">Edit</a>
                                 @endif
                         </div>
 

@@ -6,8 +6,11 @@
     <title>Create Order</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets\css\form.css">
+ 
 </head>
 <body>
+
+    <div>
     <div class="form-container">
         <p class="title">Customization Form</p>
         <form class="form" action="{{ url('/customized_order') }}" method="POST" enctype="multipart/form-data">
@@ -62,6 +65,7 @@
                 </button>
             </div>
         </form>
+    </div>
     </div>
 <script>
 const fileInput = document.getElementById('fileInput');

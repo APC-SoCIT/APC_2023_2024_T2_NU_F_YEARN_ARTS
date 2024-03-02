@@ -5,7 +5,8 @@ body {
   }
 
   .form-container {
-    position: absolute;
+    position: absolute ;
+    
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -111,7 +112,7 @@ body {
 
   .imagePreview{
     display: flex;
-    
+
     flex-direction: column;
   }
   .image-preview{

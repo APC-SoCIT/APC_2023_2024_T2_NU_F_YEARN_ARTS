@@ -24,7 +24,7 @@
 <body>
     @include('home.header')
     <div class="header">
-       
+
         <a href="{{url('/show_cart')}}" class="cart-link">My Cart
             <img src="assets/image/Cart.png" alt="Cart Icon" class="cart-icon"></a>
     </div>
