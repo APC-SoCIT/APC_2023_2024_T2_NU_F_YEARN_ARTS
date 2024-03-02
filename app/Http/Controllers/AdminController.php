@@ -137,7 +137,7 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Product Updated Successfully');
     }
 
-    public function order(){    
+    public function order(){
         $order = Order::orderBy('created_at', 'desc')->get();
 
 
@@ -148,7 +148,7 @@ class AdminController extends Controller
 
 
     public function pending(){
-        $order=order::all();
+        $order=order::orderBy('created_at', 'asc')->get();
 
         return view ('admin.pending', compact('order'));
     }
@@ -405,11 +405,11 @@ public function cancel_order($id){
 public function  edit_order_confirm(Request $request, $id){
     $order = order::find($id);
 
-    $order->primaryclr = $request->input('primaryclr');
-    $order->secondaryclr = $request->input('secondaryclr');
-    $order->price = $request->input('price');
-    $order->processing_time = $request->input('processing_time');
-    $order->order_status = 'Downpayment';
+    $order->primaryclr = $request->primaryclr;
+    $order->secondaryclr = $request->secondaryclr;
+    $order->price = $request->price;
+    $order->processing_time = $request->processing_time;
+
 
     $order->save();
     return redirect()->back();

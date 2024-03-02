@@ -619,7 +619,7 @@ class HomeController extends Controller
 
 
 
-            return view('home.userpage');
+            return view('YearnArt.Home');
 
             }
             else{

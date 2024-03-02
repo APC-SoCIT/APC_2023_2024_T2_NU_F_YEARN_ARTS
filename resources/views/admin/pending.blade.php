@@ -42,6 +42,7 @@
                             </div>
                             <p class="product-name">{{$order->product_name}}</p>
                             <p class="order-info">Quantity: {{$order->quantity}}</p>
+                            <p class="order-info">Order ID: {{$order->order_id}}</p>
                           </div>
                         </div>
                         <div class="column-3">

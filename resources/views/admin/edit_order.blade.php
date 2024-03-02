@@ -21,8 +21,8 @@
                 <div>
                     <p class="Head-title">Edit Order by: {{ $order->name }}</p>
                 </div>
-                <form action="{{url('/edit_order_confirm')}}" method="POST">
-
+                <form action="{{url('/edit_order_confirm' , $order->id)}}" method="POST">
+                    @csrf
                     <!-- Add your form action URL in the action attribute -->
                     <div class="order-container">
                         <div class="order-item">
@@ -56,8 +56,8 @@
                                 </div>
 
                                 <div class="product-name">
-                                    <label for="order-total">Order Price:</label>
-                                    <input type="number" id="order-total" name="price" placeholder="Please put how much is this." required>
+                                    <label for="order-total">Edit Unit Price:</label>
+                                    <input type="number" id="order-total" name="price" value="{{ $order->price }}" placeholder="Please put how much is this." required>
                                 </div>
                                 <div class="product-name">
                                     <label for="order-total">Primary Color:</label>
@@ -65,11 +65,11 @@
                                 </div>
                                 <div class="product-name">
                                     <label for="order-total">Secondary Color:</label>
-                                    <input type="text" id="order-total" name="secondaryclr" value="{{$order->secondryclr}}"  placeholder="Ex:  #7D5452" required>
+                                    <input type="text" id="order-total" name="secondaryclr" value="{{$order->secondaryclr}}"  placeholder="Ex:  #7D5452" required>
                                 </div>
                                 <div class="product-name">
                                     <label for="process">Processing Time:</label>
-                                    <input type="number" id="process" name="processing_time" placeholder="Please put how many weeks." required>
+                                    <input type="number" id="process" name="processing_time"  value="{{$order->processing_time}}"  placeholder="Please put how many weeks." required>
                                 </div>
                             <div class="column-4">
                                 <button type="submit" class="button-item" onclick="return confirm('Are you sure this order can be made?')">Confirm</button>

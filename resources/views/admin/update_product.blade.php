@@ -33,7 +33,7 @@
 
                         <div class="child1">
                             <div class="product-photo" id="productPhoto">
-                                    <input type="file" name="image" id="fileInput" accept="image/*" required="" style="display: none;">
+                                    <input type="file" name="image" id="fileInput" accept="image/*" style="display: none;">
                                     <label for="fileInput" class="file-label" style="cursor: pointer;">
                                     <div class="plus-icon">+</div>
                                     Add Photo
@@ -52,7 +52,7 @@
                                     <input type="text" name="product_name" value="{{$product->product_name}}" placeholder="Product Name" id="" required="" autocomplete="off">
                                 </div>
 
-                            @csrf   
+                            @csrf
 
                                 <div class="product-type">
                                     <select name="category" id="" required="" >
