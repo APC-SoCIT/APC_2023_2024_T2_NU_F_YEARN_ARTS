@@ -32,8 +32,8 @@
                     <div class="div-main">
 
                         <div class="child1">
-                            <div class="product-photo" >
-                                    <input type="file" name="image" id="fileInput"  style="display: none;">
+                            <div class="product-photo" id="productPhoto">
+                                    <input type="file" name="image" id="fileInput" accept="image/*" required="" style="display: none;">
                                     <label for="fileInput" class="file-label" style="cursor: pointer;">
                                     <div class="plus-icon">+</div>
                                     Add Photo
@@ -178,6 +178,26 @@
         document.getElementById("smallIntegerInput").addEventListener("input", handleIntegerInput);
         document.getElementById("mediumIntegerInput").addEventListener("input", handleIntegerInput);
         document.getElementById("largeIntegerInput").addEventListener("input", handleIntegerInput);
+
+         document.addEventListener('DOMContentLoaded', function () {
+                    const fileInput = document.getElementById('fileInput');
+                    const productPhoto = document.getElementById('productPhoto');
+
+                    fileInput.addEventListener('change', function () {
+                        const file = this.files[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                productPhoto.style.backgroundImage = `url('${e.target.result}')`;
+                                productPhoto.style.backgroundPosition = 'center';
+                                productPhoto.style.backgroundSize = 'cover';
+                                productPhoto.style.borderRadius = '20px';
+                                productPhoto.style.opacity = '1'
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                });
 
 
     </script>

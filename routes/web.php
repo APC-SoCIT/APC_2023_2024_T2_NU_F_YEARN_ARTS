@@ -118,8 +118,7 @@ route::get('/fullpayment_receipt_edit',[HomeController::class,'fullpayment_recei
 Route::get('/get_data', [AdminController::class, 'get_data']);
 Route::get('/get_data_category', [AdminController::class, 'get_data_category']);
 
-
-
+route::get('/edit_order/{id}',[AdminController::class,'edit_order']);
 
 
 

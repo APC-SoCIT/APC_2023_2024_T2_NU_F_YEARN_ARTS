@@ -377,7 +377,13 @@ public function get_data_category(Request $request)
     return response()->json(['data' => $categoryCountsArray, 'selected_year' => $selectedYear]);
 }
 
+public function edit_order($id){
 
+    $order=order::find($id);
+
+    return view ('admin.edit_order', compact('order'));
+
+}
 
 
 
