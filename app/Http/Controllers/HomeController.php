@@ -249,21 +249,19 @@ class HomeController extends Controller
 
     public function cash_order(Request $request){
 
-        $user=Auth::user();
+        $user = Auth::user();
+        $userid = $user->id;
+        $selectedItems = $request->input('selectedItems', []);
 
-        $userid=$user->id;
+        foreach ($selectedItems as $itemId) {
+            $data = cart::find($itemId);
 
+            // Check if the item exists
+            if ($data) {
+                $quantity = $request->input('quantity.' . $itemId);
 
-        $data=cart::where('user_id','=', $userid)->get();
-
-
-        foreach($data as $data){
-
-            $quantity = $request->input('quantity.' . $data->id);
-
-            $orderId = strtoupper(Str::random(10));
-
-            $order=new order;
+                $orderId = strtoupper(Str::random(10));
+                $order = new order;
 
 
 
@@ -289,20 +287,28 @@ class HomeController extends Controller
 
 
 
-                $order->order_status='Downpayment';
+                $order->order_status = 'Downpayment';
+                $order->save();
 
-            $order->save();
+                $order->order_status = 'Downpayment';
+                $order->save();
 
-            $cart_id=$data->id;
-            $cart=cart::find($cart_id);
-            $cart->delete();
+                $cart = cart::find($itemId);
+                $cart->delete();
 
 
+            } else {
+                // Handle the case where the item is not found (optional)
+                // You can log an error, display a message, or take appropriate action.
+                // For example:
+                // Log::error("Item with ID $itemId not found.");
+            }
         }
-
         return redirect()->back()->with('message', 'Successfully Placed Order');
 
     }
+
+
 
     // start of order tracking (not specific)
 
