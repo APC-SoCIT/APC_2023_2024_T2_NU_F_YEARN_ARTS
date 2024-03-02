@@ -60,7 +60,7 @@
                         ?>
                         <div class="product-bar">
                             <div class="checkbox">
-                                <input type="checkbox" name="selectedItems[{{ $cart->id }}]" class="productCheckbox" id="productCheckbox{{$cart->id}}">
+                                <input type="checkbox" name="selectedItems[]" value="{{ $cart->id }}" class="productCheckbox" id="productCheckbox{{$cart->id}}">
                             </div>
                             <div class="product-detail">
                                 <div class="img-edit">

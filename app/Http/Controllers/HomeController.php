@@ -247,12 +247,65 @@ class HomeController extends Controller
         return redirect()->back()->with('message', 'Successfully Deleted');
     }
 
-    public function cash_order(Request $request) {
-        // Retrieve selected items directly from the input
+    public function cash_order(Request $request){
+
+        $user = Auth::user();
+        $userid = $user->id;
         $selectedItems = $request->input('selectedItems', []);
 
-        // Dump and die to inspect the selected items
-        dd($selectedItems);
+        foreach ($selectedItems as $itemId) {
+            $data = cart::find($itemId);
+
+            // Check if the item exists
+            if ($data) {
+                $quantity = $request->input('quantity.' . $itemId);
+
+                $orderId = strtoupper(Str::random(10));
+                $order = new order;
+
+
+
+                $order->name=$data->name;
+                $order->email=$data->email;
+                $order->phone=$data->phone;
+                $order->address=$data->address;
+                $order->user_id=$data->user_id;
+
+
+                $order->order_id = $orderId;
+                $order->product_name=$data->product_name;
+                $order->category=$data->category;
+                $order->quantity = $quantity;
+                $order->price = $data->price;
+                $order->image=$data->image;
+                $order->processing_time=$data->processing_time;
+                $order->primaryclr=$data->primaryclr;
+                $order->secondaryclr=$data->secondaryclr;
+                $order->size=$data->size;
+                $order->product_id=$data->product_id;
+
+
+
+
+                $order->order_status = 'Downpayment';
+                $order->save();
+
+                $order->order_status = 'Downpayment';
+                $order->save();
+
+                $cart = cart::find($itemId);
+                $cart->delete();
+
+
+            } else {
+                // Handle the case where the item is not found (optional)
+                // You can log an error, display a message, or take appropriate action.
+                // For example:
+                // Log::error("Item with ID $itemId not found.");
+            }
+        }
+        return redirect()->back()->with('message', 'Successfully Placed Order');
+
     }
 
 
