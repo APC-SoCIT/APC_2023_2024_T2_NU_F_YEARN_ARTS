@@ -252,7 +252,9 @@ class HomeController extends Controller
         $user = Auth::user();
         $userid = $user->id;
         $selectedItems = $request->input('selectedItems', []);
-
+        if (empty($selectedItems)) {
+            return redirect()->back()->with('message', 'No items selected.');
+        }
         foreach ($selectedItems as $itemId) {
             $data = cart::find($itemId);
 
