@@ -12,6 +12,11 @@ use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Support\Str;
 
+use Illuminate\Support\Facades\Notification;
+
+use App\Notifications\YearnArtNotification;
+
+
 
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -251,6 +256,7 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $userid = $user->id;
+        $users = User::where('usertype', 1)->get(['name', 'email']);
         $selectedItems = $request->input('selectedItems', []);
         if (empty($selectedItems)) {
             return redirect()->back()->with('message', 'No items selected.');
@@ -305,6 +311,22 @@ class HomeController extends Controller
                 // For example:
                 // Log::error("Item with ID $itemId not found.");
             }
+        }
+        foreach ($users as $user) {
+            $details = [
+                'subject' => 'Down Payment Required',
+                'greeting' => 'Good Day! ' .  $user->name . ',',
+                'firstline' => 'Thank you for'.$orderId.' choosing Yearn Art! To proceed with your order, we kindly request a 50% downpayment...',
+                'button' => 'Track Orders',
+                'url' => 'http://127.0.0.1:8000/order',
+                'lastline' => '',
+                //@james pa bago nalang ng  mga first line
+                // $orderId ganyan gawin mo '< sentence >' . $orderId . '< sentence >' lagyan mo space kase mag ka dikit itsura
+                // alisin mo yung <> sa sentence ^ di need yan
+            ];
+
+            Notification::route('mail', $user->email)
+                ->notify(new YearnArtNotification($details));
         }
         return redirect()->back()->with('message', 'Successfully Placed Order');
 
@@ -508,8 +530,28 @@ class HomeController extends Controller
 
         $order->order_status="Order Received";
         $order->order_received_at=now();
+        $users = User::where('usertype', 1)->get(['name', 'email']);
+        $orderId = $order->order_id;
 
         $order->save();
+
+
+        foreach ($users as $user) {
+            $details = [
+                'subject' => 'Down Payment Required',
+                'greeting' => 'Good Day! ' .  $user->name . ',',
+                'firstline' => 'Thank you for'.$orderId.' choosing Yearn Art! To proceed with your order, we kindly request a 50% downpayment...',
+                'button' => 'Track Orders',
+                'url' => 'http://127.0.0.1:8000/order',
+                'lastline' => '',
+                //@james pa bago nalang ng  mga first line
+                // $orderId ganyan gawin mo '< sentence >' . $orderId . '< sentence >' lagyan mo space kase mag ka dikit itsura
+                // alisin mo yung <> sa sentence ^ di need yan
+            ];
+
+            Notification::route('mail', $user->email)
+                ->notify(new YearnArtNotification($details));
+        }
 
         return view('YearnArt.Specific-Order-Tracking.SOrderReceived', compact('order'));
 
@@ -587,8 +629,7 @@ class HomeController extends Controller
 
             $order = new order;
             $orderId = strtoupper(Str::random(10));
-
-
+            $users = User::where('usertype', 1)->get(['name', 'email']);
                 $order->name = $user->name;
                 $order->email = $user->email;
                 $order->phone = $user->phone;
@@ -617,8 +658,22 @@ class HomeController extends Controller
                 $order->save();
 
 
+                foreach ($users as $user) {
+                    $details = [
+                        'subject' => 'Down Payment Required',
+                        'greeting' => 'Good Day! ' .  $user->name . ',',
+                        'firstline' => 'Thank you for'.$orderId.' choosing Yearn Art! To proceed with your order, we kindly request a 50% downpayment...',
+                        'button' => 'Track Orders',
+                        'url' => 'http://127.0.0.1:8000/order',
+                        'lastline' => '',
+                        //@james pa bago nalang ng  mga first line
+                        // $orderId ganyan gawin mo '< sentence >' . $orderId . '< sentence >' lagyan mo space kase mag ka dikit itsura
+                        // alisin mo yung <> sa sentence ^ di need yan
+                    ];
 
-
+                    Notification::route('mail', $user->email)
+                        ->notify(new YearnArtNotification($details));
+                }
             return view('YearnArt.Home');
 
             }
@@ -634,3 +689,4 @@ class HomeController extends Controller
 
 
 }
+

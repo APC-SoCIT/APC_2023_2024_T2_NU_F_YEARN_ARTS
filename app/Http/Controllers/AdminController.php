@@ -179,6 +179,8 @@ class AdminController extends Controller
         $order->order_status = "Downpayment";
         $order->save();
 
+        
+
         $details = [
             'subject' => 'Down Payment Required',
             'greeting' => 'Good day, ' . $order['name'] . '!',
