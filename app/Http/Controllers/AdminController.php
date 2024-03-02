@@ -406,6 +406,7 @@ public function  edit_order_confirm(Request $request, $id){
     $order = order::find($id);
 
     $order->primaryclr = $request->primaryclr;
+    $order->size = $request->size;
     $order->secondaryclr = $request->secondaryclr;
     $order->price = $request->price;
     $order->processing_time = $request->processing_time;

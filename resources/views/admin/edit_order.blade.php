@@ -60,6 +60,10 @@
                                     <input type="number" id="order-total" name="price" value="{{ $order->price }}" placeholder="Please put how much is this." required>
                                 </div>
                                 <div class="product-name">
+                                    <label for="order-total">Size:</label>
+                                    <input type="text" id="order-total" name="size" value="{{ $order->size }}"  placeholder="Ex:  #7D5452" required>
+                                </div>
+                                <div class="product-name">
                                     <label for="order-total">Primary Color:</label>
                                     <input type="text" id="order-total" name="primaryclr" value="{{ $order->primaryclr }}"  placeholder="Ex:  #7D5452" required>
                                 </div>

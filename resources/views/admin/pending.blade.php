@@ -51,7 +51,7 @@
                         <div class="column-4">
                             @if($order->order_status == 'Downpayment')
                             <p>Confirmed</p>
-                                @elseif($customerCount > 1)
+                                @elseif($customerCount > 1 || $order->price == 0)
                                     <button class="btn btn-success" disabled>Confirm</button>
                                     <a href="{{ url('edit_order', $order->id) }}" class="btn btn-info">Edit</a>
                                 @else
