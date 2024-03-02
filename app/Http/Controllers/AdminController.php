@@ -137,7 +137,7 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Product Updated Successfully');
     }
 
-    public function order(){
+    public function order(){    
         $order = Order::orderBy('created_at', 'desc')->get();
 
 
@@ -385,7 +385,35 @@ public function edit_order($id){
 
 }
 
+public function cancel_order($id){
+    $order = order::find($id);
 
+    if (!$order) {
+        // Handle the case where the order with the given ID is not found.
+        abort(404);
+    }
+
+    $order->order_status = 'Cancelled';
+    $order->save();
+
+    return redirect()->back();
+}
+
+
+
+
+public function  edit_order_confirm(Request $request, $id){
+    $order = order::find($id);
+
+    $order->primaryclr = $request->input('primaryclr');
+    $order->secondaryclr = $request->input('secondaryclr');
+    $order->price = $request->input('price');
+    $order->processing_time = $request->input('processing_time');
+    $order->order_status = 'Downpayment';
+
+    $order->save();
+    return redirect()->back();
+}
 
 
 

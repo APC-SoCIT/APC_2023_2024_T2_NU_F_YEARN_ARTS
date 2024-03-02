@@ -52,7 +52,7 @@
                                     <input type="text" name="product_name" value="{{$product->product_name}}" placeholder="Product Name" id="" required="" autocomplete="off">
                                 </div>
 
-                            @csrf
+                            @csrf   
 
                                 <div class="product-type">
                                     <select name="category" id="" required="" >

@@ -119,6 +119,8 @@ Route::get('/get_data', [AdminController::class, 'get_data']);
 Route::get('/get_data_category', [AdminController::class, 'get_data_category']);
 
 route::get('/edit_order/{id}',[AdminController::class,'edit_order']);
+route::get('/cancel_order/{id}',[AdminController::class,'cancel_order']);
+route::post('/edit_order_confirm/{id}',[AdminController::class,'edit_order_confirm']);
 
 
 
