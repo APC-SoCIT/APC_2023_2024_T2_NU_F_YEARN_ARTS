@@ -110,9 +110,7 @@ route::get('/customer_list',[AdminController::class,'customer_list']);
 route::get('/search',[AdminController::class,'search']);
 route::get('/searchDpayment',[AdminController::class,'searchDpayment']);
 
-route::get('/fullpayment_receipt/{id}',[HomeController::class,'fullpayment_receipt']);
 
-route::get('/fullpayment_receipt_edit',[HomeController::class,'fullpayment_receipt_edit']);
 
 
 Route::get('/get_data', [AdminController::class, 'get_data']);
@@ -136,3 +134,13 @@ Route::match(['get', 'post'], '/botman', 'App\Http\Controllers\BotManController@
 
 
 
+
+
+route::get('/fullpayment_receipt/{id}',[HomeController::class,'fullpayment_receipt']); // generate receipt for fullpament
+route::get('/fullpayment_receipt_edit',[HomeController::class,'fullpayment_receipt_edit']);
+
+
+//generate receipt for acknowledgement
+
+
+//generate reports pdf

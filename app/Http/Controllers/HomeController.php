@@ -558,24 +558,7 @@ class HomeController extends Controller
 
     }
 
-    public function fullpayment_receipt($id){
-        $order=order::find($id);
 
-        $data = [
-            'title' => 'Sales Invoice',
-            'date' => date('Y-m-d'),
-            'orderid' => $order->order_id,
-            'image' => public_path('logo/YearnArt.png'),
-            'order' => $order,
-            'peso' => '₱',
-        ];
-
-
-
-        $pdf = Pdf::loadView('admin.fpayment_receipt', $data);
-        return $pdf->download('Sales Invoice.pdf');
-
-    }
 
     public function cancel_order($id){
 
@@ -680,6 +663,25 @@ class HomeController extends Controller
             else{
                 return redirect('login');
             }
+    }
+
+    public function fullpayment_receipt($id){
+        $order=order::find($id);
+
+        $data = [
+            'title' => 'Sales Invoice',
+            'date' => date('Y-m-d'),
+            'orderid' => $order->order_id,
+            'image' => public_path('logo/YearnArt.png'),
+            'order' => $order,
+            'peso' => '₱',
+        ];
+
+
+
+        $pdf = Pdf::loadView('admin.fpayment_receipt', $data);
+        return $pdf->download('Sales Invoice.pdf');
+
     }
 
 
