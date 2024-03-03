@@ -179,7 +179,7 @@ class AdminController extends Controller
         $order->order_status = "Downpayment";
         $order->save();
 
-        
+
 
         $details = [
             'subject' => 'Down Payment Required',
@@ -412,6 +412,11 @@ public function  edit_order_confirm(Request $request, $id){
     $order->secondaryclr = $request->secondaryclr;
     $order->price = $request->price;
     $order->processing_time = $request->processing_time;
+
+    $order->order_status = 'Downpayment';
+
+
+
 
 
     $order->save();
