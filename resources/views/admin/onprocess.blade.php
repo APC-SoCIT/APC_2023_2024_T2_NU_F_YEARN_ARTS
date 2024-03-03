@@ -29,7 +29,7 @@
                             </select>
                         </form>
                     </div>
-                    
+
                     <div class="order-container">
 
                         <!-- Loop through your order data here -->
@@ -58,6 +58,12 @@
                                                         {{ $order->order_status }}
                                                     @endif
                                                 </p>
+                                                @php
+                                                $deadline = \Carbon\Carbon::parse($order->created_at)->addWeeks($order->processing_time * $order->quantity);
+                                                $totalProcesstime =  ( $order->processing_time * $order->quantity);
+                                                @endphp
+                                                <p class="order-info">Processing time: {{ $totalProcesstime }}weeks </p>
+                                                <p class="order-info">Deadline:{{ $deadline->format('F jS, Y') }} </p>
                                             </div>
                                         </div>
                                         <div class="column-3">
