@@ -5,16 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets\css\sales_report.css">
-    <title>Document</title>
+    <title>Sales Report</title>
 </head>
 <body>
+
+    <?php
+
+    $totalSubtotalpriceAmount = 0;
+    $totalSubtotalpriceVat = 0;
+    $currentMonth = date("F");
+    $categoryData = [];
+
+    ?>
     <header>
         <h2>Yearn Art</h2>
         <h5>48 Lot 8, Marang St, Amparo Subd., Brgy 179, Caloocan City, MM</h5>
     </header>
 
     <table>
-        <caption>Quantity Sold for the Month of [Month]</caption>
+        <caption>Quantity Sold for the Month of {{ $currentMonth }}</caption>
         <tr>
             <th>Order ID</th>
             <th>Product Name</th>
@@ -25,45 +34,72 @@
             <th>TAX</th>
             <th>TOTAL</th>
         </tr>
-        <tr>
-            <td>A123</td>
-            <td>ITEM A</td>
-            <td>$10.00</td>
-            <td>20</td>
-            <td>$200.00</td>
-            <td>15%</td>
-            <td>$30.00</td>
-            <td>$230.00</td>
-        </tr>
+        @foreach($orders as $order)
+        @if($order->order_status === 'Order Completed')
+        @php
+        $vatPercentage = 12;
+        $unitprice = ($order->price);
+        $unitpriceVatAmount =($order->price  * $vatPercentage) / 100;
+        $unitPriceVat = ($unitprice - $unitpriceVatAmount);
+
+        $subtotalpriceVat = ($unitpriceVatAmount * $order->quantity);
+        $totalUnitAmount = ($unitprice *  $order->quantity);
+        $subtotalpriceAmount = ($totalUnitAmount - $subtotalpriceVat);
+
+
+        $totalSubtotalpriceAmount += $subtotalpriceAmount;
+        $totalSubtotalpriceVat += $subtotalpriceVat;
+
+        $dateString = ($order->completed_at);
+        $formattedDate = date("F jS, Y", strtotime($dateString));
+        $dateNow = date("F jS, Y H:i:s");
+        $completedAt =date("F jS, Y");
+
+
+        @endphp
+
+
+            <tr>
+                <td>{{ $order->order_id }}</td>
+                <td>{{ $order->product_name }}</td>
+                <td>₱{{ $unitprice}}</td>
+                <td>{{ $order->quantity }}</td>
+                <td>₱{{  $subtotalpriceAmount  }}</td>
+                <td>{{ $vatPercentage }}%</td>
+                <td>₱{{  $subtotalpriceVat }}</td>
+                <td>₱{{ $totalUnitAmount }}</td>
+            </tr>
+        @endif
+    @endforeach
     </table>
     <div class="additional-info">
-        <p><span class="label">SALES AMOUNT:</span><span class="value">$3,750.00</span></p>
-        <p ><span class="label">SALES TAX:</span><span class="value">$277.50</span></p>
-        <p><span class="label">SALES TOTAL:</span><span class="value">$4,027.50</span></p>
+        <p><span class="label">SALES AMOUNT:</span><span class="value">₱{{ number_format($totalSubtotalpriceAmount, 2) }}</span></p>
+        <p ><span class="label">SALES TAX:</span><span class="value">₱{{ number_format($totalSubtotalpriceVat, 2) }}</span></p>
+        <p><span class="label">SALES TOTAL:</span><span class="value">₱{{ number_format($totalSubtotalpriceAmount + $totalSubtotalpriceVat, 2) }}</span></p>
     </div>
     <table>
-        <caption>Best Selling Category for the Month of [Month]</caption>
+        <caption>Best Selling Category for the Month of {{ $currentMonth }}</caption>
         <tr>
             <th>Category Name</th>
             <th>Total Order per Category</th>
 
         </tr>
-        <tr>
-            <td>A123</td>
-            <td>ITEM A</td>
-
-        </tr>
+        @foreach($categoryCounts as $category)
+            <tr>
+                <td>{{ $category->category }}</td>
+                <td>{{ $category->total }}</td>
+            </tr>
+        @endforeach
     </table>
 
         <div class="printed-by">
             <p>Printed By:</p>
             <div class="signature-line"></div>
-            <p>Name: Name</p>
-            <p>Date: date</p>
+            <p>Name: {{ $user->name }}</p> <!-- Display the name of the logged-in user -->
+           
         </div>
-
         <footer>
-            <p>Issued at: [current date and time]</p>
+            <p>Issued at: {{  $dateNow }}</p>
         </footer>
 
 

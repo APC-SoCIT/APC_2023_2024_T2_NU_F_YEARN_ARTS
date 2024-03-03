@@ -144,6 +144,6 @@ route::get('/fullpayment_receipt_edit',[HomeController::class,'fullpayment_recei
 
 
 //generate receipt for acknowledgement
-
-
+route::get('/sales_report',[AdminController::class,'sales_report']);
+route::get('/sales_report_edit',[AdminController::class,'sales_report_edit']);
 //generate reports pdf

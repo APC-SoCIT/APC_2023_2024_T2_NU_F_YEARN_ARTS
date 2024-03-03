@@ -1,0 +1,84 @@
+body {
+    font-size: 16px;
+
+     font-family: 'DejaVu Sans', sans-serif;
+  }
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #000; /* Add a border to the table */
+  }
+
+  th, td {
+    border: 1px solid #000;
+    text-align: center;
+    padding: 8px;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  table {
+    margin: 0 auto;
+  }
+
+  .address {
+    margin-top: -10px; /* Adjust as needed */
+  }
+
+  footer {
+    margin-top: 200px;
+    text-align: left;
+  }
+
+  .additional-info {
+    margin-top: 20px;
+    display: flex;
+    margin-left: 65%;
+    justify-content: flex-end;
+}
+
+.additional-info p {
+    margin-bottom: 10px;
+}
+
+.additional-info p span.label {
+    display: inline-block;
+    width: 120px;
+    position: relative;
+}
+
+.additional-info p span.value {
+    text-align: right;
+    display: inline-block;
+}
+
+.additional-info p:nth-child(2) span.label,
+.additional-info p:nth-child(2) span.value {
+    border-bottom: 1px solid #000;
+    padding-bottom: 0;
+}
+
+  .printed-by {
+    margin-top: 20px;
+    float: left;
+  }
+
+  .signature-line {
+    width: 150px;
+    border-bottom: 1px solid #000;
+    margin-top: 30px;
+  }
+
+  caption {
+    margin-bottom: 10px; /* Add margin to the bottom of the caption */
+    font-weight: bold; /* Optional: Make the caption bold */
+}

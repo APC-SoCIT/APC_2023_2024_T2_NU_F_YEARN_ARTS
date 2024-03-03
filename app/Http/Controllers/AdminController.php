@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Order;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 
 use Illuminate\Support\Facades\Notification;
@@ -321,7 +322,7 @@ class AdminController extends Controller
         ->orWhere('product_name','LIKE', "%$searchtext%")
         ->orWhere('size','LIKE', "%$searchtext%")
         ->orWhere('order_id','LIKE', "%$searchtext%")
-        
+
         ->get();
 
 
@@ -452,6 +453,27 @@ public function  edit_order_confirm(Request $request, $id){
     return redirect()->back();
 }
 
+
+public function sales_report() {
+    $user = Auth::user();
+    $id = $user->id;
+
+    // Assuming your order status column is named 'order_status' and the created_at column is named 'created_at'
+    $orders = Order::whereYear('created_at', now()->year) // Filter by the current year
+        ->whereMonth('created_at', now()->month) // Filter by the current month
+        ->get();
+
+    $categoryCounts = Order::whereYear('created_at', now()->year) // Filter by the current year
+        ->whereMonth('created_at', now()->month) // Filter by the current month
+        ->selectRaw('category, COUNT(category) as total')
+        ->groupBy('category')
+        ->get();
+
+
+
+        $pdf = Pdf::loadView('admin.sales_report', ['id' => $id, 'user' => $user, 'orders' => $orders, 'categoryCounts' => $categoryCounts]);
+        return $pdf->download('Sales Report.pdf');
+}
 
 
 }

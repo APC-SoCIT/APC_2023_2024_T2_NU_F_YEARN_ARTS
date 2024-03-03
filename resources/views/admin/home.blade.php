@@ -36,7 +36,7 @@
                     ?>
                 </select>
                 <div class="print-button">
-                    <a href="#" class="btn-print">Print PDF</a>
+                    <a href="{{url('sales_report')}}" class="btn-print">Print PDF</a>
                 </div>
 
                 <div id="loadingIndicator" style="display: none;">
