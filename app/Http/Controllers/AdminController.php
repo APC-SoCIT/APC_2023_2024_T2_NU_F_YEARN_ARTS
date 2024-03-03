@@ -187,7 +187,7 @@ class AdminController extends Controller
             'firstline' => 'Thank you for choosing Yearn Art! To proceed with your order, we kindly request a 50% downpayment. This downpayment helps secure your booking and allows us to begin processing your order promptly. Once the downpayment is received, we\'ll swiftly move forward with the necessary arrangements to ensure everything is in place for your satisfaction. Please let us know if you have any questions or if there\'s anything else we can assist you with. We truly appreciate your business and look forward to serving you!',
             'button' => 'Track Order',
             'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
-            'lastline' => '',
+            'lastline' => 'If you have any problems, you can contact us here or in our Facebook page https://www.facebook.com/yearnartofficial.',
         ];
 
         Notification::send($order, new YearnArtNotification($details));
@@ -209,7 +209,7 @@ class AdminController extends Controller
             'firstline' => 'We would like to infrom you that we already received your downpayment. Now, your order is on process.',
             'button' => 'Print Receipt',
             'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
-            'lastline' => '',
+            'lastline' => 'If you have any problems, you can contact us here or in our Facebook page https://www.facebook.com/yearnartofficial.',
         ];
 
         Notification::send($order, new YearnArtNotification($details));
@@ -230,7 +230,7 @@ class AdminController extends Controller
             'firstline' => 'We kindly request the full payment (50%) for your order to proceed with its finalization and delivery.',
             'button' => 'Track Order',
             'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
-            'lastline' => '',
+            'lastline' => 'If you have any problems, you can contact us here or in our Facebook page https://www.facebook.com/yearnartofficial.',
         ];
 
         Notification::send($order, new YearnArtNotification($details));
@@ -250,7 +250,7 @@ class AdminController extends Controller
             'firstline' => 'Yay! Finally your order is now on shipping',
             'button' => 'Track Order',
             'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
-            'lastline' => 'lastline',
+            'lastline' => 'If you have any problems, you can contact us here or in our Facebook page https://www.facebook.com/yearnartofficial.',
         ];
 
         Notification::send($order, new YearnArtNotification($details));
@@ -315,7 +315,7 @@ class AdminController extends Controller
             We are delighted to inform you that your order has been successfully completed! Thank you for choosing Yearn Art for your purchase. To view and print your receipt, click on the following button:',
             'button' => 'Print Receipt',
             'url' => 'http://127.0.0.1:8000/fullpayment_receipt/' . $id,
-            'lastline' => 'lastline',
+            'lastline' => 'If you have any problems, you can contact us here or in our Facebook page https://www.facebook.com/yearnartofficial.',
         ];
 
         Notification::send($order, new YearnArtNotification($details));

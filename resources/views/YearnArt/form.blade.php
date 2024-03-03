@@ -10,54 +10,79 @@
 </head>
 <body>
 
-    <div>
-    <div class="form-container">
+    <div class="main-container">
+      <div class="form-container">
         <p class="title">Customization Form</p>
         <form class="form" action="{{ url('/customized_order') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="type-product">
                 <label class="input_label" for="product_name">Product Name</label>
-                <input name="product_name" type="text" class="input" placeholder="Enter product name" id="product_name" required>
+                <input name="product_name" type="text" class="input"  id="product_name" required>
             </div>
 
             <div class="type-product">
                 <label class="input_label" for="note">Details</label>
-                <input name="note" type="text" class="input" placeholder="Enter product details" id="note" required>
+                <input name="note" type="text" class="input" id="note" required>
             </div>
 
-            <input type="file" name="image" id="fileInput" accept="image/*" required style="display: none;">
-            <label class="custum-file-upload" for="fileInput" style="cursor: pointer;">
-                <div class="plus-icon">Add photo</div>
-            </label>
+            
 
-            <div>
-                <p class="names">Quantity:
+            <div class="type-product">
+                <label class="input_label" for="note">Quantity</label>
+                <input type="number" name="quantity" value="1" min="1" required class="input">
+            </div>
+
+            <div class="type-product">
+                <label class="input_label" for="note">Size</label>
+                <input type="text" name="size" class="input" id="size" required>
+            </div>
+
+            <div class="type-product">
+              <div class="color-picker">
+                <label class="input_label" for="note">Primary Color</label>
+                <input class="color-input" type="color" name="color" id="color" value="#000000" oninput="hexColor.value = color.value" required>
+                <input class="color-display" type="text" name="primaryclr" id="hexColor" oninput="color.value = hexColor.value" readonly required>
+              </div>
+              <div class="color-picker">
+                <label class="input_label" for="note">Secondary Color</label>
+                <input class="color-input" type="color" name="color2" id="color2" value="#000000" oninput="hexColor2.value = color2.value" required>
+                <input class="color-display" type="text" name="secondaryclr" id="hexColor2" oninput="color2.value = hexColor2.value" readonly required>
+              </div>
+            </div>
+
+            
+                <!-- <p class="names">Quantity:
                     <input type="number" name="quantity" value="1" min="1" required
                         placeholder="Enter quantity" style="border:1.5px solid #b0968f;border-radius: 5px; width: 100px; height: 30px; background: transparent; margin-left: 10px;">
-                </p>
+                </p> -->
 
-                <p>
+                <!-- <p>
                     <label class="names" name="size" for="size">Size</label>
                     <input type="text" name="size" class="input" placeholder="Enter size" id="size" required>
-                </p>
+                </p> -->
 
-                <p>
+                <!-- <p>
                     <label class="names" for="color">Primary Color</label>
-                    <input class="input" type="color" name="color" id="color" value="#000000" oninput="hexColor.value = color.value" required>
-                    <input class="input" type="text" name="primaryclr" id="hexColor" oninput="color.value = hexColor.value" placeholder="Choose primary color" required>
+                    
+                    
                 </p>
 
                 <p>
                     <label class="names" for="color">Secondary Color</label>
                     <input class="input" type="color" name="color2" id="color2" value="#000000" oninput="hexColor2.value = color2.value" required>
-                    <input class="input" type="text" name="secondaryclr" id="hexColor2" oninput="color2.value = hexColor2.value" placeholder="Choose secondary color" required>
-                </p>
-            </div>
+                    
+                </p> -->
+            
+                <input type="file" name="image" id="fileInput" accept="image/*" required style="display: none;">
+            <label class="custum-file-upload" for="fileInput" style="cursor: pointer;">
+                <div class="plus-icon">Add photo</div>
+            </label>
 
             <div class="imagePreview">
                 <div id="imagePreview" class="image-preview"></div>
                 <button id="removeButton" class="rm-btn">Delete</button>
             </div>
+            
 
             <div class="btn-submit">
                 <button title="Sign In" type="submit" class="sign-in_btn">
@@ -65,7 +90,7 @@
                 </button>
             </div>
         </form>
-    </div>
+      </div>
     </div>
 <script>
 const fileInput = document.getElementById('fileInput');

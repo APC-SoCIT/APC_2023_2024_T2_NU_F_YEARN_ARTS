@@ -314,9 +314,9 @@ class HomeController extends Controller
         }
         foreach ($users as $user) {
             $details = [
-                'subject' => 'Down Payment Required',
+                'subject' => 'Hey! Someone has ordered!',
                 'greeting' => 'Good Day! ' .  $user->name . ',',
-                'firstline' => 'Thank you for'.$orderId.' choosing Yearn Art! To proceed with your order, we kindly request a 50% downpayment...',
+                'firstline' => 'NAME has ordered ORDER ITEM '.$orderId.'.',
                 'button' => 'Track Orders',
                 'url' => 'http://127.0.0.1:8000/order',
                 'lastline' => '',
@@ -538,9 +538,9 @@ class HomeController extends Controller
 
         foreach ($users as $user) {
             $details = [
-                'subject' => 'Down Payment Required',
+                'subject' => 'Customer Name has received their order!',
                 'greeting' => 'Good Day! ' .  $user->name . ',',
-                'firstline' => 'Thank you for'.$orderId.' choosing Yearn Art! To proceed with your order, we kindly request a 50% downpayment...',
+                'firstline' => 'NAME has received their product ' .$orderId. '.',
                 'button' => 'Track Orders',
                 'url' => 'http://127.0.0.1:8000/order',
                 'lastline' => '',
@@ -643,9 +643,9 @@ class HomeController extends Controller
 
                 foreach ($users as $user) {
                     $details = [
-                        'subject' => 'Down Payment Required',
+                        'subject' => 'NAME made an Customization',
                         'greeting' => 'Good Day! ' .  $user->name . ',',
-                        'firstline' => 'Thank you for'.$orderId.' choosing Yearn Art! To proceed with your order, we kindly request a 50% downpayment...',
+                        'firstline' => 'NAME wants a customized PRODUCT' .$orderId. '.',
                         'button' => 'Track Orders',
                         'url' => 'http://127.0.0.1:8000/order',
                         'lastline' => '',
