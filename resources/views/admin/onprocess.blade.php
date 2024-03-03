@@ -17,6 +17,7 @@
         <section class="custom-section">
                 <div class="">
                     <p class="Head-title">On process</p>
+
                      <!-- Dropdown Filter dagdag ni sam-->
                      <div class="order-filter">
                         <form action="{{ url('onprocess') }}" method="GET">
@@ -28,6 +29,7 @@
                             </select>
                         </form>
                     </div>
+                    
                     <div class="order-container">
 
                         <!-- Loop through your order data here -->

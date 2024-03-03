@@ -109,6 +109,9 @@ route::get('/onprocess',[AdminController::class,'onprocess']);
 route::get('/customer_list',[AdminController::class,'customer_list']);
 route::get('/search',[AdminController::class,'search']);
 route::get('/searchDpayment',[AdminController::class,'searchDpayment']);
+route::get('/searchPending',[AdminController::class,'searchPending']);
+route::get('/searchOnprocess',[AdminController::class,'searchOnprocess']);
+
 
 
 

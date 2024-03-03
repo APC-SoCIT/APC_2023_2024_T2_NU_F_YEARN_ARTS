@@ -20,8 +20,24 @@
     <div class="main-panel">
         <section class="custom-section">
                 <div class="">
-                    <p class="Head-title">Pending Orders</p>
+
+                    <div class="column-1">
+                        <h2 class="Head-title">Pending Orders</h2>
+                      </div>
+
+                      <div class="column-2">
+                        <form action="{{url('searchPending')}}" method="get">
+                                  @csrf
+
+                                  <div class="search-bar">
+                                    <input type="text" name="search" id="" placeholder="Search...">
+                                  </div>
+
+                        </form>
+                      </div>
                     <div class="order-container">
+
+
                     @php $customerCount = 0 @endphp
                     @foreach ($order as $order)
 
@@ -54,9 +70,12 @@
                                 @elseif($customerCount > 1 || $order->price == 0)
                                     <button class="btn btn-success" disabled>Confirm</button>
                                     <a href="{{ url('edit_order', $order->id) }}" class="btn btn-info">Edit</a>
+                                    <a href="{{url('cancel_order',$order->id)}}"  class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel this order?')" class="button-item">Cancel Order</a>
+
                                 @else
                                     <a href="{{ url('to_dpay', $order->id) }}" class="btn btn-success" onclick="return confirm('Are you sure this order can be made?')">Confirm</a>
                                     <a href="{{ url('edit_order', $order->id) }}" class="btn btn-info">Edit</a>
+                                    <a href="{{url('cancel_order',$order->id)}}"  class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel this order?')" class="button-item">Cancel Order</a>
                                 @endif
                         </div>
 

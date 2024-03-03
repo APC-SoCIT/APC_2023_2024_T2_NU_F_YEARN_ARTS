@@ -298,6 +298,35 @@ class AdminController extends Controller
 
         return view('admin.dpayment', compact('order'));
     }
+    public function searchPending(Request $request){
+
+        $searchtext= $request->search;
+
+        $order=order::where('name','LIKE', "%$searchtext%")
+        ->orWhere('email','LIKE', "%$searchtext%")
+        ->orWhere('product_name','LIKE', "%$searchtext%")
+        ->orWhere('size','LIKE', "%$searchtext%")
+        ->orWhere('order_id','LIKE', "%$searchtext%")
+        ->get();
+
+
+        return view('admin.pending', compact('order'));
+    }
+    public function searchOnprocess(Request $request){
+
+        $searchtext= $request->search;
+
+        $order=order::where('name','LIKE', "%$searchtext%")
+        ->orWhere('email','LIKE', "%$searchtext%")
+        ->orWhere('product_name','LIKE', "%$searchtext%")
+        ->orWhere('size','LIKE', "%$searchtext%")
+        ->orWhere('order_id','LIKE', "%$searchtext%")
+        
+        ->get();
+
+
+        return view('admin.onprocess', compact('order'));
+    }
     public function to_order_completed($id){
 
         $order=order::find($id);
@@ -413,7 +442,7 @@ public function  edit_order_confirm(Request $request, $id){
     $order->price = $request->price;
     $order->processing_time = $request->processing_time;
 
-    $order->order_status = 'Downpayment';
+
 
 
 
