@@ -6,7 +6,7 @@ body {
     background-color: #E4D8CC;
   }
 
- 
+
 .container{
   display: flex;
   flex-direction: row;
@@ -86,7 +86,7 @@ body {
     transform: translateY(-40px);
     z-index: 123456;
     opacity: 1;
-    
+
 }
 
 /* BUTTON */
@@ -130,3 +130,4 @@ body {
     position: sticky;
     bottom: 0;
 }
+

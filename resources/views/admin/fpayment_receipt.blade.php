@@ -9,11 +9,35 @@
                 <title>Sales Invoice</title>
             </head>
             <body>
+                @php
+                $vatPercentage = 12;
+                $unitprice = ($order->price);
+                $unitpriceVatAmount =($order->price  * $vatPercentage) / 100;
+                $unitPriceVat = ($unitprice - $unitpriceVatAmount);
+
+                $subtotalprice = ($unitPriceVat * $order->quantity);
+
+                $grandVATamount = ($unitpriceVatAmount * $order->quantity ) ;
+
+
+                $grandAmount = ($subtotalprice +  $grandVATamount   );
+
+
+                $dateString = ($order->completed_at);
+                $formattedDate = date("F jS, Y", strtotime($dateString));
+                $dateNow = date("F jS, Y H:i:s");
+                $completedAt =date("F jS, Y");
+
+
+                @endphp
 
 
                 <!-- <div class="logo-container">
                     <img src="logo\YearnArt.png">
                 </div> -->
+                <header>
+                    <h3>Sales Invoice</h3>
+                </header>
 
                 <!-- Palagyan ng TIN Number -->
 
@@ -33,7 +57,7 @@
                     </tr>
                     <tr>
                         <td>
-                            Invoice Date: <strong>May 24th, 2024</strong>
+                            Invoice Date: {{($completedAt)}}
                         </td>
                         <td>
                             Brgy 179, Caloocan City, MM
@@ -54,7 +78,7 @@
                         </td>
 
                         <td>
-
+                            TIN: 476-647-222
                         </td>
                     </tr>
                     <tr>
@@ -68,30 +92,12 @@
                     </tr>
                 </table>
 
-                @php
-                $vatPercentage = 12;
-                $unitprice = ($order->price);
-                $unitpriceVatAmount =($order->price  * $vatPercentage) / 100;
-                $unitPriceVat = ($unitprice - $unitpriceVatAmount);
-
-                $subtotalprice = ($unitPriceVat * $order->quantity);
-
-                $grandVATamount = ($unitpriceVatAmount * $order->quantity ) ;
-
-
-                $grandAmount = ($subtotalprice +  $grandVATamount   );
-
-
-                $dateString = ($order->completed_at);
-                $formattedDate = date("F jS, Y", strtotime($dateString));
-
-                @endphp
 
                 <table class="line-items-container">
                     <thead>
                     <tr>
 
-                        <th class="heading-description">Description</th>
+                        <th class="heading-description">Product Name</th>
                         <th class="heading-price">Qty</th>
                         <th class="heading-price">Price/Unit</th>
                         <th class="heading-price"> Vat (12%)</th>
@@ -117,7 +123,7 @@
                         <td class="right">₱{{ number_format($unitpriceVatAmount  , 2) }}</td>
 
 
-                        <td class="right" style="color: green;">₱{{ number_format($subtotalprice  , 2) }}</td>
+                        <td class="right">₱{{ number_format($subtotalprice  , 2) }}</td>
 
 
 
@@ -134,7 +140,7 @@
                     <thead>
                     <tr>
                         <th>Payment Info</th>
-                        <th>Date</th>
+                        <th>Order Completed At</th>
                         <th class="heading-price">VAT ({{ $vatPercentage }}%)</th>
                         <th class="heading-price">Subtotal ({{ $vatPercentage }}% Vatable)</th>
 
@@ -157,10 +163,16 @@
                     </tr>
                     <tr>
 
-                        <td></td>
+                        <td>
+
+                        </td>
                     </tr>
                     </tbody>
                 </table>
+                <div class="invoice-date">
+                    <p> Invoice Date: {{($dateNow)}}</p>
+                </div>
+
 
             </body>
             </html>

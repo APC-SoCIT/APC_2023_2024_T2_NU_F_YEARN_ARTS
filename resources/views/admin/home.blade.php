@@ -35,6 +35,9 @@
                     }
                     ?>
                 </select>
+                <div class="print-button">
+                    <a href="#" class="btn-print">Print PDF</a>
+                </div>
 
                 <div id="loadingIndicator" style="display: none;">
 

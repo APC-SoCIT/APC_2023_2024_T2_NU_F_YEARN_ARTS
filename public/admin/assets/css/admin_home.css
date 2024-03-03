@@ -108,3 +108,26 @@ body{
     font-family: Inter;
     color: #7D5452;
 }
+
+
+.print-button {
+
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.btn-print {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7D5452; /* Set the desired background color */
+    color: #fff; /* Set the desired text color */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-print:hover {
+    background-color: #D0A59F; /* Change the background color on hover */
+    text-decoration: none;
+    color: #fff;
+}
