@@ -25,6 +25,7 @@ p{
 
 textarea{
     border: none;
+    width: auto;
 }
 
 .order-info{
@@ -155,7 +156,7 @@ textarea{
     font-family: Inter;
     color: #7D5452;
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .order-info {

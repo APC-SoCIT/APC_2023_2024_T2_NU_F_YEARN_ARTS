@@ -37,7 +37,7 @@
                         
                         <div class="order-note">
                             <label for="note">Order Note:</label>
-                            <textarea id="note" name="note" rows="8" readonly>{{ $order->note }}</textarea>
+                            <textarea id="note" name="note" rows="8" cols="50" readonly>{{ $order->note }}</textarea>
                         </div>
                         </div>
                         <div class="order-item-1">
