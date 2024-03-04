@@ -390,6 +390,9 @@ public function get_data_category(Request $request)
     // Get the selected year from the request or use the current year as a default
     $selectedYear = $request->input('selected_year', date('Y'));
 
+    // Get the current month
+    $currentMonth = date('m');
+
     // Get all distinct categories from the database
     $allCategories = Order::distinct()->pluck('category');
 
@@ -399,7 +402,8 @@ public function get_data_category(Request $request)
     })->toArray();
 
     // Fetch data from the database and update the array
-    $categoryCounts = Order::whereYear('created_at', $selectedYear) // Filter by the selected year
+    $categoryCounts = Order::whereYear('completed_at', $selectedYear) // Filter by the selected year
+        ->whereMonth('completed_at', $currentMonth) // Filter by the current month
         ->selectRaw('category, COUNT(*) as total')
         ->groupBy('category')
         ->get();
@@ -411,6 +415,7 @@ public function get_data_category(Request $request)
 
     return response()->json(['data' => $categoryCountsArray, 'selected_year' => $selectedYear]);
 }
+
 
 public function edit_order($id){
 
@@ -466,8 +471,8 @@ public function sales_report() {
         ->whereMonth('created_at', now()->month) // Filter by the current month
         ->get();
 
-    $categoryCounts = Order::whereYear('created_at', now()->year) // Filter by the current year
-        ->whereMonth('created_at', now()->month) // Filter by the current month
+    $categoryCounts = Order::whereYear('completed_at', now()->year) // Filter by the current year
+        ->whereMonth('completed_at', now()->month) // Filter by the current month
         ->selectRaw('category, COUNT(category) as total')
         ->groupBy('category')
         ->get();
@@ -495,7 +500,7 @@ public function sales_report_edit() {
 
         return view ('admin.sales_report', compact('orders', 'categoryCounts', 'user'));
 
-        
+
 }
 
 }
