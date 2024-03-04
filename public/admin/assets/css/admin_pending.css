@@ -43,6 +43,18 @@ body{
     width: 350px;
 }
 
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.head-container{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
 .column-1{
     font-family: Inter;
     display: flex;

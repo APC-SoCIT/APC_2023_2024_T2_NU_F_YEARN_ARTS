@@ -3,6 +3,10 @@ body{
     color: #7D5452;
 }
 
+p{
+    font-family: Inter;
+}
+
 .Head-title{
     font-family: Inter;
     text-align:center;
@@ -10,8 +14,6 @@ body{
     font-weight: bold;
     margin-top: 20px;
    }
-
-
 
 .order-container {
     display: flex;
@@ -21,13 +23,29 @@ body{
     margin: 30px;
 }
 
+textarea{
+    border: none;
+}
+
+.order-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.order-note {
+    display: flex;
+    flex-direction: column;
+}
+
 .order-item {
     border: 1px solid #7D5452;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    width: 400px;
 }
 
 
@@ -68,6 +86,7 @@ body{
 .button-item:hover {
     background-color: #7D5452;
     color: #fff;
+    text-decoration: none;
 }
 
 .order-item-1 {
@@ -133,6 +152,7 @@ body{
 }
 
 .product-name {
+    font-family: Inter;
     color: #7D5452;
     margin-bottom: 10px;
     font-size: 20px;

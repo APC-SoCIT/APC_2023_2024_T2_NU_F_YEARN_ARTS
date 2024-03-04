@@ -20,8 +20,8 @@
     <div class="main-panel">
         <section class="custom-section">
                 <div class="">
-
-                    <div class="column-1">
+                    <div class="content-wrapper">
+                      <div class="head-container">
                         <h2 class="Head-title">Pending Orders</h2>
                       </div>
 
@@ -35,6 +35,8 @@
 
                         </form>
                       </div>
+                    </div>
+                      
                     <div class="order-container">
 
 

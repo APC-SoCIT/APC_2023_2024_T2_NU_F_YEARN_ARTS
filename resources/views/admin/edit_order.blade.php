@@ -19,13 +19,14 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div>
-                    <p class="Head-title">Edit Order by: {{ $order->name }}</p>
+                    <p class="Head-title">Order of: {{ $order->name }}</p>
                 </div>
                 <form action="{{url('/edit_order_confirm' , $order->id)}}" method="POST">
                     @csrf
                     <!-- Add your form action URL in the action attribute -->
                     <div class="order-container">
-                        <div class="order-item">
+                        <div class="order-info">
+                        
                             <div>
 
                                 <a href="{{ asset('product/' . $order->image) }}" target="_blank">
@@ -33,43 +34,41 @@
                                     <img src="{{ asset('product/' . $order->image) }}" class="img-fluid" alt="{{ $order->product_name }}">
                                 </a>
                             </div>
-                        </div>
-                        <div class="order-item">
+                        
+                        <div class="order-note">
                             <label for="note">Order Note:</label>
-                            <textarea style=": auto;" id="note" name="note" rows="10" readonly>{{ $order->note }}</textarea>
+                            <textarea id="note" name="note" rows="8" readonly>{{ $order->note }}</textarea>
+                        </div>
                         </div>
                         <div class="order-item-1">
-
-
-
                                 <div class="product-details">
 
                                     <p class="product-name">Product Name: {{$order->product_name}}</p>
                                     @if ($order->order_status == 'Order Placed')
-                                        <p class="product-name">Order Status: Pending</p>
+                                        <p class="product-name">Status: Pending</p>
                                     @else
                                         <p class="product-name">Order Status: {{$order->order_status}}</p>
                                     @endif
-                                    <p class="product-name">Order ID: {{$order->order_id}}</p>
-                                    <label for="quantity">Quantity: {{ $order->quantity }}</label>
+                                    <p class="product-name">ID: {{$order->order_id}}</p>
+                                    <label for="quantity" class="product-name">Quantity: {{ $order->quantity }}</label>
 
                                 </div>
 
                                 <div class="product-name">
                                     <label for="order-total">Edit Unit Price:</label>
-                                    <input type="number" id="order-total" name="price" value="{{ $order->price }}" placeholder="Please put how much is this." required>
+                                    <input type="number" id="order-total" name="price" value="{{ $order->price }}" placeholder="Enter unit price" required>
                                 </div>
                                 <div class="product-name">
                                     <label for="order-total">Size:</label>
-                                    <input type="text" id="order-total" name="size" value="{{ $order->size }}"  placeholder="Ex:  #7D5452" required>
+                                    <input type="text" id="order-total" name="size" value="{{ $order->size }}"  placeholder="Ex:  #7D5452" required readonly>
                                 </div>
                                 <div class="product-name">
                                     <label for="order-total">Primary Color:</label>
-                                    <input type="text" id="order-total" name="primaryclr" value="{{ $order->primaryclr }}"  placeholder="Ex:  #7D5452" required>
+                                    <input type="text" id="order-total" name="primaryclr" value="{{ $order->primaryclr }}"  placeholder="Ex:  #7D5452" required readonly>
                                 </div>
                                 <div class="product-name">
                                     <label for="order-total">Secondary Color:</label>
-                                    <input type="text" id="order-total" name="secondaryclr" value="{{$order->secondaryclr}}"  placeholder="Ex:  #7D5452" required>
+                                    <input type="text" id="order-total" name="secondaryclr" value="{{$order->secondaryclr}}"  placeholder="Ex:  #7D5452" required readonly>
                                 </div>
                                 <div class="product-name">
                                     <label for="process">Processing Time:</label>
