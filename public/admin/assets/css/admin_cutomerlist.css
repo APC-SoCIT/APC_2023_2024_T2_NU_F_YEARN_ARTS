@@ -29,6 +29,7 @@ body{
    .th_deg {
     font-family: Inter;
     padding: 30px;
+    cursor: default;
    }
 
    .main-table tr:not(:last-child) {
@@ -39,4 +40,13 @@ body{
 .main-table th:not(:last-child),
 .main-table td:not(:last-child) {
     border-right: 1px solid #7D5452;
+}
+
+.number-purchase {
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.bg-red {
+    background-color: #FAC6BF; /* or any other color you prefer */
 }

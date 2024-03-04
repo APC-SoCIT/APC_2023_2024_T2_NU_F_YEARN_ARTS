@@ -73,7 +73,7 @@
                             <td class="th_deg">{{ $customer['name'] }}</td>
                             <td class="th_deg">{{ $customer['email'] }}</td>
                             <td class="th_deg">{{ $customer['phone'] }}</td>
-                            <td class="th_deg">{{ $customer['purchase_count'] }}</td>
+                            <td class="th_deg"><div class=" number-purchase @if ($customer['purchase_count'] >= 2) bg-red @endif">{{ $customer['purchase_count'] }}</div></td>
                         </tr>
                         @endforeach
                     </table>

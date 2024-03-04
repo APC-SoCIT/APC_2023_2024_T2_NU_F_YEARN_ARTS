@@ -132,12 +132,15 @@ input:focus {
     outline: 0;
 }
 
+.child1{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
 .product-photo{
     border: 2px dashed #7D5452;
     border-radius: 20px;
-    padding: 170px 120px;
-
     align-items: center;
 }
 
@@ -173,7 +176,10 @@ input:focus {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    padding: 170px 120px;
     background-color:rgba(228, 216, 204, .50);
+    border-radius: 20px;
+    margin: 0;
 }
 
 .image-preview{
@@ -184,7 +190,6 @@ input:focus {
 }
 
 .rm-btn{
-    
     font-size:25px;
     padding: 10px;
     margin-left: 10px;
