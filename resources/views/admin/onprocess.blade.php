@@ -22,7 +22,7 @@
                      <div class="order-filter">
                         <form action="{{ url('onprocess') }}" method="GET">
                             <label for="order-status-filter">Filter by Order Status:</label>
-                            <select id="order-status-filter" name="status" onchange="this.form.submit()">
+                            <select class="filter-n" id="order-status-filter" name="status" onchange="this.form.submit()">
                                 <option value="all" {{ $status === 'all' ? 'selected' : '' }}>All</option>
                                 <option value="On Process" {{ $status === 'On Process' ? 'selected' : '' }}>On Process</option>
                                 <option value="To Pay" {{ $status === 'To Pay' ? 'selected' : '' }}>To Pay</option>

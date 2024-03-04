@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets\css\sales_report.css">
-    <title>Sales Report</title>
+    <title>Trend Report</title>
 </head>
 <body>
 
@@ -62,12 +62,12 @@
             <tr>
                 <td>{{ $order->order_id }}</td>
                 <td>{{ $order->product_name }}</td>
-                <td>₱{{ $unitprice}}</td>
+                <td>₱{{ number_format($unitprice, 2)}}</td>
                 <td>{{ $order->quantity }}</td>
-                <td>₱{{  $subtotalpriceAmount  }}</td>
+                <td>₱{{ number_format ($subtotalpriceAmount, 2)  }}</td>
                 <td>{{ $vatPercentage }}%</td>
                 <td>₱{{  $subtotalpriceVat }}</td>
-                <td>₱{{ $totalUnitAmount }}</td>
+                <td>₱{{ number_format ($totalUnitAmount,2) }}</td>
             </tr>
         @endif
     @endforeach
@@ -95,7 +95,7 @@
         <div class="printed-by">
             <p>Printed By:</p>
             <div class="signature-line"></div>
-            <p>Name: {{ $user->name }}</p> <!-- Display the name of the logged-in user -->
+            <p>{{ $user->name }}</p> <!-- Display the name of the logged-in user -->
            
         </div>
         <footer>

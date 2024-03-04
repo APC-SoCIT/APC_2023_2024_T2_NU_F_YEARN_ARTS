@@ -11,6 +11,11 @@ table {
     border: 1px solid #000; /* Add a border to the table */
   }
 
+  th, td, p{
+    font-family: Inter;
+    font-size: 12px;
+  }
+
   th, td {
     border: 1px solid #000;
     text-align: center;

@@ -475,8 +475,28 @@ public function sales_report() {
 
 
         $pdf = Pdf::loadView('admin.sales_report', ['id' => $id, 'user' => $user, 'orders' => $orders, 'categoryCounts' => $categoryCounts]);
-        return $pdf->download('Sales Report.pdf');
+        return $pdf->download('Trend Report.pdf');
 }
 
+public function sales_report_edit() {
+    $user = Auth::user();
+    $id = $user->id;
+
+    // Assuming your order status column is named 'order_status' and the created_at column is named 'created_at'
+    $orders = Order::whereYear('created_at', now()->year) // Filter by the current year
+        ->whereMonth('created_at', now()->month) // Filter by the current month
+        ->get();
+
+    $categoryCounts = Order::whereYear('created_at', now()->year) // Filter by the current year
+        ->whereMonth('created_at', now()->month) // Filter by the current month
+        ->selectRaw('category, COUNT(category) as total')
+        ->groupBy('category')
+        ->get();
+
+        return view ('admin.sales_report', compact('orders', 'categoryCounts', 'user'));
+
+        
+}
 
 }
+
