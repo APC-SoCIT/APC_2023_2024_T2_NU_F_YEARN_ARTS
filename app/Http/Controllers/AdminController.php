@@ -413,6 +413,9 @@ public function get_data_category(Request $request)
         $categoryCountsArray[$categoryCount->category] = $categoryCount->total;
     }
 
+    // Sort the category counts array by values in descending order
+    arsort($categoryCountsArray);
+
     return response()->json(['data' => $categoryCountsArray, 'selected_year' => $selectedYear]);
 }
 
@@ -477,10 +480,11 @@ public function sales_report() {
         ->groupBy('category')
         ->get();
 
+    // Sort the category counts from highest to lowest
+    $categoryCounts = $categoryCounts->sortByDesc('total');
 
-
-        $pdf = Pdf::loadView('admin.sales_report', ['id' => $id, 'user' => $user, 'orders' => $orders, 'categoryCounts' => $categoryCounts]);
-        return $pdf->download('Trend Report.pdf');
+    $pdf = Pdf::loadView('admin.sales_report', ['id' => $id, 'user' => $user, 'orders' => $orders, 'categoryCounts' => $categoryCounts]);
+    return $pdf->download('Trend Report.pdf');
 }
 
 public function sales_report_edit() {
