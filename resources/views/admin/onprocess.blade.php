@@ -75,16 +75,21 @@
 
                                             <!-- Add buttons inside each order -->
                                             <div class="column-4">
-                                                @if ($order->order_status === 'On Process')
-                                                    <a href="{{ url('to_ship', $order->id) }}" class="btn btn-action btn-low-opacity btn-confirm-payment btn-paid disabled" onclick="confirmOrderPayment({{ $order->id }})">Paid</a>
-                                                    <a href="{{url('to_fpay', $order->id)}}" class="btn-done" onclick="return confirm('Are you sure this order is done?')">Done</a>
-                                                @endif
+                                            @if ($customerCount === 1)
+                                            @if ($order->order_status === 'On Process')
+                                                <a href="{{ url('to_ship', $order->id) }}" class="btn btn-action btn-low-opacity btn-confirm-payment btn-paid disabled" onclick="confirmOrderPayment({{ $order->id }})">Paid</a>
+                                                <a href="{{url('to_fpay', $order->id)}}" class="btn-done" onclick="return confirm('Are you sure this order is done?')">Done</a>
+                                            @endif
 
-                                                @if ($order->order_status === 'To Pay')
+                                            @if ($order->order_status === 'To Pay')
                                                 <a href="{{url('to_ship', $order->id)}}" class="btn-paid" onclick="return confirm('Are you sure this order can be made?')">Paid</a>
                                                 <a href="{{url('to_fpay', $order->id)}}" class="btn btn-action btn-low-opacity btn-done disabled" onclick="return confirm('Are you sure this order can be made?')">Done</a>
-                                                @endif
-                                            </div>
+                                            @endif
+                                        @else
+                                            <a href="#" class="btn btn-action btn-low-opacity btn-confirm-payment btn-paid disabled">Paid</a>
+                                            <a href="#" class="btn btn-action btn-low-opacity btn-done disabled">Done</a>
+                                        @endif
+                                                                                    </div>
 
                                 </div>
                             @endif

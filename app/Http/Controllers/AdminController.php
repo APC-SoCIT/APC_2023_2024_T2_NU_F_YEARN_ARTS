@@ -164,10 +164,12 @@ class AdminController extends Controller
 
         // Fetch orders based on the selected status
         if ($status && in_array($status, ['On Process', 'To Pay'])) {
-            $order = Order::where('order_status', $status)->get();
+            $order= Order::where('order_status', $status)
+                        ->orderBy('downpayment_paid_at', 'desc') // Assuming 'downpayment_paid_at' is the column name
+                        ->get();
         } else {
             // Fetch all orders if no status is selected or if an invalid status is provided
-            $order = Order::all();
+            $order = Order::orderBy('downpayment_paid_at', 'asc')->get(); // Fetch all orders sorted by 'downpayment_paid_at'
         }
 
         return view ('admin.onprocess', compact('order', 'status'));
@@ -200,6 +202,7 @@ class AdminController extends Controller
         $order=order::find($id);
 
         $order->order_status="On Process";
+        $order->downpayment_paid_at = now();
 
         $order->save();
 
@@ -208,7 +211,7 @@ class AdminController extends Controller
             'subject' => 'Downpayment Paid',
             'greeting' => 'Good day, ' . $order['name'] . '!',
             'firstline' => 'We would like to infrom you that we already received your downpayment. Now, your order is on process.',
-            'button' => 'Print Receipt',
+            'button' => 'Track Order',
             'url' => 'http://127.0.0.1:8000/track_Sorder/' . $id,
             'lastline' => 'If you have any problems, you can contact us here or in our Facebook page https://www.facebook.com/yearnartofficial.',
         ];

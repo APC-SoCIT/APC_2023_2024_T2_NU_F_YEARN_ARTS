@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="column-2">
-                  <form action="{{url('search')}}" method="get">
+                  <form action="{{url('searchDpayment')}}" method="get">
                             @csrf
 
                             <div class="search-bar">

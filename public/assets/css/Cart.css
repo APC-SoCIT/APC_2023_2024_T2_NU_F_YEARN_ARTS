@@ -25,6 +25,11 @@ body{
     margin: 0px 30px 0 5px;
 }
 
+.processing-time{
+
+    margin: 20px 30px;
+}
+
 .mycart{
     font-family: Inter;
     font-size: 36px;

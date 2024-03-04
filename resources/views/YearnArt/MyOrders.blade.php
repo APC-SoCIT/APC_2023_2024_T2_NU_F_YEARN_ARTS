@@ -23,7 +23,7 @@
         <div class="center">
             <div class="header">
                 <h6 class="mycart">My Cart</h6>
-                <div id="processingTime" class="processing-time">Processing Time: 0 Weeks</div>
+                <div id="processingTime" class="processing-time">Processing Time: 0 Week(s)</div>
             </div>
 
             @if(session()->has('message'))
@@ -75,7 +75,7 @@
                                 <p>{{$cart->size}}</p>
                             </div>
                         </div>
-                        <div id="{{ $process_timeId }}" class="downpayment" data-processing-time="{{ $dataProcessingTime }}">{{ $process_time }} week</div>
+                        <div id="{{ $process_timeId }}" class="downpayment" data-processing-time="{{ $dataProcessingTime }}">{{ $process_time }} week(s)</div>
                         <div id="{{ $unitPriceId }}" class="unit-price">₱{{ number_format($cart->price, 2) }}</div>
                         <div class="quantity">
                             <input type="number" id="{{ $quantityInputId }}" name="quantity[{{ $cart->id }}]" value="{{ $cart->quantity }}" min="1" required="" style="border:1.5px solid #b0968f;border-radius: 5px; width: 100px; height: 30px; background: transparent; margin-left: 10px;">
@@ -153,7 +153,7 @@
 
             totalItemsElement.textContent = totalItems;
             totalPricesElement.textContent = '₱' + totalPrice.toFixed(2);
-            processingTimeElement.textContent = 'Processing Time: ' + totalProcessingTime + ' Weeks';
+            processingTimeElement.textContent = 'Processing Time: ' + totalProcessingTime + ' Week(s)';
 
             const allCheckboxesChecked = [...productCheckboxes].every(checkbox => checkbox.checked);
 
@@ -179,7 +179,7 @@
                     var processTime = quantityValue * processingTimePerItem;
 
                     totalPriceElement.textContent = '₱' + totalPrice.toFixed(2);
-                    processTimeElement.textContent = processTime + ' week';
+                    processTimeElement.textContent = processTime + ' week(s)';
                     updateTotals();
                 });
             });
