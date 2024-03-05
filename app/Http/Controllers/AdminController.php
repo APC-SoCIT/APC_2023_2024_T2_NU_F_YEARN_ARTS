@@ -402,7 +402,8 @@ public function get_data_category(Request $request)
     })->toArray();
 
     // Fetch data from the database and update the array
-    $categoryCounts = Order::whereYear('completed_at', $selectedYear) // Filter by the selected year
+    $categoryCounts = Order::where('order_status', 'Order Completed')
+        ->whereYear('completed_at', $selectedYear) // Filter by the selected year
         ->whereMonth('completed_at', $currentMonth) // Filter by the current month
         ->selectRaw('category, COUNT(*) as total')
         ->groupBy('category')
@@ -471,7 +472,7 @@ public function sales_report() {
 
     // Assuming your order status column is named 'order_status' and the created_at column is named 'created_at'
     $orders = Order::whereYear('created_at', now()->year) // Filter by the current year
-        ->whereMonth('created_at', now()->month) // Filter by the current month
+        ->whereMonth('completed', now()->month) // Filter by the current month
         ->get();
 
     $categoryCounts = Order::whereYear('completed_at', now()->year) // Filter by the current year
